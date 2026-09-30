@@ -2,12 +2,6 @@ const backToHome = document.getElementById("backToHome");
 
 if (document.documentElement.classList.contains("pinkchaos-page")) {
   window.scrollTo(0, 0);
-  document.querySelector(".subsite")?.addEventListener("animationend", (event) => {
-    if (event.animationName === "subsite-in") {
-      document.documentElement.classList.add("snap-ready");
-    }
-  });
-
   const gallery = document.querySelector(".gallery-secondary");
   if (gallery) {
     const slides = [...gallery.querySelectorAll(".gallery-slide")];

@@ -12,20 +12,6 @@ body {
   background: #fff;
 }
 
-html.pinkchaos-page.snap-ready {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-html.pinkchaos-page:not(.snap-ready) {
-  overflow-anchor: none;
-}
-
-.pinkchaos > section {
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
-}
-
 .pinkchaos .gallery-secondary {
   width: min(98%, calc(100dvh - var(--gallery-gutter) - 2vh - 1rem - 1vw));
   pointer-events: auto;
@@ -311,12 +297,12 @@ body.subsite-leaving .subsite {
 .pinkchaos .detail-content h1 { margin-bottom: 8px; font-weight: 500; }
 .pinkchaos .detail-content p.materials {
   margin-bottom: 40px;
-  font-size: 14px;
+  font-size: var(--corner-link-font-size);
   font-weight: 500;
 }
 .pinkchaos .description-text { margin-bottom: 30px; line-height: 1.18; }
 .pinkchaos .status { margin-bottom: 0; }
-.pinkchaos .buy-button { margin-top: 24px; font-size: 30px; font-weight: 500; }
+.pinkchaos .buy-button { margin-top: 24px; font-size: var(--corner-link-font-size); font-weight: 500; }
 
 .pinkchaos .product-gallery .gallery-image {
   background: transparent;
