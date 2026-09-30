@@ -301,13 +301,13 @@ body.subsite-leaving .subsite {
   font-weight: 500;
 }
 
-.pinkchaos .detail-content h1 { margin-bottom: 8px; font-weight: 500; }
+.pinkchaos .detail-content h1 { margin-bottom: 8px; font-size: 35px; font-weight: 500; }
 .pinkchaos .detail-content p.materials {
   margin-bottom: 40px;
   font-size: var(--corner-link-font-size);
   font-weight: 500;
 }
-.pinkchaos .description-text { margin-bottom: 30px; line-height: 1.18; }
+.pinkchaos .detail-content p.description-text { margin-bottom: 30px; font-size: 35px; line-height: 1.18; }
 .pinkchaos .status { margin-bottom: 0; }
 .pinkchaos .detail-content p.status { font-size: var(--corner-link-font-size); }
 .pinkchaos .buy-button { margin-top: 24px; font-size: var(--corner-link-font-size); font-weight: 500; }
@@ -395,7 +395,8 @@ body.subsite-leaving .subsite {
   .pinkchaos .detail-content p,
   .pinkchaos .detail-content p.materials,
   .pinkchaos .buy-button { font-weight: 700; }
-  .pinkchaos .detail-content p.description-text { font-size: 30px; }
+  .pinkchaos .detail-content p.description-text { font-size: 35px; }
+  .pinkchaos .detail-content h1 { font-size: 35px; }
   .pinkchaos { padding-bottom: 44px; }
   .pinkchaos .gallery-secondary { width: min(calc(100% - 32px), 440px); }
   .info-page { width: min(calc(100% - 40px), 900px); }
