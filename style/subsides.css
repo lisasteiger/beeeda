@@ -395,8 +395,8 @@ body.subsite-leaving .subsite {
   .pinkchaos .detail-content p,
   .pinkchaos .detail-content p.materials,
   .pinkchaos .buy-button { font-weight: 700; }
-  .pinkchaos .detail-content p.description-text { font-size: 35px; }
-  .pinkchaos .detail-content h1 { font-size: 35px; }
+  .pinkchaos .detail-content p.description-text { font-size: 28px; }
+  .pinkchaos .detail-content h1 { font-size: 28px; }
   .pinkchaos { padding-bottom: 44px; }
   .pinkchaos .gallery-secondary { width: min(calc(100% - 32px), 440px); }
   .info-page { width: min(calc(100% - 40px), 900px); }
