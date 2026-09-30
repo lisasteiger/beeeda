@@ -15,7 +15,13 @@ body {
 .pinkchaos .gallery-secondary {
   width: min(98%, calc(100dvh - var(--gallery-gutter) - 2vh - 1rem - 1vw));
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
+
+.pinkchaos .gallery-secondary .gallery-image { width: 92%; }
 
 body {
   font-family: "Google Sans", sans-serif;
@@ -277,6 +283,7 @@ body.subsite-leaving .subsite {
 
 .pinkchaos {
   --gallery-gutter: calc(0.1rem + min(2.92rem, 9.35vw));
+  padding-bottom: calc(2vh + 22px);
   pointer-events: none;
 }
 
