@@ -22,11 +22,11 @@ let pressedPointer = null;
 let pointerStartX = 0;
 let pointerStartTarget = 0;
 let snapTimer;
-let leaving = false;
+let navigationTimer;
 
 // Der Browser stellt die Startseite beim Zurückgehen oft aus dem Cache wieder her.
 window.addEventListener("pageshow", () => {
-  leaving = false;
+  clearTimeout(navigationTimer);
   touchMoved = false;
   pressedPointer = null;
   document.body.classList.remove("leaving-to-subsite");
@@ -171,11 +171,10 @@ if (carousel) {
     touchMoved = false;
     if (!link || event.defaultPrevented || event.button > 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
-    if (leaving) return;
-    leaving = true;
+    clearTimeout(navigationTimer);
     stopAnimation();
     document.body.classList.add("leaving-to-subsite");
-    setTimeout(() => { window.location.href = link.href; }, 900);
+    navigationTimer = setTimeout(() => { window.location.href = link.href; }, 900);
   });
 }
 
