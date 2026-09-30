@@ -375,7 +375,7 @@ body.subsite-leaving .subsite {
 
   .pinkchaos .detail-content {
     min-height: calc(100dvh - 120px);
-    margin-top: 0;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -383,10 +383,16 @@ body.subsite-leaving .subsite {
   }
 
   .pinkchaos .detail-content > * { top: 0; }
+  .pinkchaos .detail-content h1,
+  .pinkchaos .detail-content p,
+  .pinkchaos .detail-content p.materials,
+  .pinkchaos .buy-button { font-weight: 700; }
+  .pinkchaos { padding-bottom: 44px; }
   .pinkchaos .gallery-secondary { width: min(calc(100% - 32px), 440px); }
   .info-page { width: min(calc(100% - 40px), 900px); }
 }
 
 @media (max-width: 360px) {
   .logo { width: 33.6vw; }
+  .pinkchaos { padding-bottom: 38px; }
 }
