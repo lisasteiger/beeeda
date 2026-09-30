@@ -305,10 +305,10 @@ body.subsite-leaving .subsite {
 
 .pinkchaos .detail-content p {
   font-size: 27px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
-.pinkchaos .detail-content h1 { margin-bottom: 8px; }
+.pinkchaos .detail-content h1 { margin-bottom: 8px; font-weight: 500; }
 .pinkchaos .detail-content p.materials {
   margin-bottom: 40px;
   font-size: 14px;
@@ -316,7 +316,7 @@ body.subsite-leaving .subsite {
 }
 .pinkchaos .description-text { margin-bottom: 30px; line-height: 1.18; }
 .pinkchaos .status { margin-bottom: 0; }
-.pinkchaos .buy-button { margin-top: 24px; font-size: 30px; font-weight: 700; }
+.pinkchaos .buy-button { margin-top: 24px; font-size: 30px; font-weight: 500; }
 
 .pinkchaos .product-gallery .gallery-image {
   background: transparent;
