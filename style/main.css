@@ -29,7 +29,7 @@ body {
 
 .main-logo {
   position: absolute;
-  top: 0.1em;
+  top: calc(0.1em + 15px);
   left: 50%;
   transform: translateX(-50%);
   display: block;
