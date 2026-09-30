@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de" class="pinkchaos-page">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pinks Chaos</title>
+    <script>history.scrollRestoration = "manual";</script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style/subsides.css?v=12" />
+    <link rel="stylesheet" href="style/shop.css?v=2" />
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <a class="site-link archive-link" href="archiv.html">Archiv</a>
+    <a class="cart-link" href="warenkorb.html">Warenkorb</a>
+    <a class="site-link impressum-link" href="impressum.html">Impressum</a>
+    <a class="site-link about-link" href="ueber-uns.html">Über uns</a>
+
+    <!-- LOGO -->
+    <div class="logo-layer">
+      <a
+        href="index.html"
+        class="logo-link"
+        id="backToHome"
+        aria-label="Zurück zum Carousel"
+      >
+        <img class="logo" src="assets/LOGO-01.svg" alt="Beeeda" />
+      </a>
+    </div>
+
+    <!-- SUBSITE -->
+    <main class="subsite pinkchaos">
+      <!-- EINZELBILD -->
+      <section
+        class="gallery product-gallery"
+        aria-label="Bild von Pinks Chaos"
+      >
+        <div class="gallery-image">
+          <img
+            class="gallery-slide"
+            src="assets/01_3.png"
+            alt="Pinks Chaos, Gesamtansicht"
+          />
+        </div>
+      </section>
+
+      <!-- TEXT -->
+      <section class="detail-content">
+        <h1>Pinks Chaos</h1>
+        <p class="description-text">
+          Hier kann dein Beschreibungstext stehen. Hier kannst du eine längere
+          Beschreibung des Produktes, der Idee oder des Projektes einfügen.
+        </p>
+        <p class="materials">
+          Kashmir | Schurwolle | Mohair | Alpaka | Polyamid
+        </p>
+        <p class="status">CHF 49.50</p>
+        <button class="buy-button" id="buy-button" type="button">Kaufen</button>
+        <p
+          class="buy-feedback"
+          id="buy-feedback"
+          role="status"
+          aria-live="polite"
+          hidden
+        ></p>
+      </section>
+
+      <!-- WEITERE BILDER -->
+      <section
+        class="gallery gallery-secondary"
+        aria-label="Weitere Bilder von Pinks Chaos"
+      >
+        <div class="gallery-image">
+          <img class="gallery-slide" src="assets/01_4.jpg" alt="Pinks Chaos, weitere Nahaufnahme" loading="lazy" hidden />
+          <img class="gallery-slide" src="assets/01_5.jpg" alt="Pinks Chaos, Nahaufnahme" loading="lazy" />
+          <img class="gallery-slide" src="assets/01_3.jpg" alt="Pinks Chaos, weitere Ansicht" loading="lazy" hidden />
+          <div class="gallery-dots" aria-label="Bild auswählen">
+            <button class="gallery-dot" type="button" aria-label="Bild 1 anzeigen" aria-pressed="false"></button>
+            <button class="gallery-dot" type="button" aria-label="Bild 2 anzeigen" aria-pressed="true"></button>
+            <button class="gallery-dot" type="button" aria-label="Bild 3 anzeigen" aria-pressed="false"></button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div
+      class="purchase-overlay"
+      id="purchase-confirmation"
+      role="status"
+      aria-atomic="true"
+      hidden
+    >
+      <p>
+        <span>Pinks Chaos</span><span>ist jetzt</span><span>im Warenkorb.</span>
+      </p>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="subsite.js?v=6"></script>
+    <script type="module" src="shop.js"></script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+/* Feste Navigation auf jeder Seite, über Bildern und Übergängen. */
+.site-link,
+.cart-link {
+  position: fixed;
+  z-index: 7000;
+  color: #000;
+  font-family: "Google Sans", sans-serif;
+  font-size: 0.8em;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 6px;
+  margin: -6px;
+  border-radius: 6px;
+}
+
+.archive-link { top: 2%; left: 1%; }
+.cart-link { top: 2%; right: 1%; }
+.impressum-link { bottom: 2%; left: 1%; }
+.about-link { bottom: 2%; right: 1%; }
+
+.site-link:hover,
+.cart-link:hover {
+  background: #eaeaea;
+}
+
+.site-link:focus-visible,
+.cart-link:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 5px;
+}
+
+@media (max-width: 700px) {
+  .site-link,
+  .cart-link {
+    font-size: 0.8rem;
+    padding: 10px;
+    margin: 0;
+  }
+  .archive-link { top: 4px; left: 0; }
+  .cart-link { top: 4px; right: 0; }
+  .impressum-link { bottom: max(4px, env(safe-area-inset-bottom)); left: 0; }
+  .about-link { bottom: max(4px, env(safe-area-inset-bottom)); right: 0; }
+}
+
+.buy-button {
+  margin-top: 28px;
+  padding: 14px 32px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  background: #eaeaea;
+  color: #000;
+  font: 600 0.85rem "Google Sans", sans-serif;
+  cursor: pointer;
+}
+
+.buy-button:hover:not(:disabled) {
+  background: #ddd;
+}
+
+.buy-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.buy-feedback {
+  margin: 12px 0 0;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.purchase-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.94);
+  pointer-events: none;
+  animation: purchase-confirmation 3s ease-in-out both;
+}
+
+.purchase-overlay[hidden] {
+  display: none;
+}
+
+.purchase-overlay p {
+  margin: 0;
+  color: #000;
+  font-size: clamp(1.8rem, 5vw, 4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.purchase-overlay span {
+  display: block;
+}
+
+@keyframes purchase-confirmation {
+  0%, 100% { opacity: 0; }
+  12%, 80% { opacity: 1; }
+}

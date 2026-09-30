@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beeeda</title>
+
+    <!-- RÜCKKEHR VON SUBSITE ERKENNEN – Muss VOR dem CSS stehen -->
+    <script>
+      if (new URLSearchParams(window.location.search).has("back")) {
+        document.documentElement.classList.add("returning-from-subsite");
+      }
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style/main.css?v=3" />
+    <link rel="stylesheet" href="style/shop.css?v=2" />
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <a class="site-link archive-link" href="archiv.html">Archiv</a>
+    <a class="cart-link" href="warenkorb.html">Warenkorb</a>
+    <a class="site-link impressum-link" href="impressum.html">Impressum</a>
+    <a class="site-link about-link" href="ueber-uns.html">Über uns</a>
+
+    <!-- LOGO -->
+    <div class="logo-layer">
+      <img class="main-logo" src="assets/LOGO-01.svg" alt="Beeeda" />
+    </div>
+
+    <!-- CAROUSEL -->
+    <main class="carousel" id="carousel">
+      <div class="carousel-inner">
+
+        <!-- BILD 01 -->
+        <div class="item">
+          <a href="pinkchaos.html" class="image-link" draggable="false">
+            <img src="assets/01.png" alt="Pinks Chaos" />
+          </a>
+        </div>
+
+        <!-- BILD 02 -->
+        <div class="item">
+          <a href="produkt02.html" class="image-link" draggable="false">
+            <img src="assets/02.png" alt="Produkt 02" />
+          </a>
+        </div>
+
+        <!-- BILD 03 -->
+        <div class="item">
+          <a href="produkt03.html" class="image-link" draggable="false">
+            <img src="assets/07.png" alt="" />
+          </a>
+        </div>
+
+        <!-- BILD 04 -->
+        <div class="item">
+          <a href="produkt04.html" class="image-link" draggable="false">
+            <img src="assets/03.png" alt="" />
+          </a>
+        </div>
+
+        <!-- BILD 05 -->
+        <div class="item">
+          <a href="produkt05.html" class="image-link" draggable="false">
+            <img src="assets/05.png" alt="" />
+          </a>
+        </div>
+
+        <!-- BILD 06 -->
+        <div class="item">
+          <a href="produkt06.html" class="image-link" draggable="false">
+            <img src="assets/06.png" alt="" />
+          </a>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js?v=4"></script>
+    <script type="module" src="shop.js"></script>
+  </body>
+</html>
