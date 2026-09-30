@@ -112,7 +112,8 @@ body.leaving-to-subsite .carousel {
 }
 
 @media (max-width: 700px) {
-  .image-link { transform: translate(-50%, -50%) scale(1.1); }
+  .main-logo { width: min(12rem, 38.4vw); }
+  .image-link { -webkit-tap-highlight-color: transparent; }
   .item { height: min(88dvh, calc((100vw - 16px) * var(--image-fit))); }
   .item:nth-child(1), .item:nth-child(2) { --image-fit: 1.45; }
   .item:nth-child(3) { --image-fit: 1.5; }
@@ -125,5 +126,5 @@ body.leaving-to-subsite .carousel {
 }
 
 @media (max-width: 360px) {
-  .main-logo { width: 28vw; }
+  .main-logo { width: 33.6vw; }
 }

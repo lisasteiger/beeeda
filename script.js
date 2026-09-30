@@ -24,6 +24,14 @@ let pointerStartTarget = 0;
 let snapTimer;
 let leaving = false;
 
+// Der Browser stellt die Startseite beim Zurückgehen oft aus dem Cache wieder her.
+window.addEventListener("pageshow", () => {
+  leaving = false;
+  touchMoved = false;
+  pressedPointer = null;
+  document.body.classList.remove("leaving-to-subsite");
+});
+
 // Die Startposition für die Rückkehr wird bereits vor dem CSS gesetzt.
 if (carousel && new URLSearchParams(window.location.search).has("back")) {
   requestAnimationFrame(() => {

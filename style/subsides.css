@@ -248,6 +248,7 @@ body.subsite-leaving .subsite {
 
 /* MOBILE */
 @media (max-width: 700px) {
+  .logo { width: min(12rem, 38.4vw); }
   .subsite {
     --gallery-gutter: 90px;
     padding-bottom: 100px;
@@ -396,5 +397,5 @@ body.subsite-leaving .subsite {
 }
 
 @media (max-width: 360px) {
-  .logo { width: 28vw; }
+  .logo { width: 33.6vw; }
 }

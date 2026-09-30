@@ -32,7 +32,7 @@
 @media (max-width: 700px) {
   .site-link,
   .cart-link {
-    font-size: clamp(0.95rem, 4.2vw, 1.05rem);
+    font-size: clamp(1.075rem, calc(4.2vw + 2px), 1.175rem);
     padding: 10px;
     margin: 0;
   }
@@ -44,7 +44,7 @@
 
 @media (max-width: 360px) {
   .site-link,
-  .cart-link { font-size: 0.9rem; padding: 8px; }
+  .cart-link { font-size: 1.025rem; padding: 8px; }
 }
 
 .buy-button {
