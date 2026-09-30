@@ -32,7 +32,7 @@
 @media (max-width: 700px) {
   .site-link,
   .cart-link {
-    font-size: 0.8rem;
+    font-size: clamp(0.95rem, 4.2vw, 1.05rem);
     padding: 10px;
     margin: 0;
   }
@@ -40,6 +40,11 @@
   .cart-link { top: 4px; right: 0; }
   .impressum-link { bottom: max(4px, env(safe-area-inset-bottom)); left: 0; }
   .about-link { bottom: max(4px, env(safe-area-inset-bottom)); right: 0; }
+}
+
+@media (max-width: 360px) {
+  .site-link,
+  .cart-link { font-size: 0.9rem; padding: 8px; }
 }
 
 .buy-button {

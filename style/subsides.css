@@ -355,8 +355,6 @@ body.subsite-leaving .subsite {
 }
 
 @media (max-width: 700px) {
-  .logo { width: min(8rem, 34vw); }
-
   .pinkchaos,
   .produkt02 { --gallery-gutter: clamp(80px, 12dvh, 100px); }
 
@@ -395,4 +393,8 @@ body.subsite-leaving .subsite {
   .pinkchaos .detail-content > * { top: 0; }
   .pinkchaos .gallery-secondary { width: min(calc(100% - 32px), 440px); }
   .info-page { width: min(calc(100% - 40px), 900px); }
+}
+
+@media (max-width: 360px) {
+  .logo { width: 28vw; }
 }
