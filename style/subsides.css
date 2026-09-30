@@ -309,6 +309,7 @@ body.subsite-leaving .subsite {
 }
 .pinkchaos .description-text { margin-bottom: 30px; line-height: 1.18; }
 .pinkchaos .status { margin-bottom: 0; }
+.pinkchaos .detail-content p.status { font-size: var(--corner-link-font-size); }
 .pinkchaos .buy-button { margin-top: 24px; font-size: var(--corner-link-font-size); font-weight: 500; }
 
 .pinkchaos .product-gallery .gallery-image {
