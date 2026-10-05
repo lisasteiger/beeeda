@@ -53,16 +53,16 @@
 .buy-button {
   margin-top: 28px;
   padding: 14px 32px;
-  border: 1px solid #eaeaea;
+  border: 1px solid #000;
   border-radius: 12px;
-  background: #eaeaea;
-  color: #000;
+  background: #000;
+  color: #fff;
   font: 600 0.85rem "Google Sans", sans-serif;
   cursor: pointer;
 }
 
 .buy-button:hover:not(:disabled) {
-  background: #ddd;
+  background: #222;
 }
 
 .buy-button:disabled {
