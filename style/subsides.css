@@ -129,6 +129,7 @@ body {
 @media (max-width: 700px) {
   .subsite.archive-grid {
     --archive-edge: calc(max(4px, env(safe-area-inset-bottom)) + 20px + 1.5 * var(--corner-link-font-size) + 10px);
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -411,7 +412,11 @@ body.subsite-leaving .subsite {
 }
 
 html.pinkchaos-page body { overflow-x: clip; overflow-y: visible; }
-.pinkchaos .gallery-secondary { position: relative; z-index: 2; }
+.pinkchaos .gallery-secondary {
+  position: relative;
+  z-index: 2;
+  margin-top: calc(80px + 50dvh);
+}
 
 .pinkchaos .detail-content > * {
   position: relative;
