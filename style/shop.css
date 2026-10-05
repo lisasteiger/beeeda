@@ -22,7 +22,8 @@
 
 .site-link:hover,
 .cart-link:hover {
-  background: #eaeaea;
+  background: #000;
+  color: #fff;
 }
 
 .site-link:focus-visible,
