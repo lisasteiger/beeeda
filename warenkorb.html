@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Warenkorb · Beeeda</title>
-    <link rel="stylesheet" href="style/subsides.css?v=26" />
+    <link rel="stylesheet" href="style/subsides.css?v=51" />
     <link rel="stylesheet" href="style/shop.css?v=7" />
     <link rel="stylesheet" href="style/cart.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,11 +15,9 @@
     />
   </head>
   <body>
-    <div class="logo-layer">
-      <a href="index.html" class="logo-link" aria-label="Zurück zum Shop">
+    <div class="logo-layer"><div class="logo-controls"><a href="index.html" class="logo-link" aria-label="Zurück zum Shop">
         <img class="logo" src="assets/LOGO-01.svg" alt="Beeeda" />
-      </a>
-    </div>
+      </a><button class="site-link close-page" id="closePage" type="button">schliessen</button></div></div>
     <a class="site-link archive-link" href="archiv.html">Archiv</a>
     <a class="cart-link" href="warenkorb.html" aria-current="page">Warenkorb</a>
     <a class="site-link impressum-link" href="impressum.html">Impressum</a>
@@ -75,6 +73,7 @@
         <p class="cart-line-total"></p>
       </li>
     </template>
+    <script src="subsite.js?v=9"></script>
     <script type="module" src="cart.js"></script>
     <script type="module" src="shop.js"></script>
   </body>
