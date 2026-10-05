@@ -11,7 +11,7 @@ await mkdir(dirname(filename), { recursive: true });
 const shop = openShop(filename);
 const port = Number(process.env.PORT || 8001);
 const types = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".svg": "image/svg+xml", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".webp": "image/webp", ".woff2": "font/woff2" };
-const publicFiles = new Set(["index.html", "pinkchaos.html", "produkt02.html", "warenkorb.html", "kasse.html", "archiv.html", "impressum.html", "ueber-uns.html", "script.js", "subsite.js", "product-gallery.js", "products.js", "shop.js", "cart-store.js", "cart.js", "checkout.js", "api.js"]);
+const publicFiles = new Set(["index.html", "pinkchaos.html", "produkt02.html", "warenkorb.html", "kasse.html", "archiv.html", "impressum.html", "ruecksendungen.html", "ueber-uns.html", "script.js", "subsite.js", "product-gallery.js", "products.js", "shop.js", "cart-store.js", "cart.js", "checkout.js", "api.js"]);
 
 async function body(req) {
   let text = "";

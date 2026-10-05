@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rücksendungen · Beeeda</title>
+    <link rel="stylesheet" href="style/subsides.css?v=28" />
+    <link rel="stylesheet" href="style/shop.css?v=7" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="site-link archive-link" href="archiv.html">Archiv</a>
+    <a class="cart-link" href="warenkorb.html">Warenkorb</a>
+    <a class="site-link impressum-link" href="impressum.html">Impressum</a>
+    <a class="site-link about-link" href="ueber-uns.html">Über uns</a>
+    <div class="logo-layer"><a class="logo-link" id="backToHome" href="index.html" aria-label="Zurück zum Shop"><img class="logo" src="assets/LOGO-01.svg" alt="Beeeda" /></a></div>
+    <main class="subsite info-page impressum-page">
+      <h1>Rücksendungen</h1>
+      <form class="return-form" id="returnForm">
+        <label for="returnName">Name</label>
+        <input id="returnName" name="name" autocomplete="name" required maxlength="100" />
+        <label for="returnEmail">E-Mail</label>
+        <input id="returnEmail" name="email" type="email" autocomplete="email" required maxlength="254" />
+        <label for="returnOrder">Bestellnummer (optional)</label>
+        <input id="returnOrder" name="order" maxlength="100" />
+        <label for="returnMessage">Nachricht</label>
+        <textarea id="returnMessage" name="message" rows="5" required maxlength="3000"></textarea>
+        <button class="buy-button" type="submit">Nachricht im Mailprogramm öffnen</button>
+        <small>Deine Nachricht wird an hi@beeeda.ch vorbereitet. Sende sie anschliessend in deinem Mailprogramm ab.</small>
+      </form>
+    </main>
+    <script>
+      document.getElementById("returnForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const subject = "Rücksendung" + (data.get("order") ? " · " + data.get("order") : "");
+        const body = `Name: ${data.get("name")}\nE-Mail: ${data.get("email")}\nBestellnummer: ${data.get("order")}\n\n${data.get("message")}`;
+        window.location.href = `mailto:hi@beeeda.ch?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    </script>
+    <script src="subsite.js"></script>
+    <script type="module" src="shop.js"></script>
+  </body>
+</html>

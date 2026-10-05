@@ -238,6 +238,38 @@ body.subsite-leaving .subsite {
   font-size: 1.25rem;
 }
 
+.impressum-page h1,
+.impressum-page p {
+  font-size: 35px;
+  font-weight: 500;
+  line-height: 1.18;
+}
+
+.impressum-page a { color: inherit; }
+
+.return-form {
+  max-width: 620px;
+  margin: 34px auto 0;
+  display: grid;
+  gap: 12px;
+  text-align: left;
+  font-size: 1.25rem;
+}
+.return-form label:not(:first-child) { margin-top: 12px; }
+.return-form input,
+.return-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #000;
+  border-radius: 0;
+  color: #000;
+  background: #fff;
+  font: inherit;
+}
+.return-form textarea { resize: vertical; }
+.return-form .buy-button { margin-top: 12px; font: inherit; }
+.return-form small { line-height: 1.4; }
+
 /* MOBILE */
 @media (max-width: 700px) {
   .logo { width: min(12rem, 38.4vw); }
@@ -405,6 +437,8 @@ body.subsite-leaving .subsite {
     aspect-ratio: auto;
   }
   .info-page { width: min(calc(100% - 40px), 900px); }
+  .impressum-page h1,
+  .impressum-page p { font-size: 29px; font-weight: 700; }
 }
 
 @media (max-width: 360px) {
