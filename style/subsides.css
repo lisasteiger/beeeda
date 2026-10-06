@@ -534,10 +534,10 @@ html.pinkchaos-page body { overflow-x: clip; overflow-y: visible; }
 
   .pinkchaos .detail-content > * { top: 0; }
   .pinkchaos .detail-content h1,
-  .pinkchaos .detail-content p,
-  .pinkchaos .detail-content p.materials,
-  .pinkchaos .detail-content p { font-size: calc(29px - 3pt); }
-  .pinkchaos .detail-content h1 { font-size: calc(29px - 3pt); }
+  .pinkchaos .detail-content p {
+    font-size: 28px;
+    font-weight: 600;
+  }
   .pinkchaos .detail-content p.status,
   .pinkchaos .detail-content p.product-info {
     font-size: var(--corner-link-font-size);

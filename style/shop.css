@@ -15,6 +15,11 @@
   border-radius: 6px;
 }
 
+.archive-link,
+.cart-link,
+.impressum-link,
+.about-link { font-weight: 700; }
+
 .archive-link { top: 2%; left: 1%; }
 .cart-link { top: 2%; right: 1%; }
 .impressum-link { bottom: 2%; left: 1%; }
