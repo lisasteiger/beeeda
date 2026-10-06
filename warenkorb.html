@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Warenkorb · Beeeda</title>
     <link rel="stylesheet" href="style/subsides.css?v=60" />
-    <link rel="stylesheet" href="style/shop.css?v=7" />
-    <link rel="stylesheet" href="style/cart.css" />
+    <link rel="stylesheet" href="style/shop.css?v=9" />
+    <link rel="stylesheet" href="style/cart.css?v=6" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,10 +14,10 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="shopping-cart">
     <div class="logo-layer"><div class="logo-controls"><a href="index.html" class="logo-link" aria-label="Zurück zum Shop">
         <img class="logo" src="assets/LOGO-01.svg" alt="Beeeda" />
-      </a><button class="site-link close-page" id="closePage" type="button">schliessen</button></div></div>
+      </a><button class="site-link close-page" id="closePage" type="button">weiterstöbern</button></div></div>
     <a class="site-link archive-link" href="archiv.html">Archiv</a>
     <a class="cart-link" href="warenkorb.html" aria-current="page">Warenkorb</a>
     <a class="site-link impressum-link" href="impressum.html">Impressum</a>
@@ -26,9 +26,7 @@
     <main class="cart-page">
       <header class="cart-heading">
         <h1>Warenkorb</h1>
-        <a href="index.html" class="continue-link">Weiterstöbern</a>
       </header>
-      <p class="cart-note">Alle Beträge in CHF · Zahlung ausschliesslich mit TWINT</p>
 
       <p id="cart-message" class="cart-message" role="status"></p>
       <p id="storage-notice" class="cart-note" hidden>Dein Warenkorb kann in diesem Browser gerade nicht dauerhaft gespeichert werden.</p>
@@ -44,11 +42,10 @@
         <section aria-label="Artikel im Warenkorb">
           <ul id="cart-items" class="cart-items"></ul>
         </section>
-        <aside class="cart-summary" aria-labelledby="summary-title">
-          <h2 id="summary-title">Deine Bestellung</h2>
+        <aside class="cart-summary" aria-label="Deine Bestellung">
           <dl>
             <div><dt>Artikel</dt><dd id="cart-count"></dd></div>
-            <div><dt>Zahlungsart</dt><dd>TWINT</dd></div>
+            <div><dt>Zahlungsart</dt><dd>ausschliesslich Twint</dd></div>
             <div><dt>Versand</dt><dd>Noch nicht festgelegt</dd></div>
             <div class="cart-total"><dt>Artikelsumme</dt><dd id="cart-total"></dd></div>
           </dl>

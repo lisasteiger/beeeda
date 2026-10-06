@@ -2,6 +2,50 @@
   display: none !important;
 }
 
+.shopping-cart { --cart-radius: 20px; }
+.shopping-cart .cart-heading {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+.shopping-cart .cart-heading h1 { grid-column: 2; }
+.shopping-cart .cart-heading h1 {
+  font-size: 35px;
+  font-weight: 500;
+  line-height: 1.18;
+  text-align: center;
+}
+.shopping-cart .cart-summary,
+.shopping-cart .cart-button,
+.shopping-cart .cart-item-image { border-radius: var(--cart-radius); }
+.shopping-cart .cart-item { grid-template-columns: 125px minmax(0, 1fr) auto; }
+.shopping-cart .cart-item-image { object-fit: cover; }
+.shopping-cart .cart-heading,
+.shopping-cart .cart-item,
+.shopping-cart .cart-total { border: 0; }
+.shopping-cart .cart-summary dl { margin-top: 0; }
+.shopping-cart .cart-layout {
+  grid-template-columns: minmax(0, 1fr);
+  width: min(100%, calc((100dvh - 0.1rem - min(2.92rem, 9.35vw) - 2vh - 1rem - 1vw) * 0.92));
+  margin-inline: auto;
+}
+.shopping-cart .cart-remove { text-decoration: none; }
+.shopping-cart .cart-item h2,
+.shopping-cart .cart-line-total,
+.shopping-cart .cart-unit-price,
+.shopping-cart .cart-item-actions,
+.shopping-cart .cart-note,
+.shopping-cart .cart-message,
+.shopping-cart .cart-summary dl,
+.shopping-cart .cart-total,
+.shopping-cart .cart-button,
+.shopping-cart .cart-empty p {
+  font-family: "Google Sans", sans-serif;
+  font-size: var(--corner-link-font-size);
+  font-weight: 500;
+  line-height: normal;
+}
+
 .cart-page {
   width: min(1100px, 90vw);
   margin: 0 auto;
@@ -207,7 +251,16 @@
   }
 }
 
+@media (max-width: 700px) {
+  .shopping-cart { --cart-radius: 15px; }
+  .shopping-cart .cart-heading h1 { font-size: calc(29px - 3pt); font-weight: 700; }
+  .shopping-cart .cart-page { padding-top: 180px; width: calc(100% - 24px); }
+  .shopping-cart .cart-layout { width: 100%; }
+}
+
 @media (max-width: 500px) {
+  .shopping-cart .cart-heading { display: flex; align-items: center; }
+  .shopping-cart .cart-item { grid-template-columns: 95px minmax(0, 1fr); }
   .cart-page {
     width: 92vw;
     padding-top: 110px;
