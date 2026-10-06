@@ -74,21 +74,14 @@ body {
   pointer-events: auto;
   cursor: pointer;
 }
-.logo-controls .close-page:hover { background: transparent; color: transparent; }
-.logo-controls .close-page:hover::after {
-  content: "X";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 100%;
-  width: max-content;
-  padding: inherit;
-  border-radius: inherit;
-  background: #000;
-  display: grid;
-  place-items: center;
-  color: #fff;
+.logo-controls .close-page:hover,
+.logo-controls .close-page:active {
+  background: transparent;
+  color: #000;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (min-width: 701px) and (hover: hover) and (pointer: fine) {
+  .logo-controls .close-page:hover { background: #000; color: #fff; }
 }
 
 /* SUBSITE */
@@ -114,7 +107,15 @@ body {
   grid-auto-rows: calc((100dvh - 2 * var(--archive-edge) - 10px) * 1.2);
   gap: 10px;
 }
-.archive-item { position: relative; min-width: 0; overflow: hidden; }
+.archive-item {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.archive-item:focus-visible { outline: 2px solid #000; outline-offset: -2px; }
 .archive-item img {
   width: 100%;
   height: 100%;
@@ -122,6 +123,8 @@ body {
   object-fit: contain;
 }
 .archive-item .archive-hover { position: absolute; inset: 0; opacity: 0; }
+.archive-item[aria-pressed="true"] > img:first-child { opacity: 0; }
+.archive-item[aria-pressed="true"] .archive-hover { opacity: 1; }
 @media (hover: hover) {
   .archive-item:hover > img:first-child { opacity: 0; }
   .archive-item:hover .archive-hover { opacity: 1; }

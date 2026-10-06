@@ -1,5 +1,12 @@
 const backToHome = document.getElementById("backToHome");
 
+for (const item of document.querySelectorAll(".archive-item")) {
+  item.addEventListener("click", () => {
+    if (!window.matchMedia("(hover: none), (pointer: coarse), (max-width: 700px)").matches) return;
+    item.setAttribute("aria-pressed", String(item.getAttribute("aria-pressed") !== "true"));
+  });
+}
+
 const centeredImpressum = document.querySelector(".centered-impressum");
 const logoControls = document.querySelector(".logo-controls");
 if (centeredImpressum && logoControls) {
