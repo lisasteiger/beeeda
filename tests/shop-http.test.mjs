@@ -37,7 +37,7 @@ test("HTTP checkout: simultaneous buyers, origin protection, private data and re
   assert.deepEqual(results.map(result => result.status).sort(), [201, 409]);
   const winner = results[0].status === 201 ? one : two, loser = winner === one ? two : one;
   const order = await results.find(result => result.status === 201).json();
-  assert.equal(order.totalCents, 4950);
+  assert.equal(order.totalCents, 4960);
   assert.equal((await fetch(`${base}/api/orders/${order.id}`, { headers: { Cookie: loser } })).status, 404);
   assert.equal((await post("orders", winner, input)).status, 201);
   for (const path of ["/.local/shop.sqlite", "/shop-db.mjs", "/orders.mjs", "/.git/config"]) assert.equal((await fetch(base + path)).status, 404);

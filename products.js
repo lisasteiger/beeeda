@@ -1,7 +1,7 @@
 export const pinksChaos = {
   id: "pinks-chaos",
   name: "Pinks Chaos",
-  priceCents: 4950,
+  priceCents: 4960,
   image: "assets/01_2.jpg",
   href: "pinkchaos.html",
   // Nach dem Verkauf: "sold" oder "inquiry" (Anfrage).

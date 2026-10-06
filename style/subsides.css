@@ -130,6 +130,7 @@ body {
   .archive-item:hover .archive-hover { opacity: 1; }
 }
 @media (max-width: 700px) {
+  .pinkchaos .buy-graphic { transform: scale(0.93); }
   .subsite.archive-grid {
     --archive-edge: calc(max(4px, env(safe-area-inset-bottom)) + 20px + 1.5 * var(--corner-link-font-size) + 10px);
     grid-template-columns: minmax(0, 1fr);
@@ -426,21 +427,35 @@ html.pinkchaos-page body { overflow-x: clip; overflow-y: visible; }
   top: -25px;
 }
 
+.pinkchaos .detail-content h1,
 .pinkchaos .detail-content p {
-  font-size: 27px;
+  max-width: 700px;
+  margin: 0 auto 34px;
+  font-size: 35px;
   font-weight: 500;
+  line-height: 1.18;
 }
 
-.pinkchaos .detail-content h1 { margin-bottom: 8px; font-size: 35px; font-weight: 500; }
-.pinkchaos .detail-content p.materials {
-  margin-bottom: 34px;
+.pinkchaos .detail-content h1 { margin-bottom: 8px; }
+.pinkchaos .detail-content p.status,
+.pinkchaos .detail-content p.product-info {
   font-size: var(--corner-link-font-size);
   font-weight: 500;
+  line-height: 1.45;
 }
-.pinkchaos .detail-content p.description-text { margin-bottom: 34px; font-size: 35px; line-height: 1.18; }
-.pinkchaos .status { margin-bottom: 0; }
-.pinkchaos .detail-content p.status { margin-bottom: 34px; font-size: var(--corner-link-font-size); }
+
 .pinkchaos .buy-button { margin-top: 0; font-size: var(--corner-link-font-size); font-weight: 500; }
+.pinkchaos .buy-graphic {
+  height: calc(1.2em + 30px);
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.buy-graphic img { display: block; height: 100%; width: auto; }
+.buy-graphic .buy-label { display: none; }
+.buy-graphic[data-inquiry="true"] img { display: none; }
+.buy-graphic[data-inquiry="true"] .buy-label { display: inline; }
 
 .pinkchaos .product-gallery .gallery-image {
   background: transparent;
@@ -521,9 +536,13 @@ html.pinkchaos-page body { overflow-x: clip; overflow-y: visible; }
   .pinkchaos .detail-content h1,
   .pinkchaos .detail-content p,
   .pinkchaos .detail-content p.materials,
-  .pinkchaos .buy-button { font-weight: 700; }
-  .pinkchaos .detail-content p.description-text { font-size: calc(29px - 3pt); }
+  .pinkchaos .detail-content p { font-size: calc(29px - 3pt); }
   .pinkchaos .detail-content h1 { font-size: calc(29px - 3pt); }
+  .pinkchaos .detail-content p.status,
+  .pinkchaos .detail-content p.product-info {
+    font-size: var(--corner-link-font-size);
+    font-weight: 500;
+  }
   .pinkchaos { padding-bottom: 44px; }
   .pinkchaos .gallery-secondary { width: calc(100% - 24px); margin-top: calc(80px + 30dvh); }
   .pinkchaos .gallery-secondary .gallery-image {

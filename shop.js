@@ -13,8 +13,12 @@ async function updateAvailability() {
     available = product?.availability === "available";
     buyButton.disabled = !available || !confirmation.hidden;
     const states = { reserved: "Gerade reserviert", sold: "SOLD", inquiry: "Auf Anfrage" };
-    document.querySelector(".status").textContent = available ? "CHF 49.50" : states[product?.availability] || "Nicht verfügbar";
-    buyButton.textContent = product?.availability === "inquiry" ? "Auf Anfrage" : "Kaufen";
+    document.querySelector(".status").textContent = available ? `CHF ${(product.priceCents / 100).toFixed(2)}` : states[product?.availability] || "Nicht verfügbar";
+    const inquiry = product?.availability === "inquiry";
+    const label = inquiry ? "Auf Anfrage" : "Kaufen";
+    (buyButton.querySelector(".buy-label") || buyButton).textContent = label;
+    buyButton.setAttribute("aria-label", label);
+    buyButton.dataset.inquiry = String(inquiry);
   } catch { /* The cart also works in the existing static preview. */ }
 }
 

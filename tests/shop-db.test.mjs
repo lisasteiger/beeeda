@@ -33,7 +33,7 @@ test("two independent database connections cannot reserve the same piece", t => 
 test("server prices, customer details, persistence and private order access", t => {
   const { shop, open } = fixture(t);
   const order = shop.reserve("owner", input(undefined, [{ id: pinksChaos.id, quantity: 1, priceCents: 1 }]));
-  assert.equal(order.totalCents, 4950);
+  assert.equal(order.totalCents, 4960);
   assert.deepEqual(order.customer, customer);
   const restarted = open();
   assert.deepEqual(restarted.order(order.id, "owner"), order);

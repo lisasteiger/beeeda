@@ -82,8 +82,8 @@ test('old multiple quantities become one and receive the confirmed price', () =>
   const db = storage();
   db.setItem(CART_KEY, JSON.stringify([{ ...pinksChaos, priceCents: null, quantity: 2 }]));
   const cart = createCartStore(db);
-  assert.equal(cart.read()[0].priceCents, 4950);
-  assert.deepEqual(cartTotals(cart.read()), { quantity: 1, priceCents: 4950 });
+  assert.equal(cart.read()[0].priceCents, 4960);
+  assert.deepEqual(cartTotals(cart.read()), { quantity: 1, priceCents: 4960 });
   cart.add(pinksChaos);
-  assert.deepEqual(cartTotals(cart.read()), { quantity: 1, priceCents: 4950 });
+  assert.deepEqual(cartTotals(cart.read()), { quantity: 1, priceCents: 4960 });
 });
