@@ -1,0 +1,43 @@
+import type { ModuleOptions } from 'nuxt-studio'
+
+declare module '@nuxt/schema' {
+  interface NuxtConfig { studio?: ModuleOptions }
+  interface NuxtOptions { studio?: ModuleOptions }
+}
+const development = process.env.NODE_ENV !== 'production'
+const studioReady = Boolean(process.env.STUDIO_GITHUB_CLIENT_ID && process.env.STUDIO_GITHUB_CLIENT_SECRET && process.env.STUDIO_GITHUB_MODERATORS?.trim())
+
+export default defineNuxtConfig({
+  compatibilityDate: '2026-10-07',
+  modules: ['@nuxt/content', ...(development || studioReady ? ['nuxt-studio'] : [])],
+  devtools: { enabled: false },
+  content: { experimental: { sqliteConnector: 'native' } },
+  css: ['~/assets/css/home.css', '~/assets/css/subsides.css', '~/assets/css/shop.css', '~/assets/css/cart.css', '~/assets/css/nuxt.css'],
+  app: { head: {
+    title: 'Beeeda', htmlAttrs: { lang: 'de' },
+    meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' }],
+    link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap' }]
+  }},
+  runtimeConfig: {
+    supabaseUrl: 'https://ozmirswnhpiuiuhgikvk.supabase.co',
+    supabaseSecretKey: '', stripeSecretKey: '', stripeWebhookSecret: '', cronSecret: '',
+    public: { siteUrl: 'https://beeeda.ch' }
+  },
+  studio: {
+    dev: development,
+    route: '/_studio',
+    repository: { provider: 'github', owner: 'lisasteiger', repo: 'Beeeda', branch: 'branch1' },
+    i18n: { defaultLocale: 'de' }
+  },
+  routeRules: {
+    '/index.html': { redirect: '/' },
+    '/pinkchaos.html': { redirect: '/produkte/pinks-chaos' },
+    '/produkt02.html': { redirect: '/produkt02' },
+    '/warenkorb.html': { redirect: '/warenkorb' },
+    '/kasse.html': { redirect: '/kasse' },
+    '/impressum.html': { redirect: '/impressum' },
+    '/ueber-uns.html': { redirect: '/ueber-uns' },
+    '/ruecksendungen.html': { redirect: '/ruecksendungen' },
+    '/api/**': { headers: { 'Cache-Control': 'no-store' } }
+  }
+})

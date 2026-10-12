@@ -1,0 +1,11 @@
+node_modules/
+.pnpm-store/
+.nuxt/
+.output/
+.data/
+.env
+.env.*
+!.env.example
+.local/
+.vercel/
+.DS_Store

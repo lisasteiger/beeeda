@@ -1,6 +1,6 @@
 import { DatabaseSync } from "node:sqlite";
 import { randomUUID } from "node:crypto";
-import { products } from "./products.js";
+import { products, shippingCents } from "./products.js";
 
 export class ShopError extends Error {
   constructor(message, status = 400) { super(message); this.status = status; }
@@ -18,6 +18,11 @@ export function openShop(filename, catalog = products, now = Date.now) {
     CREATE TABLE IF NOT EXISTS order_items (
       order_id TEXT NOT NULL, product_id TEXT NOT NULL, name TEXT NOT NULL,
       price_cents INTEGER NOT NULL, PRIMARY KEY(order_id, product_id));`);
+  // Vorhandene Einzelstück-Bestellungen bleiben erhalten.
+  if (!db.prepare("PRAGMA table_info(order_items)").all().some(column => column.name === "quantity"))
+    db.exec("ALTER TABLE order_items ADD COLUMN quantity INTEGER NOT NULL DEFAULT 1");
+  if (!db.prepare("PRAGMA table_info(orders)").all().some(column => column.name === "shipping_cents"))
+    db.exec("ALTER TABLE orders ADD COLUMN shipping_cents INTEGER NOT NULL DEFAULT 0");
   for (const product of catalog) db.prepare("INSERT OR IGNORE INTO stock(id) VALUES (?)").run(product.id);
 
   function transaction(fn) {
@@ -29,21 +34,28 @@ export function openShop(filename, catalog = products, now = Date.now) {
       return result;
     } catch (error) { db.exec("ROLLBACK"); throw error; }
   }
+  function remaining(product) {
+    const sold = db.prepare("SELECT sold FROM stock WHERE id=?").get(product.id).sold;
+    const reserved = db.prepare(`SELECT COALESCE(SUM(i.quantity),0) AS count FROM order_items i JOIN orders o ON o.id=i.order_id
+      WHERE i.product_id=? AND o.status='reserved' AND o.expires>?`).get(product.id, now()).count;
+    return { unsold: Math.max(0, (product.stock ?? 1) - sold), available: Math.max(0, (product.stock ?? 1) - sold - reserved) };
+  }
   function availability(product) {
-    if (db.prepare("SELECT sold FROM stock WHERE id=?").get(product.id).sold) return product.afterSale === "inquiry" ? "inquiry" : "sold";
-    return db.prepare(`SELECT 1 FROM order_items i JOIN orders o ON o.id=i.order_id
-      WHERE i.product_id=? AND o.status='reserved' AND o.expires>?`).get(product.id, now()) ? "reserved" : "available";
+    const stock = remaining(product);
+    if (!stock.unsold) return product.afterSale === "inquiry" ? "inquiry" : "sold";
+    return stock.available ? "available" : "reserved";
   }
   function order(id, owner) {
     const row = db.prepare("SELECT * FROM orders WHERE id=? AND owner=?").get(id, owner);
     if (!row) throw new ShopError("Bestellung nicht gefunden.", 404);
-    const items = db.prepare("SELECT product_id AS id, name, price_cents AS priceCents FROM order_items WHERE order_id=?").all(id);
+    const items = db.prepare("SELECT product_id AS id, name, price_cents AS priceCents, quantity FROM order_items WHERE order_id=?").all(id);
     return { id: row.id, status: row.status, created: row.created, expires: row.expires,
-      customer: JSON.parse(row.customer), items, totalCents: items.reduce((sum, item) => sum + item.priceCents, 0), mode: "local-test" };
+      customer: JSON.parse(row.customer), items, totalCents: items.reduce((sum, item) => sum + item.priceCents * item.quantity, 0) + row.shipping_cents,
+      shippingCents: row.shipping_cents, subtotalCents: items.reduce((sum, item) => sum + item.priceCents * item.quantity, 0), mode: "local-test" };
   }
   return {
     close: () => db.close(),
-    products: () => transaction(() => catalog.map(product => ({ ...product, availability: availability(product) }))),
+    products: () => transaction(() => catalog.map(product => ({ ...product, availability: availability(product), availableQuantity: remaining(product).available }))),
     order: (id, owner) => transaction(() => order(id, owner)),
     pending: owner => transaction(() => {
       const row = db.prepare("SELECT id FROM orders WHERE owner=? AND status='reserved' ORDER BY created DESC LIMIT 1").get(owner);
@@ -57,23 +69,25 @@ export function openShop(filename, catalog = products, now = Date.now) {
         customer[key] = value.trim();
       }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email)) throw new ShopError("Bitte eine gültige E-Mail-Adresse eingeben.");
+      if (customer.country !== "Schweiz") throw new ShopError("Wir liefern nur innerhalb der Schweiz.");
+      if (!/^\d{4}$/.test(customer.postalCode)) throw new ShopError("Bitte eine vierstellige Schweizer Postleitzahl eingeben.");
       if (typeof input.requestKey !== "string" || !/^[\w-]{16,80}$/.test(input.requestKey)) throw new ShopError("Ungültige Bestellkennung.");
       if (!Array.isArray(input.items) || !input.items.length || input.items.length > 100) throw new ShopError("Dein Warenkorb ist leer oder ungültig.");
       const ids = input.items.map(item => item?.id);
-      if (new Set(ids).size !== ids.length || input.items.some(item => item.quantity !== 1)) throw new ShopError("Jedes Stück ist nur einmal verfügbar.");
+      if (new Set(ids).size !== ids.length || input.items.some(item => !Number.isInteger(item.quantity) || item.quantity < 1 || item.quantity > 99)) throw new ShopError("Jedes Stück ist nur einmal verfügbar.");
       return transaction(() => {
         const existing = db.prepare("SELECT id FROM orders WHERE owner=? AND request_key=?").get(owner, input.requestKey);
         if (existing) return order(existing.id, owner);
         const pending = db.prepare("SELECT id FROM orders WHERE owner=? AND status='reserved'").get(owner);
         if (pending) throw new ShopError("Du hast bereits eine Reservierung. Schliesse sie ab oder brich sie ab.", 409);
-        const chosen = ids.map(id => {
+        const chosen = input.items.map(({ id, quantity }) => {
           const product = catalog.find(product => product.id === id);
-          if (!product || availability(product) !== "available") throw new ShopError("Ein Stück ist inzwischen reserviert oder verkauft. Bitte prüfe deinen Warenkorb.", 409);
-          return product;
+          if (!product || remaining(product).available < quantity) throw new ShopError("Ein Stück ist inzwischen reserviert oder verkauft. Bitte prüfe deinen Warenkorb.", 409);
+          return { ...product, quantity };
         });
         const id = randomUUID(), created = now(), expires = created + 10 * 60 * 1000;
-        db.prepare("INSERT INTO orders VALUES (?, ?, ?, 'reserved', ?, ?, ?)").run(id, owner, input.requestKey, JSON.stringify(customer), created, expires);
-        for (const product of chosen) db.prepare("INSERT INTO order_items VALUES (?, ?, ?, ?)").run(id, product.id, product.name, product.priceCents);
+        db.prepare("INSERT INTO orders (id, owner, request_key, status, customer, created, expires, shipping_cents) VALUES (?, ?, ?, 'reserved', ?, ?, ?, ?)").run(id, owner, input.requestKey, JSON.stringify(customer), created, expires, shippingCents(chosen));
+        for (const product of chosen) db.prepare("INSERT INTO order_items VALUES (?, ?, ?, ?, ?)").run(id, product.id, product.name, product.priceCents, product.quantity);
         return order(id, owner);
       });
     },
@@ -85,7 +99,7 @@ export function openShop(filename, catalog = products, now = Date.now) {
           if (current.status === (action === "confirm" ? "test-paid" : "cancelled")) return current;
           throw new ShopError("Diese Reservierung ist nicht mehr aktiv.", 409);
         }
-        if (action === "confirm") for (const item of current.items) db.prepare("UPDATE stock SET sold=1 WHERE id=?").run(item.id);
+        if (action === "confirm") for (const item of current.items) db.prepare("UPDATE stock SET sold=sold+? WHERE id=?").run(item.quantity, item.id);
         db.prepare("UPDATE orders SET status=? WHERE id=?").run(action === "confirm" ? "test-paid" : "cancelled", id);
         return order(id, owner);
       });

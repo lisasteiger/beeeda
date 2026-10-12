@@ -1,0 +1,17 @@
+{
+  "productId": "produkt02",
+  "name": "Produkt 02",
+  "status": "draft",
+  "priceCents": 0,
+  "shippingClass": "large",
+  "description": "Diese Unterseite wird noch gestaltet.",
+  "materials": "",
+  "measurements": "",
+  "care": "",
+  "cover": "/assets/02.png",
+  "hero": "/assets/02_2.png",
+  "thumbnail": "/assets/02.png",
+  "archiveImage": "/assets/02_2.png",
+  "gallery": [],
+  "displayOrder": 1
+}
