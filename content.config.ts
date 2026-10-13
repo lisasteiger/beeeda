@@ -7,7 +7,7 @@ export default defineContentConfig({
         productId: z.string().regex(/^[a-z0-9-]+$/).editor({ label: 'Produkt-ID (nach erster Bestellung nicht ändern)' }),
         name: z.string().min(1).editor({ label: 'Name' }),
         status: z.enum(['draft', 'active', 'archived']).default('draft').editor({ label: 'Entwurf / im Shop / verkauft (archived)' }),
-        priceCents: z.number().int().min(0).editor({ label: 'Preis in Rappen (4960 = CHF 49.60)' }),
+        priceCents: z.number().multipleOf(1).min(0).editor({ label: 'Preis in Rappen (4960 = CHF 49.60)' }),
         shippingClass: z.enum(['small', 'large']).default('large').editor({ label: 'Versand: small = CHF 2, large = CHF 9' }),
         description: z.string().editor({ label: 'Beschreibung', input: 'textarea' }),
         materials: z.string().editor({ label: 'Material' }),
@@ -18,7 +18,7 @@ export default defineContentConfig({
         thumbnail: z.string().editor({ label: 'Bild Warenkorb', input: 'media' }),
         archiveImage: z.string().editor({ label: 'Zusätzliches Produktbild', input: 'media' }),
         gallery: z.array(z.string().editor({ input: 'media' })).editor({ label: 'Weitere Bilder' }),
-        displayOrder: z.number().int().default(0).editor({ label: 'Reihenfolge' })
+        displayOrder: z.number().multipleOf(1).default(0).editor({ label: 'Reihenfolge' })
       })
     }),
     site: defineCollection({
