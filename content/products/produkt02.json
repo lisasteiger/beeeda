@@ -1,17 +1,16 @@
 {
-  "productId": "produkt02",
-  "name": "Produkt 02",
-  "status": "draft",
-  "priceCents": 0,
-  "shippingClass": "large",
-  "description": "Diese Unterseite wird noch gestaltet.",
-  "materials": "",
-  "measurements": "",
+  "archiveImage": "/assets/02_2.png",
   "care": "",
   "cover": "/assets/02.png",
+  "description": "Test der Produktverwaltung",
+  "displayOrder": 1,
   "hero": "/assets/02_2.png",
-  "thumbnail": "/assets/02.png",
-  "archiveImage": "/assets/02_2.png",
-  "gallery": [],
-  "displayOrder": 1
+  "materials": "",
+  "measurements": "",
+  "name": "Produkt 02",
+  "priceCents": 0,
+  "productId": "produkt02",
+  "shippingClass": "large",
+  "status": "draft",
+  "thumbnail": "/assets/02.png"
 }
