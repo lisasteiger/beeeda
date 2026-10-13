@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap' }]
   }},
   runtimeConfig: {
-    supabaseUrl: 'https://ozmirswnhpiuiuhgikvk.supabase.co',
+    supabaseUrl: '',
     supabaseSecretKey: '', stripeSecretKey: '', stripeWebhookSecret: '', cronSecret: '',
     public: { siteUrl: 'https://beeeda.ch' }
   },
@@ -28,6 +28,16 @@ export default defineNuxtConfig({
     route: '/_studio',
     repository: { provider: 'github', owner: 'lisasteiger', repo: 'Beeeda', branch: 'branch1' },
     i18n: { defaultLocale: 'de' }
+  },
+  hooks: {
+    'nitro:config'(config) {
+      // Studio reads these from process.env at runtime; keep credentials out of build artifacts.
+      const github = (config.runtimeConfig as any)?.studio?.auth?.github
+      if (github) {
+        github.clientId = ''
+        github.clientSecret = ''
+      }
+    }
   },
   routeRules: {
     '/index.html': { redirect: '/' },

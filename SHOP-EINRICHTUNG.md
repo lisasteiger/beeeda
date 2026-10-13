@@ -91,11 +91,19 @@ Vercel erkennt Repository und Branch aus seinen CI-Variablen und bevorzugt diese
 
 ## Vercel
 
-Framework Nuxt, Node.js 24, Build `pnpm build`, Installation `pnpm install --frozen-lockfile`. Kein manuelles Output-Verzeichnis setzen. Domain bleibt `beeeda.ch` bei Hostpoint; Hosting bleibt Vercel. Erst als Preview testen, bevor die Domain auf die neue Anwendung zeigt.
+Framework Nuxt, Node.js 24, Build `pnpm build`, Installation `pnpm install --frozen-lockfile`. Kein manuelles Output-Verzeichnis setzen. Domain bleibt `beeeda.ch`; ihre öffentlichen Nameserver liegen inzwischen bei Vercel. Erst als Preview testen, bevor die neue Anwendung veröffentlicht wird. Der alte Branch `main` enthält kein Nuxt-Buildskript; ein erneuter Build dieses Branches mit den neuen Einstellungen schlägt deshalb fehl.
+
+Für einen kommerziellen Shop ist Vercel Hobby laut den [Tarifbedingungen](https://vercel.com/docs/plans/hobby) nicht geeignet. Vor dem Livebetrieb Pro oder eine passende Hosting-Alternative wählen. Hobby erlaubt den automatischen Abgleich nur einmal täglich; die vorgesehene Frequenz von zehn Minuten benötigt einen geeigneten Tarif/Scheduler. Eine kostenpflichtige Buchung ist noch nicht erfolgt.
 
 Umgebungsvariablen stehen vollständig in `.env.example`. Lokale `.env` bleibt ignoriert. Produktions- und Testschlüssel getrennt halten.
 
 ## Noch für den Livebetrieb zu erledigen
+
+Stand 13. Oktober 2026: Studio-Anmeldung und Bearbeitung funktionieren in der Vercel-Vorschau. Eine Beschreibung im Entwurf Produkt 02 wurde über Studio auf `branch1` veröffentlicht und nach dem automatischen Deployment wieder angezeigt. Numerische Produktfelder verwenden `multipleOf(1)` statt JSON-Schema-Typ `integer`, da Nuxt Content diesen sonst als Text behandelt und Studio falsche Konflikte erkennt. Alte Studio-Entwürfe im Browser können den Konflikt nach einem Deployment weiter anzeigen; ein frischer Bearbeitungsstand wurde erfolgreich geprüft.
+
+Ein separates Supabase-Projekt **Beeeda Live** ist angelegt und das Schema eingerichtet. Serverzugriff ist geprüft; die Datenbank enthält keine Bestellungen. Der initiale Bestand von Pinks Chaos ist durch die Migration 1 und muss vor dem Start mit dem tatsächlichen Bestand abgeglichen werden. Die Live-Datenbankwerte wurden laut Lisa für Vercel Production gespeichert. Preview und lokale Tests bleiben beim bisherigen Testprojekt. `.env.vercel-live` ist eine private, ignorierte Hilfsdatei für die Live-Einstellungen; keine Test-Zahlungsschlüssel übernehmen.
+
+Stripe Live ist noch nicht aktiviert: Lisa benötigt ihr Handy zum Abschluss der Verifizierung. Live-Schlüssel, Live-Webhook, TWINT-Freischaltung und ein echter abschliessender Zahlungstest bleiben offen. Die automatische Abgleichroute existiert, aber ein Scheduler ist noch nicht aktiv. Am 13. Oktober wurden öffentlich keine MX-Einträge für `beeeda.ch` gefunden; die Kontaktadresse muss vor dem Start empfangsbereit eingerichtet und getestet werden.
 
 OAuth verbinden, Zugangsschlüssel und einen eigenen Stripe-Webhook in der Vercel-Vorschau hinterlegen, dort den vollständigen Kaufprozess erneut testen und vor der Veröffentlichung die tatsächlichen Anfangsbestände sowie Live-Zahlungen bestätigen. Der lokale CLI-Webhook-Schlüssel wird nicht für Vercel wiederverwendet.
 
