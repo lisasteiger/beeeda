@@ -71,6 +71,8 @@ Reservierungen bleiben ungefähr 35 Minuten zahlbar. Sie werden erst nach bestä
 
 Für den Livebetrieb regelmässig aufrufen, etwa alle 10 Minuten über einen Scheduler. Vercel Cron benötigt je nach Tarif eine geeignete Frequenz. Es ist bewusst noch kein kostenpflichtiger Scheduler gebucht. Stripe-Webhooks geben normale abgelaufene Sessions unmittelbar frei; der Abgleich hilft bei unterbrochenen Rückmeldungen. Alte unklare Fälle werden als notwendige manuelle Prüfung im Serverlog gemeldet.
 
+Für Netlify liegt der Zeitplan in `netlify/functions/reconcile.mjs`: alle zehn Minuten, nur für veröffentlichte Deployments. Die Funktion ruft die bestehende Route mit `NUXT_CRON_SECRET` auf; als Ziel dient die Netlify-Variable `URL`. Beide Variablen müssen der Function zur Laufzeit zur Verfügung stehen. Der Aufruf bricht nach 25 Sekunden ab, Weiterleitungen werden abgewiesen, HTTP-Fehler erscheinen als fehlgeschlagene Ausführung im Netlify-Log. Nach dem Deployment unter **Cloud compute → Functions → reconcile** das Scheduled-Kennzeichen und die nächste Ausführung prüfen; mit **Run now** lässt sich der erste Lauf kontrollieren. Kein zusätzliches Scheduler-Abonnement nötig; die Aufrufe zählen zur Netlify-Nutzung.
+
 ## Nuxt Studio: nur dein GitHub-Konto
 
 Die installierte Nuxt-Studio-Version ist 1.7.x und verwendet die `STUDIO_GITHUB_…`-Variablen (die neuere Online-Dokumentation kann andere Namen zeigen). GitHub OAuth App erstellen:
@@ -98,6 +100,10 @@ Für einen kommerziellen Shop ist Vercel Hobby laut den [Tarifbedingungen](https
 Umgebungsvariablen stehen vollständig in `.env.example`. Lokale `.env` bleibt ignoriert. Produktions- und Testschlüssel getrennt halten.
 
 ## Noch für den Livebetrieb zu erledigen
+
+Aktueller Stand 15. Oktober 2026: Lisa hat **Netlify Free** statt Vercel Pro gewählt. Die Testadresse ist `https://capable-frangipane-14ba39.netlify.app`. Datenbank, GitHub-Studio-Anmeldung ohne Konflikt und ein vollständiger Testkauf sind dort bestätigt. Bestellung `3dbe3840-1bb1-409e-8a22-ffa48ae34095` ist in Stripe und Supabase bezahlt (CHF 51.60, Sandbox); die Rückkehr führt nach Netlify und der Testbestand sank von 1 auf 0. Der Abgleich wurde einmal mit korrektem Schlüssel erfolgreich aufgerufen, ohne Schlüssel liefert die Route 401. Der Zeitplan ist im Code vorbereitet; Aktivierung und erster Lauf auf Netlify müssen nach dem Deployment noch geprüft werden.
+
+Die Hostpoint-Mailbox `hi@beeeda.ch` funktioniert: Beide MX-Einträge und SPF wurden am 13. Oktober bei Vercel ergänzt und autoritativ geprüft, Empfang und Antwort hat Lisa bestätigt. DNS liegt vorerst weiter bei Vercel. Die Hauptdomain ist noch nicht auf die neue Netlify-Anwendung umgestellt. Die nachfolgenden älteren Statusabsätze dokumentieren den bisherigen Verlauf; massgebend ist dieser aktuelle Stand.
 
 Stand 13. Oktober 2026: Studio-Anmeldung und Bearbeitung funktionieren in der Vercel-Vorschau. Eine Beschreibung im Entwurf Produkt 02 wurde über Studio auf `branch1` veröffentlicht und nach dem automatischen Deployment wieder angezeigt. Numerische Produktfelder verwenden `multipleOf(1)` statt JSON-Schema-Typ `integer`, da Nuxt Content diesen sonst als Text behandelt und Studio falsche Konflikte erkennt. Alte Studio-Entwürfe im Browser können den Konflikt nach einem Deployment weiter anzeigen; ein frischer Bearbeitungsstand wurde erfolgreich geprüft.
 
