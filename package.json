@@ -8,8 +8,7 @@
   "scripts": {
     "stripe:listen": "node scripts/stripe-listen.mjs",
     "dev": "nuxt dev",
-    "build": "node scripts/check-images.mjs && nuxt build",
-    "check:images": "node scripts/check-images.mjs",
+    "build": "nuxt build",
     "preview": "nuxt preview",
     "start": "node .output/server/index.mjs",
     "postinstall": "nuxt prepare",

@@ -46,7 +46,7 @@ const server = createServer(async (req, res) => {
     if (!["GET", "HEAD"].includes(req.method)) throw new ShopError("Methode nicht erlaubt.", 405);
     const path = decodeURIComponent(url.pathname).replace(/^\//, "") || "index.html";
     if (path.includes("..") || (!publicFiles.has(path) && !/^(assets|style)\/[\w./-]+$/.test(path)) || !types[extname(path)]) throw new ShopError("Nicht gefunden.", 404);
-    const content = await readFile(resolve(root, path.startsWith("assets/") ? "public/" + path : path));
+    const content = await readFile(resolve(root, path));
     res.writeHead(200, { "Content-Type": types[extname(path)] });
     res.end(req.method === "HEAD" ? undefined : content);
   } catch (error) {
