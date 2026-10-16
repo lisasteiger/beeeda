@@ -1,9 +1,3 @@
-import type { ModuleOptions } from 'nuxt-studio'
-
-declare module '@nuxt/schema' {
-  interface NuxtConfig { studio?: ModuleOptions }
-  interface NuxtOptions { studio?: ModuleOptions }
-}
 const development = process.env.NODE_ENV !== 'production'
 const studioReady = Boolean(process.env.STUDIO_GITHUB_CLIENT_ID && process.env.STUDIO_GITHUB_CLIENT_SECRET && process.env.STUDIO_GITHUB_MODERATORS?.trim())
 

@@ -22,8 +22,19 @@
 
 .archive-link { top: 2%; left: 1%; }
 .cart-link { top: 2%; right: 1%; }
-.impressum-link { bottom: 2%; left: 1%; }
-.about-link { bottom: 2%; right: 1%; }
+.impressum-link, .about-link, .carousel-size { bottom: 2%; }
+.impressum-link { left: 1%; }
+.about-link { right: 1%; }
+.carousel-size {
+  position: absolute;
+  left: 50%;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-50%);
+}
+.image-link:not([href]) { cursor: grab; }
 
 .site-link:hover,
 .cart-link:hover {
@@ -46,8 +57,9 @@
   }
   .archive-link { top: 4px; left: 0; }
   .cart-link { top: 4px; right: 0; }
-  .impressum-link { bottom: max(4px, env(safe-area-inset-bottom)); left: 0; }
-  .about-link { bottom: max(4px, env(safe-area-inset-bottom)); right: 0; }
+  .impressum-link, .about-link, .carousel-size { bottom: max(4px, env(safe-area-inset-bottom)); }
+  .impressum-link { left: 0; }
+  .about-link { right: 0; }
 }
 
 @media (max-width: 360px) {

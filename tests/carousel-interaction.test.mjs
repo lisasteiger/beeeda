@@ -21,11 +21,12 @@ function setup() {
   const soldLabel = element();
   const link = { href: 'pinkchaos.html', closest: selector => selector === '.image-link' ? link : null };
   const items = Array.from({ length: 6 }, element);
+  const sizes = Array.from({ length: 6 }, element);
   items[4].dataset.sold = items[5].dataset.sold = 'true';
   const window = Object.assign(element(), { location: { search: '' }, innerWidth: 1135, matchMedia: () => ({ matches: false }) });
   const classes = new Set();
   const context = vm.createContext({ window, URLSearchParams,
-    document: { getElementById: id => id === 'carousel-sold' ? soldLabel : carousel, querySelectorAll: () => items,
+    document: { getElementById: id => id === 'carousel-sold' ? soldLabel : carousel, querySelectorAll: selector => selector === '.carousel-size' ? sizes : items,
       body: { classList: { add: name => classes.add(name) } } },
     requestAnimationFrame: fn => { frames.set(++id, fn); return id; },
     cancelAnimationFrame: id => frames.delete(id),
@@ -33,7 +34,7 @@ function setup() {
     clearTimeout: id => timers.delete(id),
   });
   vm.runInContext(source, context);
-  return { carousel, window, link, frames, timers, classes, soldLabel,
+  return { carousel, window, link, frames, timers, classes, soldLabel, sizes,
     at: index => vm.runInContext(`position = ${index}; render()`, context),
     wheel: () => carousel.emit('wheel', { deltaX: 250, deltaY: 0 }),
     down: (pointerId = 1) => carousel.emit('pointerdown', { target: link, pointerId, isPrimary: true, button: 0 }),
@@ -125,4 +126,22 @@ test('sold label fades near the centre without following the 3D transform', () =
   assert.equal(page.soldLabel.style.opacity, 1);
   page.at(0);
   assert.equal(page.soldLabel.style.opacity, 0);
+});
+
+test('sizes follow their image horizontally and only appear at the centre, including wraparound and mobile', () => {
+  const page = setup();
+  assert.equal(page.sizes[0].style.opacity, 1);
+  assert.equal(page.sizes[1].hidden, true);
+  page.at(0.1);
+  assert.ok(Math.abs(page.sizes[0].style.opacity - 0.5) < 0.001);
+  assert.ok(Math.abs(parseFloat(page.sizes[0].style.transform.split('+ ')[1]) + 70) < 0.001);
+  page.at(0.3);
+  assert.equal(page.sizes[0].hidden, true);
+  page.at(6);
+  assert.equal(page.sizes[0].style.opacity, 1);
+  page.window.innerWidth = 400;
+  page.window.matchMedia = () => ({ matches: true });
+  page.at(5.9);
+  assert.equal(page.sizes[0].hidden, false);
+  assert.ok(Math.abs(parseFloat(page.sizes[0].style.transform.split('+ ')[1]) - 31.2) < 0.001);
 });

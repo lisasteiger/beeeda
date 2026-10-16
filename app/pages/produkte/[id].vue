@@ -6,6 +6,10 @@ const { data: product } = await useAsyncData('product-' + productId, () => query
 if (!product.value || product.value.status === 'draft') throw createError({ statusCode: 404, statusMessage: 'Produkt nicht gefunden' })
 const { catalog, ready, add, refresh } = useCart()
 const stock = computed(() => catalog.value?.products.find(item => item.productId === productId))
+await refresh()
+const sold = computed(() => product.value?.status === 'archived' || stock.value?.soldOut)
+if (sold.value) await navigateTo('/', { redirectCode: 302 })
+watch(sold, value => { if (value) navigateTo('/', { replace: true }) })
 const detail = ref<HTMLElement>()
 const confirmed = ref(false)
 let timer: ReturnType<typeof setTimeout> | undefined
@@ -31,7 +35,7 @@ function buy() {
 }
 </script>
 <template>
-  <main v-if="product" class="subsite pinkchaos">
+  <main v-if="product && !sold" class="subsite pinkchaos">
     <section class="gallery product-gallery" :aria-label="'Bild von ' + product.name"><div class="gallery-image"><img class="gallery-slide" :src="product.hero" :alt="product.name + ', Gesamtansicht'" /></div></section>
     <section ref="detail" class="detail-content">
       <h1>{{ product.name }}</h1>

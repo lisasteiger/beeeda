@@ -1,6 +1,7 @@
 const carousel = document.getElementById("carousel");
 const soldLabel = document.getElementById("carousel-sold");
 const items = [...document.querySelectorAll(".item")];
+const sizes = [...document.querySelectorAll(".carousel-size")];
 const itemCount = items.length;
 
 // Bewegungswerte des Carousels.
@@ -51,6 +52,12 @@ function render() {
   items.forEach((item, index) => {
     const offset = wrap(index - position, itemCount);
     const distance = Math.abs(offset);
+    const size = sizes[index];
+    if (size) {
+      size.style.transform = `translateX(calc(-50% + ${offset * spacing()}px))`;
+      size.style.opacity = Math.max(0, 1 - distance / 0.2);
+      size.hidden = distance >= 0.2;
+    }
     if (item.dataset.sold === 'true') soldOpacity = Math.max(soldOpacity, Math.max(0, Math.min(1, (0.55 - distance) / 0.15)));
     const limitedDistance = Math.min(distance, 4);
 

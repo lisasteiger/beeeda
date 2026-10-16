@@ -6,6 +6,7 @@ export default defineContentConfig({
       schema: z.object({
         productId: z.string().regex(/^[a-z0-9-]+$/).editor({ label: 'Produkt-ID (nach erster Bestellung nicht ändern)' }),
         name: z.string().min(1).editor({ label: 'Name' }),
+        size: z.string().default('').editor({ label: 'Grösse auf der Startseite (z. B. 6–9 M oder S)' }),
         status: z.enum(['draft', 'active', 'archived']).default('draft').editor({ label: 'Entwurf / im Shop / verkauft (archived)' }),
         priceCents: z.number().multipleOf(1).min(0).editor({ label: 'Preis in Rappen (4960 = CHF 49.60)' }),
         shippingClass: z.enum(['small', 'large']).default('large').editor({ label: 'Versand: small = CHF 2, large = CHF 9' }),

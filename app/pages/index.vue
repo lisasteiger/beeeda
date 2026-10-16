@@ -12,8 +12,8 @@ const previews = [
   { cover: '/assets/06.png', name: 'Produktvorschau', href: undefined, sold: true }
 ]
 const slides = computed(() => [
-  ...products.value.map(product => ({ cover: product.cover, name: product.name, href: '/produkte/' + product.productId, sold: product.soldOut || product.status === 'archived' })),
-  ...previews.filter(preview => !catalog.value?.products.some(product => product.cover === preview.cover))
+  ...products.value.map(product => ({ cover: product.cover, name: product.name, size: product.size || '', href: product.soldOut || product.status === 'archived' ? undefined : '/produkte/' + product.productId, sold: product.soldOut || product.status === 'archived' })),
+  ...previews.filter(preview => !catalog.value?.products.some(product => product.cover === preview.cover)).map(preview => ({ ...preview, size: '' }))
 ])
 onMounted(() => {
   requestAnimationFrame(() => { returning.value = false })
@@ -27,9 +27,10 @@ onMounted(() => {
   <main id="carousel" class="carousel" aria-label="Produkte">
     <div class="carousel-inner">
       <div v-for="slide in slides" :key="slide.cover" class="item" :data-sold="slide.sold">
-        <a :href="slide.href" class="image-link" draggable="false"><img :src="slide.cover" :alt="slide.name + (slide.sold ? ' – verkauft' : '')" /></a>
+        <component :is="slide.href ? 'a' : 'span'" :href="slide.href" class="image-link" draggable="false"><img :src="slide.cover" :alt="slide.name + (slide.sold ? ' – verkauft' : '')" /></component>
       </div>
     </div>
+    <span v-for="slide in slides" :key="'size-' + slide.cover" class="site-link carousel-size">{{ slide.size }}</span>
     <img id="carousel-sold" class="carousel-sold" src="/assets/verkauft.svg" alt="" aria-hidden="true" />
     <p v-if="catalog && !slides.length" class="empty-shop">Neue Produkte folgen bald.</p>
   </main>
