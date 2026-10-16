@@ -25,6 +25,11 @@ test("HTTP checkout: simultaneous buyers, origin protection, private data and re
   const stop = () => new Promise(resolve => { child.once("exit", resolve); child.kill("SIGINT"); });
   t.after(async () => { if (child && child.exitCode === null) await stop(); await rm(folder, { recursive: true }); });
   let base = await start();
+  // Both the legacy preview and Nuxt serve the same public/assets files.
+  const image = await fetch(`${base}/assets/01.webp`);
+  assert.equal(image.status, 200);
+  assert.equal(image.headers.get('content-type'), 'image/webp');
+  assert.equal((await fetch(`${base}/public/assets/01.webp`)).status, 404);
   const visitor = async () => (await fetch(`${base}/api/products`)).headers.get("set-cookie").split(";")[0];
   const one = await visitor(), two = await visitor();
   const customer = { firstName: "Test", lastName: "Test", email: "test@example.com", street: "Testweg 1", postalCode: "8000", city: "Zürich", country: "Schweiz" };
