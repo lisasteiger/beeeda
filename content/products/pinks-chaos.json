@@ -1,22 +1,22 @@
 {
-  "productId": "pinks-chaos",
-  "name": "Pinks Chaos",
-  "status": "active",
-  "priceCents": 4960,
-  "shippingClass": "small",
-  "description": "Für sehr kalte Tage. Nicht nur die Ohren, sondern auch der Hals ist gut umschlossen und wird gewärmt. Mit der Lasche kann der Kopf ohne Probleme reinschlüpfen.",
-  "materials": "Wolle, Seide, Kaschmir",
-  "measurements": "Kopfumfang: 52 | H: 20 | B: 13 | Guckloch: 14x7",
-  "care": "",
-  "cover": "/assets/01.png",
-  "hero": "/assets/01_3.png",
-  "thumbnail": "/assets/01_2.jpg",
   "archiveImage": "/assets/01_3.png",
+  "care": "",
+  "cover": "/assets/01.webp",
+  "description": "Für sehr kalte Tage. Nicht nur die Ohren, sondern auch der Hals ist gut umschlossen und wird gewärmt. Mit der Lasche kann der Kopf ohne Probleme reinschlüpfen.",
+  "displayOrder": 0,
   "gallery": [
     "/assets/01_5.jpg",
     "/assets/01_4.jpg",
     "/assets/01_3.jpg"
   ],
-  "displayOrder": 0
+  "hero": "/assets/01_3.png",
+  "materials": "Wolle, Seide, Kaschmir",
+  "measurements": "Kopfumfang: 52 | H: 20 | B: 13 | Guckloch: 14x7",
+  "name": "Pinks Chaos",
+  "priceCents": 4960,
+  "productId": "pinks-chaos",
+  "shippingClass": "small",
+  "size": "",
+  "status": "active",
+  "thumbnail": "/assets/01_2.jpg"
 }
-
