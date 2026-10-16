@@ -26,7 +26,9 @@ pnpm test:integration
 - Bestand und Bestellungen: `/verwaltung`, mit derselben GitHub-Anmeldung.
 - Layout, Funktionen und technische Änderungen: weiterhin im Code unter `app/`, `server/` und `nuxt.config.ts`.
 
-Produktinhalte sind JSON-Dateien unter `content/products/`. Bilder liegen unter `public/assets/`. Beides wird von Studio nach GitHub gespeichert. Studio-Veröffentlichungen lösen über GitHub einen neuen Vercel-Build aus. Bestände und Bestellungen sind in Supabase und werden durch einen Build nicht überschrieben.
+Produktinhalte sind JSON-Dateien unter `content/products/`. Bilder liegen unter `public/assets/`. Beides wird von Studio nach GitHub gespeichert. Studio-Veröffentlichungen lösen über GitHub einen neuen Netlify-Build aus. Bestände und Bestellungen sind in Supabase und werden durch einen Build nicht überschrieben.
+
+Neue Bilder direkt über Studios Medienverwaltung hochladen oder im Projekt unter `public/assets/` ablegen. Der alte Ordner `assets/` im Projektstamm wird von Studio und dem Nuxt-Shop nicht verwendet. Beispiel: `public/assets/01.webp` ist im Bildfeld als `/assets/01.webp` auszuwählen. Bei lokal hinzugefügten Bildern müssen Commit, Push und der Netlify-Deploy abgeschlossen sein; danach Studio neu laden.
 
 Neue Produkte erhalten eine eindeutige `productId`, beispielsweise `blaue-muetze`. Die ID nach dem ersten Verkauf nicht ändern. Die Datei kann denselben Namen tragen. Die Produktseite `/produkte/blaue-muetze` entsteht automatisch. Zunächst `status: draft` verwenden. Erst nach Texten, Bildern, gültigem Preis und einem freigegebenen Bestand auf `active` stellen. Preise sind Rappen: 4960 = CHF 49.60. Entwürfe sind nicht im Shop, aber die Content-Dateien sind keine Ablage für vertrauliche Daten.
 
