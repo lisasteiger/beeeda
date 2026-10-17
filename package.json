@@ -8,10 +8,10 @@
   "scripts": {
     "stripe:listen": "node scripts/stripe-listen.mjs",
     "dev": "nuxt dev",
-    "build": "nuxt build",
+    "build": "node scripts/fix-studio-media.mjs && nuxt build",
     "preview": "nuxt preview",
     "start": "node .output/server/index.mjs",
-    "postinstall": "nuxt prepare",
+    "postinstall": "node scripts/fix-studio-media.mjs && nuxt prepare",
     "typecheck": "nuxt typecheck",
     "legacy": "node server.mjs",
     "test": "node --test tests/*.test.mjs",

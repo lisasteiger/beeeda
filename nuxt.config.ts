@@ -20,6 +20,7 @@ export default defineNuxtConfig({
   studio: {
     dev: development,
     route: '/_studio',
+    media: { allowedTypes: ['image/webp', 'image/jpeg', 'image/png', 'image/svg+xml'] },
     repository: { provider: 'github', owner: 'lisasteiger', repo: 'Beeeda', branch: 'branch1' },
     i18n: { defaultLocale: 'de' }
   },
