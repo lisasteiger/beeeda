@@ -1,22 +1,23 @@
 {
-  "archiveImage": "/assets/01_3.png",
+  "archiveImage": "/assets/Beeeda-Lollipop-Beanie-01.webp",
   "care": "",
-  "cover": "/assets/01.webp",
+  "cover": "/assets/Beeeda-Lollipop-Beanie-02.webp",
   "description": "Für sehr kalte Tage. Nicht nur die Ohren, sondern auch der Hals ist gut umschlossen und wird gewärmt. Mit der Lasche kann der Kopf ohne Probleme reinschlüpfen.",
   "displayOrder": 0,
   "gallery": [
-    "/assets/01_5.jpg",
-    "/assets/01_4.jpg",
-    "/assets/01_3.jpg"
+    "/assets/Beeeda-Lollipop-Beanie-01.webp",
+    "/assets/Beeeda-Lollipop-Beanie-04.webp",
+    "/assets/Beeeda-Lollipop-Beanie-03.webp",
+    "/assets/Beeeda-Lollipop-Beanie-05.webp"
   ],
   "hero": "/assets/01_3.png",
   "materials": "Wolle, Seide, Kaschmir",
   "measurements": "Kopfumfang: 52 | H: 20 | B: 13 | Guckloch: 14x7",
-  "name": "Pinks Chaos",
+  "name": "Lollipop Beanie",
   "priceCents": 4960,
-  "productId": "pinks-chaos",
+  "productId": "Lollipop Beanie",
   "shippingClass": "small",
   "size": "",
   "status": "active",
-  "thumbnail": "/assets/01_2.jpg"
+  "thumbnail": "/assets/Beeeda-Lollipop-Beanie-07.webp"
 }
