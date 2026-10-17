@@ -8,9 +8,10 @@
     "/assets/Beeeda-Lollipop-Beanie-01.webp",
     "/assets/Beeeda-Lollipop-Beanie-04.webp",
     "/assets/Beeeda-Lollipop-Beanie-03.webp",
-    "/assets/Beeeda-Lollipop-Beanie-05.webp"
+    "/assets/Beeeda-Lollipop-Beanie-05.webp",
+    "/assets/Beeeda-Lollipop-Beanie-06.webp"
   ],
-  "hero": "/assets/01_3.png",
+  "hero": "/assets/Beeeda-Lollipop-Beanie-07.webp",
   "materials": "Wolle, Seide, Kaschmir",
   "measurements": "Kopfumfang: 52 | H: 20 | B: 13 | Guckloch: 14x7",
   "name": "Lollipop Beanie",
@@ -19,5 +20,5 @@
   "shippingClass": "small",
   "size": "",
   "status": "active",
-  "thumbnail": "/assets/Beeeda-Lollipop-Beanie-07.webp"
+  "thumbnail": "/assets/Beeeda-Lollipop-Beanie-06.webp"
 }
