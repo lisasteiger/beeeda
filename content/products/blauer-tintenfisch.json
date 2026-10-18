@@ -1,0 +1,15 @@
+{
+  "gallery": [
+    "/assets/Beeeda-blue-tintenfisch-04.webp",
+    "/assets/Beeeda-blue-tintenfisch-05.webp",
+    "/assets/Beeeda-blue-tintenfisch-06.webp",
+    "/assets/Beeeda-blue-tintenfisch-07.webp"
+  ],
+  "productId": "blauer Tintenfisch",
+  "name": "blauer Tintenfisch",
+  "status": "active",
+  "cover": "/assets/Beeeda-blue-tintenfisch-02.webp",
+  "hero": "/assets/Beeeda-blue-tintenfisch-03.webp",
+  "thumbnail": "/assets/Beeeda-blue-tintenfisch-07.webp",
+  "archiveImage": "/assets/Beeeda-blue-tintenfisch-02.webp"
+}

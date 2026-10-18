@@ -1,0 +1,15 @@
+{
+  "productId": "grüner Blob",
+  "name": "grüner Blob",
+  "status": "active",
+  "cover": "/assets/Beeeda-gruen-blob-01.webp",
+  "hero": "/assets/Beeeda-gruen-blob-02.webp",
+  "archiveImage": "/assets/Beeeda-gruen-blob-01.webp",
+  "gallery": [
+    "/assets/Beeeda-gruen-blob-03.webp",
+    "/assets/Beeeda-gruen-blob-04.webp",
+    "/assets/Beeeda-gruen-blob-05.webp",
+    "/assets/Beeeda-gruen-blob-06.webp"
+  ],
+  "thumbnail": "/assets/Beeeda-gruen-blob-06.webp"
+}
