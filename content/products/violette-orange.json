@@ -1,0 +1,23 @@
+{
+  "archiveImage": "/assets/Beeeda-Violete-orange-02.webp",
+  "care": "",
+  "cover": "/assets/Beeeda-Violete-orange-02.webp",
+  "description": "Für sehr kalte Tage. Nicht nur die Ohren, sondern auch der Hals ist gut umschlossen und wird gewärmt. Mit der Lasche kann der Kopf ohne Probleme reinschlüpfen.",
+  "displayOrder": 0,
+  "gallery": [
+    "/assets/Beeeda-Violete-orange-01.webp",
+    "/assets/Beeeda-Violete-orange-04.webp",
+    "/assets/Beeeda-Violete-orange-05.webp",
+    "/assets/Beeeda-Violete-orange-06.webp"
+  ],
+  "hero": "/assets/Beeeda-Violete-orange-03.webp",
+  "materials": "Wolle, Seide, Kaschmir",
+  "measurements": "Kopfumfang: 52 | H: 20 | B: 13 | Guckloch: 14x7",
+  "name": "violete Orange",
+  "priceCents": 4960,
+  "productId": "violete Orange",
+  "shippingClass": "small",
+  "size": "",
+  "status": "active",
+  "thumbnail": "/assets/Beeeda-Violete-orange-06.webp"
+}

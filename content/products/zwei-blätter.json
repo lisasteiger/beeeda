@@ -1,22 +1,22 @@
 {
-  "archiveImage": "/assets/01_3.png",
+  "archiveImage": "/assets/Beeeda-zwei-blaetter-02.webp",
   "care": "",
-  "cover": "/assets/01.webp",
+  "cover": "/assets/Beeeda-zwei-blaetter-02.webp",
   "description": "Für sehr kalte Tage. Nicht nur die Ohren, sondern auch der Hals ist gut umschlossen und wird gewärmt. Mit der Lasche kann der Kopf ohne Probleme reinschlüpfen.",
   "displayOrder": 0,
   "gallery": [
-    "/assets/01_5.jpg",
-    "/assets/01_4.jpg",
-    "/assets/01_3.jpg"
+    "/assets/Beeeda-zwei-blaetter-01.webp",
+    "/assets/Beeeda-zwei-blaetter-04.webp",
+    "/assets/Beeeda-zwei-blaetter-05.webp"
   ],
-  "hero": "/assets/01_3.png",
+  "hero": "/assets/Beeeda-zwei-blaetter-03.webp",
   "materials": "Wolle, Seide, Kaschmir",
   "measurements": "Kopfumfang: 52 | H: 20 | B: 13 | Guckloch: 14x7",
-  "name": "Pinks Chaos",
+  "name": "zwei Blätter",
   "priceCents": 4960,
-  "productId": "pinks-chaos",
+  "productId": "zwei Blätter",
   "shippingClass": "small",
   "size": "",
   "status": "active",
-  "thumbnail": "/assets/01_2.jpg"
+  "thumbnail": "/assets/Beeeda-zwei-blaetter-05.webp"
 }
