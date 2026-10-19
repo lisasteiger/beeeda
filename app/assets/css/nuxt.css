@@ -6,9 +6,9 @@ html.home-page, html.home-page body { height: 100%; overflow: hidden; }
 .empty-shop { position: relative; text-align: center; }
 #__nuxt a { text-decoration: none; }
 #__nuxt a:not(.cart-button) { color: #737373; }
-#__nuxt a:not(.cart-button):hover { color: #4d4d4d; background: transparent; }
-#__nuxt a.site-link, #__nuxt a.cart-link,
-#__nuxt a.site-link:hover, #__nuxt a.cart-link:hover { color: #000; }
+#__nuxt a:not(.cart-button):hover { color: #000; background: transparent; }
+#__nuxt a.site-link, #__nuxt a.cart-link { color: #000; }
+#__nuxt a.site-link:hover, #__nuxt a.cart-link:hover { color: #737373; }
 .product-info.disclosure { font-size: var(--corner-link-font-size); font-weight: 500; line-height: 1.45; text-align: center; margin-bottom: 28px; }
 .product-info.disclosure summary { cursor: pointer; list-style: none; }
 .product-info.disclosure summary::-webkit-details-marker { display: none; }
@@ -16,7 +16,7 @@ html.home-page, html.home-page body { height: 100%; overflow: hidden; }
 .product-info.disclosure[open] .info-open { display: inline; }
 .pinkchaos .product-info.disclosure p { margin: 12px auto 0; text-align: center; }
 .close-corner { border: 0; background: transparent; cursor: pointer; font-size: calc(var(--corner-link-font-size) * 1.5); line-height: 1; }
-@media (hover: none) { .close-corner:hover, .close-corner:active { background: transparent; color: #000; } }
+.close-corner:hover, .close-corner:active { background: transparent; color: #000; }
 /* Studio's floating tools must remain clickable above the fixed corner links. */
 nuxt-studio { position: relative; z-index: 8000; }
 .product-next { display: block; width: fit-content; margin: 24px auto 0; font-size: var(--corner-link-font-size); font-weight: 700; text-underline-offset: 3px; }
