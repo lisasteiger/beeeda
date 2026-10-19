@@ -5,6 +5,16 @@ export type Product = {
   gallery: string[]; displayOrder: number; available?: number | null; soldOut?: boolean
 }
 export type CartLine = { productId: string; quantity: number }
+export function orderedProducts<T extends { productId: string; displayOrder?: number | string }>(products: readonly T[]): T[] {
+  const order = (product: T) => Number(product.displayOrder) || 0
+  return [...products].sort((a, b) => order(a) - order(b) || a.productId.localeCompare(b.productId, 'de'))
+}
+export function nextShopProduct(products: Product[], currentId: string) {
+  const available = orderedProducts(products.filter(product => product.status === 'active' && !product.soldOut))
+  if (!available.length || (available.length === 1 && available[0]!.productId === currentId)) return
+  const index = available.findIndex(product => product.productId === currentId)
+  return available[(index + 1) % available.length]
+}
 export function shippingCents(lines: { quantity: number; shippingClass: string }[]) {
   if (!lines.length) return 0
   return lines.reduce((sum, line) => sum + line.quantity, 0) >= 2 || lines.some(line => line.shippingClass !== 'small') ? 900 : 200

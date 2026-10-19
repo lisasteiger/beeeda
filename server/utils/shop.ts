@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 import Stripe from 'stripe'
 import { queryCollection } from '@nuxt/content/nitro'
 import { createError, getCookie, setCookie, getHeader, type H3Event } from 'h3'
-import { validateCart, shippingCents, type Product } from '#shared/shop'
+import { validateCart, shippingCents, orderedProducts, type Product } from '#shared/shop'
 
 export function database(event: H3Event) {
   const config = useRuntimeConfig(event)
@@ -41,8 +41,7 @@ export function authorizedCron(event: H3Event) {
 export async function productList(event: H3Event) {
   const rows = await queryCollection(event, 'products').all()
   // Content's SQLite adapter can return integer columns as strings.
-  return rows.map(row => ({ ...row, priceCents: Number(row.priceCents), displayOrder: Number(row.displayOrder) }))
-    .sort((a, b) => a.displayOrder - b.displayOrder) as Product[]
+  return orderedProducts(rows.map(row => ({ ...row, priceCents: Number(row.priceCents), displayOrder: Number(row.displayOrder) }))) as Product[]
 }
 export async function priceCart(event: H3Event, input: unknown) {
   let lines

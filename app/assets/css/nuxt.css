@@ -15,3 +15,4 @@ a { color: inherit; }
 @media (hover: none) { .close-corner:hover, .close-corner:active { background: transparent; color: #000; } }
 /* Studio's floating tools must remain clickable above the fixed corner links. */
 nuxt-studio { position: relative; z-index: 8000; }
+.product-next { display: block; width: fit-content; margin: 24px auto 0; font-size: var(--corner-link-font-size); font-weight: 700; text-underline-offset: 3px; }

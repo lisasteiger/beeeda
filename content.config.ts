@@ -6,6 +6,7 @@ export default defineContentConfig({
       schema: z.object({
         productId: z.string().regex(/^[a-z0-9-]+$/).editor({ label: 'Produkt-ID (nach erster Bestellung nicht ändern)' }),
         name: z.string().min(1).editor({ label: 'Name' }),
+        displayOrder: z.number().multipleOf(1).default(0).describe('Reihenfolge im Carousel und beim nächsten Produkt: kleinere Zahlen zuerst (1, 2, 3 …).').editor({ label: 'Reihenfolge' }),
         size: z.string().default('').editor({ label: 'Grösse auf der Startseite (z. B. 6–9 M oder S)' }),
         status: z.enum(['draft', 'active', 'archived']).default('draft').editor({ label: 'Entwurf / im Shop / verkauft (archived)' }),
         priceCents: z.number().multipleOf(1).min(0).editor({ label: 'Preis in Rappen (4960 = CHF 49.60)' }),
@@ -18,8 +19,7 @@ export default defineContentConfig({
         hero: z.string().editor({ label: 'Hauptbild', input: 'media' }),
         thumbnail: z.string().editor({ label: 'Bild Warenkorb', input: 'media' }),
         archiveImage: z.string().editor({ label: 'Zusätzliches Produktbild', input: 'media' }),
-        gallery: z.array(z.string().editor({ input: 'media' })).editor({ label: 'Weitere Bilder' }),
-        displayOrder: z.number().multipleOf(1).default(0).editor({ label: 'Reihenfolge' })
+        gallery: z.array(z.string().editor({ input: 'media' })).editor({ label: 'Weitere Bilder' })
       })
     }),
     site: defineCollection({

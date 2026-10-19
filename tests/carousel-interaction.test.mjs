@@ -3,13 +3,19 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 
-const source = readFileSync(new URL('../public/carousel.js', import.meta.url), 'utf8');
-function setup() {
+const source = readFileSync(new URL('../public/carousel.js', import.meta.url), 'utf8')
+  .replace('export function initCarousel(carousel, selectedId) {', 'const carousel = document.getElementById("carousel"); const selectedId = preferredId;')
+  .replace('return () => {', 'globalThis.cleanup = () => {')
+  .replace(/\n}\s*$/, '');
+function setup({ count = 6, preferredId = 'product-0', query = '', saved = {} } = {}) {
   let id = 0;
   const frames = new Map(), timers = new Map();
   function element() {
-    return { style: {}, dataset: {}, handlers: {},
-      addEventListener(type, fn) { (this.handlers[type] ??= []).push(fn); },
+    return { style: { setProperty(key, value) { this[key] = value; } }, dataset: {}, handlers: {}, querySelector: () => null,
+      addEventListener(type, fn, options) {
+        (this.handlers[type] ??= []).push(fn);
+        options?.signal?.addEventListener('abort', () => { this.handlers[type] = this.handlers[type].filter(handler => handler !== fn); });
+      },
       emit(type, data = {}) {
         const event = { preventDefault() { this.prevented = true; }, ...data };
         for (const fn of this.handlers[type] ?? []) fn(event);
@@ -20,21 +26,27 @@ function setup() {
   const carousel = element();
   const soldLabel = element();
   const link = { href: 'pinkchaos.html', closest: selector => selector === '.image-link' ? link : null };
-  const items = Array.from({ length: 6 }, element);
-  const sizes = Array.from({ length: 6 }, element);
-  items[4].dataset.sold = items[5].dataset.sold = 'true';
-  const window = Object.assign(element(), { location: { search: '' }, innerWidth: 1135, matchMedia: () => ({ matches: false }) });
+  const items = Array.from({ length: count }, (_, index) => Object.assign(element(), { dataset: { productId: 'product-' + index } }));
+  const sizes = Array.from({ length: count }, element);
+  if (count > 5) items[4].dataset.sold = items[5].dataset.sold = 'true';
+  carousel.querySelector = () => soldLabel;
+  carousel.querySelectorAll = selector => selector === '.carousel-size' ? sizes : items;
+  const window = Object.assign(element(), { location: { search: query, pathname: '/', hash: '' }, innerWidth: 1135, matchMedia: () => ({ matches: false }), history: { replaceState() {} } });
   const classes = new Set();
-  const context = vm.createContext({ window, URLSearchParams,
+  const storage = new Map(Object.entries(saved));
+  const context = vm.createContext({ window, URLSearchParams, AbortController, preferredId,
+    sessionStorage: { getItem: key => storage.get(key), setItem: (key, value) => storage.set(key, value) },
+    localStorage: { getItem: key => storage.get(key), setItem: (key, value) => storage.set(key, value) },
     document: { getElementById: id => id === 'carousel-sold' ? soldLabel : carousel, querySelectorAll: selector => selector === '.carousel-size' ? sizes : items,
-      body: { classList: { add: name => classes.add(name) } } },
+      body: { classList: { add: name => classes.add(name), remove: name => classes.delete(name) } } },
     requestAnimationFrame: fn => { frames.set(++id, fn); return id; },
     cancelAnimationFrame: id => frames.delete(id),
     setTimeout: (fn, delay) => { timers.set(++id, { fn, delay }); return id; },
     clearTimeout: id => timers.delete(id),
   });
   vm.runInContext(source, context);
-  return { carousel, window, link, frames, timers, classes, soldLabel, sizes,
+  return { carousel, window, link, frames, timers, classes, soldLabel, sizes, storage,
+    cleanup: () => context.cleanup(),
     at: index => vm.runInContext(`position = ${index}; render()`, context),
     wheel: () => carousel.emit('wheel', { deltaX: 250, deltaY: 0 }),
     down: (pointerId = 1) => carousel.emit('pointerdown', { target: link, pointerId, isPrimary: true, button: 0 }),
@@ -144,4 +156,47 @@ test('sizes follow their image horizontally and only appear at the centre, inclu
   page.at(5.9);
   assert.equal(page.sizes[0].hidden, false);
   assert.ok(Math.abs(parseFloat(page.sizes[0].style.transform.split('+ ')[1]) - 31.2) < 0.001);
+});
+
+test('all thirteen products can reach the centre and distant products never invert', () => {
+  const page = setup({ count: 13 });
+  for (let index = 0; index < 13; index++) {
+    page.at(index);
+    assert.equal(page.carousel.dataset.currentProduct, 'product-' + index);
+    assert.equal(page.sizes[index].style.opacity, 1);
+    assert.ok(page.transforms().every(transform => Number(transform.match(/scale\(([^)]+)\)/)[1]) > 0));
+  }
+});
+
+test('a fresh visit never repeats the previous starting product', () => {
+  for (let attempt = 0; attempt < 30; attempt++) {
+    const page = setup({ count: 13, preferredId: null, saved: { 'beeeda.carousel-start': 'product-4' } });
+    assert.notEqual(page.carousel.dataset.currentProduct, 'product-4');
+    assert.equal(page.storage.get('beeeda.carousel-start'), page.carousel.dataset.currentProduct);
+  }
+  assert.equal(setup({ count: 1, preferredId: null }).carousel.dataset.currentProduct, 'product-0');
+  assert.doesNotThrow(() => setup({ count: 0, preferredId: null }));
+});
+
+test('returning selects the viewed product; content updates preserve the current product', () => {
+  assert.equal(setup({ count: 13, preferredId: null, query: '?back&product=product-9' }).carousel.dataset.currentProduct, 'product-9');
+  assert.equal(setup({ count: 13, preferredId: null, query: '?back', saved: { 'beeeda.last-product': 'product-8' } }).carousel.dataset.currentProduct, 'product-8');
+  const page = setup({ count: 14, preferredId: 'product-12' });
+  assert.equal(page.carousel.dataset.currentProduct, 'product-12');
+  page.storage.set('beeeda.last-product', 'product-10');
+  page.window.emit('pageshow', { persisted: true });
+  assert.equal(page.carousel.dataset.currentProduct, 'product-10');
+});
+
+test('keyboard navigation wraps and reinitialization can remove every old listener and animation', () => {
+  const page = setup({ count: 13 });
+  page.carousel.emit('keydown', { key: 'ArrowLeft' });
+  for (let frame = 0; frame < 200 && page.frames.size; frame++) page.step();
+  assert.equal(page.carousel.dataset.currentProduct, 'product-12');
+  page.wheel();
+  page.cleanup();
+  assert.equal(page.frames.size, 0);
+  assert.equal(page.timers.size, 0);
+  assert.ok(Object.values(page.carousel.handlers).every(handlers => handlers.length === 0));
+  assert.ok(Object.values(page.window.handlers).every(handlers => handlers.length === 0));
 });
