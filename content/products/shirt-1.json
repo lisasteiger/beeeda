@@ -1,10 +1,10 @@
 {
   "care": "",
+  "cover": "/assets/Shirt-6.webp",
   "displayOrder": 0,
+  "name": "shirt 1",
+  "productId": "shirt 1",
   "shippingClass": "large",
   "size": "",
-  "status": "draft",
-  "productId": "shirt 1",
-  "name": "shirt 1",
-  "cover": "/assets/Shirt-6.webp"
+  "status": "active"
 }
