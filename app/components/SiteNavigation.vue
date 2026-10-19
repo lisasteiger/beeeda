@@ -37,6 +37,7 @@ onMounted(() => {
 onBeforeUnmount(() => { observer?.disconnect(); clearTimeout(homeTimer) })
 </script>
 <template>
+  <a v-if="home" class="site-link contact-link" href="mailto:hi@beeeda.ch">schreib uns</a>
   <button v-if="!home && !cart" id="closePage" class="close-corner site-link archive-link" aria-label="Schliessen" @click="back">×</button>
   <a class="cart-link" href="/warenkorb">Warenkorb<span v-if="ready && count"> ({{ count }})</span></a>
   <a class="site-link impressum-link" href="/impressum">Impressum</a>

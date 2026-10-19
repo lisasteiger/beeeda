@@ -16,11 +16,12 @@
 }
 
 .archive-link,
+.contact-link,
 .cart-link,
 .impressum-link,
 .about-link { font-weight: 700; }
 
-.archive-link { top: 2%; left: 1%; }
+.archive-link, .contact-link { top: 2%; left: 1%; }
 .cart-link { top: 2%; right: 1%; }
 .impressum-link, .about-link, .carousel-size { bottom: 2%; }
 .impressum-link { left: 1%; }
@@ -55,7 +56,7 @@
     padding: 10px;
     margin: 0;
   }
-  .archive-link { top: 4px; left: 0; }
+  .archive-link, .contact-link { top: 4px; left: 0; }
   .cart-link { top: 4px; right: 0; }
   .impressum-link, .about-link, .carousel-size { bottom: max(4px, env(safe-area-inset-bottom)); }
   .impressum-link { left: 0; }

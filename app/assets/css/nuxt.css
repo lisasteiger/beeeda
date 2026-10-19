@@ -4,7 +4,11 @@ html.home-page, html.home-page body { height: 100%; overflow: hidden; }
 .checkout-intro, .order-result p { font-size: var(--corner-link-font-size); font-weight: 500; }
 .carousel-sold { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(306px, 52.2vw); height: auto; z-index: 2000; opacity: 0; pointer-events: none; }
 .empty-shop { position: relative; text-align: center; }
-a { color: inherit; }
+#__nuxt a { text-decoration: none; }
+#__nuxt a:not(.cart-button) { color: #737373; }
+#__nuxt a:not(.cart-button):hover { color: #4d4d4d; background: transparent; }
+#__nuxt a.site-link, #__nuxt a.cart-link,
+#__nuxt a.site-link:hover, #__nuxt a.cart-link:hover { color: #000; }
 .product-info.disclosure { font-size: var(--corner-link-font-size); font-weight: 500; line-height: 1.45; text-align: center; margin-bottom: 28px; }
 .product-info.disclosure summary { cursor: pointer; list-style: none; }
 .product-info.disclosure summary::-webkit-details-marker { display: none; }
