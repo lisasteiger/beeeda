@@ -2,7 +2,7 @@ export type Product = {
   productId: string; name: string; size?: string; status: 'draft' | 'active' | 'archived'; priceCents: number;
   shippingClass: 'small' | 'large'; description: string; materials: string; measurements: string;
   care: string; cover: string; hero: string; thumbnail: string; archiveImage: string;
-  gallery: string[]; displayOrder: number; available?: number | null; soldOut?: boolean
+  gallery: string[]; displayOrder: number; available?: number | null; soldOut?: boolean; relatedProducts?: string[]
 }
 export type CartLine = { productId: string; quantity: number }
 export function orderedProducts<T extends { productId: string; displayOrder?: number | string }>(products: readonly T[]): T[] {
@@ -14,6 +14,16 @@ export function nextShopProduct(products: Product[], currentId: string) {
   if (!available.length || (available.length === 1 && available[0]!.productId === currentId)) return
   const index = available.findIndex(product => product.productId === currentId)
   return available[(index + 1) % available.length]
+}
+export function productSuggestions(products: Product[], currentId: string, limit = 5, selectedIds?: readonly string[]) {
+  const available = orderedProducts(products.filter(product => product.status === 'active' && !product.soldOut && (product.cover || product.thumbnail || product.hero)))
+  if (selectedIds) {
+    const byId = new Map(available.filter(product => product.productId !== currentId).map(product => [product.productId, product]))
+    return [...new Set(selectedIds)].flatMap(id => byId.has(id) ? [byId.get(id)!] : []).slice(0, limit)
+  }
+  const index = available.findIndex(product => product.productId === currentId)
+  return [...available.slice(index + 1), ...available.slice(0, index + 1)]
+    .filter(product => product.productId !== currentId).slice(0, limit)
 }
 export function shippingCents(lines: { quantity: number; shippingClass: string }[]) {
   if (!lines.length) return 0

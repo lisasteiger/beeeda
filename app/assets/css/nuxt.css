@@ -20,3 +20,15 @@ html.home-page, html.home-page body { height: 100%; overflow: hidden; }
 /* Studio's floating tools must remain clickable above the fixed corner links. */
 nuxt-studio { position: relative; z-index: 8000; }
 .product-next { display: block; width: fit-content; margin: 24px auto 0; font-size: var(--corner-link-font-size); font-weight: 700; text-underline-offset: 3px; }
+.product-discover {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+  width: min(calc(100% - 48px), calc(50vw + (100dvh - var(--gallery-gutter) - 2vh - 1rem - 1vw) / 2));
+  margin: clamp(80px, 15vh, 160px) auto calc(2vh + 60px);
+  padding-block: 32px;
+  background: #fff;
+  text-align: center;
+}
+.product-discover h2 { margin: 0 0 32px; font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 500; line-height: 1.3; }
+@media (max-width: 700px) { .product-discover { width: calc(100% - 32px); } }
