@@ -20,5 +20,8 @@
   "shippingClass": "small",
   "size": "",
   "status": "active",
-  "thumbnail": "/assets/Beeeda-gruen-beige-zipfel-07.webp"
+  "thumbnail": "/assets/Beeeda-gruen-beige-zipfel-07.webp",
+  "relatedProducts": [
+    ""
+  ]
 }

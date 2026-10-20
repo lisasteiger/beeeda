@@ -15,5 +15,8 @@
   "shippingClass": "large",
   "size": "",
   "status": "active",
-  "thumbnail": "/assets/Beeeda-blue-tintenfisch-07.webp"
+  "thumbnail": "/assets/Beeeda-blue-tintenfisch-07.webp",
+  "relatedProducts": [
+    ""
+  ]
 }

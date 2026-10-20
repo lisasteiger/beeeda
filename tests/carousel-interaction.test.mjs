@@ -25,11 +25,14 @@ function setup({ count = 6, preferredId = 'product-0', query = '', saved = {} } 
   }
   const carousel = element();
   const soldLabel = element();
+  const reducedLabel = element();
   const link = { href: 'pinkchaos.html', closest: selector => selector === '.image-link' ? link : null };
   const items = Array.from({ length: count }, (_, index) => Object.assign(element(), { dataset: { productId: 'product-' + index } }));
   const sizes = Array.from({ length: count }, element);
   if (count > 5) items[4].dataset.sold = items[5].dataset.sold = 'true';
-  carousel.querySelector = () => soldLabel;
+  if (count > 2) items[2].dataset.reduced = 'true';
+  if (count > 4) items[4].dataset.reduced = 'true';
+  carousel.querySelector = selector => selector === '#carousel-reduced' ? reducedLabel : soldLabel;
   carousel.querySelectorAll = selector => selector === '.carousel-size' ? sizes : items;
   const window = Object.assign(element(), { location: { search: query, pathname: '/', hash: '' }, innerWidth: 1135, matchMedia: () => ({ matches: false }), history: { replaceState() {} } });
   const classes = new Set();
@@ -45,7 +48,7 @@ function setup({ count = 6, preferredId = 'product-0', query = '', saved = {} } 
     clearTimeout: id => timers.delete(id),
   });
   vm.runInContext(source, context);
-  return { carousel, window, link, frames, timers, classes, soldLabel, sizes, storage,
+  return { carousel, window, link, frames, timers, classes, soldLabel, reducedLabel, sizes, storage,
     cleanup: () => context.cleanup(),
     at: index => vm.runInContext(`position = ${index}; render()`, context),
     wheel: () => carousel.emit('wheel', { deltaX: 250, deltaY: 0 }),
@@ -138,6 +141,20 @@ test('sold label fades near the centre without following the 3D transform', () =
   assert.equal(page.soldLabel.style.opacity, 1);
   page.at(0);
   assert.equal(page.soldLabel.style.opacity, 0);
+});
+
+test('reduced label fades like sold while allowing navigation; sold takes precedence', () => {
+  const page = setup();
+  assert.equal(page.reducedLabel.style.opacity, 0);
+  page.at(2);
+  assert.equal(page.reducedLabel.style.opacity, 1);
+  page.click(1);
+  assert.equal(page.classes.has('leaving-to-subsite'), true);
+  page.at(2.475);
+  assert.ok(page.reducedLabel.style.opacity > 0 && page.reducedLabel.style.opacity < 1);
+  page.at(4);
+  assert.equal(page.reducedLabel.style.opacity, 0);
+  assert.equal(page.soldLabel.style.opacity, 1);
 });
 
 test('sizes follow their image horizontally and only appear at the centre, including wraparound and mobile', () => {

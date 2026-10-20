@@ -8,7 +8,7 @@ useHead(() => ({ htmlAttrs: { class: returning.value ? 'home-page returning-from
 const products = computed(() => orderedProducts(contentProducts.value || []).filter(product => product.status !== 'draft'))
 const slides = computed(() => products.value.map(product => {
   const sold = product.status === 'archived' || Boolean(catalog.value?.products.find(item => item.productId === product.productId)?.soldOut)
-  return { id: product.productId, cover: product.cover, name: product.name, size: product.size || '', href: sold ? undefined : '/produkte/' + encodeURIComponent(product.productId), sold }
+  return { id: product.productId, cover: product.cover, name: product.name, size: product.size || '', href: sold ? undefined : '/produkte/' + encodeURIComponent(product.productId), sold, reduced: Boolean(product.reduced) }
 }))
 let dispose: (() => void) | undefined
 let stopWatching: (() => void) | undefined
@@ -31,12 +31,13 @@ onBeforeUnmount(() => { generation++; stopWatching?.(); dispose?.() })
 <template>
   <main id="carousel" ref="carousel" class="carousel" aria-label="Produkte" tabindex="0">
     <div class="carousel-inner">
-      <div v-for="slide in slides" :key="slide.id" class="item" :data-product-id="slide.id" :data-sold="slide.sold">
-        <component :is="slide.href ? 'a' : 'span'" :href="slide.href" class="image-link" draggable="false"><img :src="slide.cover" :alt="slide.name + (slide.sold ? ' – verkauft' : '')" /></component>
+      <div v-for="slide in slides" :key="slide.id" class="item" :data-product-id="slide.id" :data-sold="slide.sold" :data-reduced="slide.reduced">
+        <component :is="slide.href ? 'a' : 'span'" :href="slide.href" class="image-link" draggable="false"><img :src="slide.cover" :alt="slide.name + (slide.sold ? ' – verkauft' : slide.reduced ? ' – reduziert' : '')" /></component>
       </div>
     </div>
     <span v-for="slide in slides" :key="'size-' + slide.id" class="site-link carousel-size">{{ slide.size }}</span>
     <img id="carousel-sold" class="carousel-sold" src="/assets/verkauft.svg" alt="" aria-hidden="true" />
+    <img v-if="slides.some(slide => slide.reduced && !slide.sold)" id="carousel-reduced" class="carousel-sold" src="/assets/reduziert.svg" alt="" aria-hidden="true" />
     <p v-if="catalog && !slides.length" class="empty-shop">Neue Produkte folgen bald.</p>
   </main>
 </template>

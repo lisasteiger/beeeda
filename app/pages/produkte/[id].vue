@@ -22,9 +22,9 @@ onMounted(() => {
   history.scrollRestoration = 'manual'
   observer = new ResizeObserver(() => {
     if (!detail.value) return
-    const title = detail.value.querySelector('h1')?.getBoundingClientRect()
-    const button = detail.value.querySelector('button')?.getBoundingClientRect()
-    if (title && button) detail.value.style.setProperty('--detail-center', ((title.top + button.bottom) / 2 - detail.value.getBoundingClientRect().top) + 'px')
+    const firstElement = detail.value.firstElementChild?.getBoundingClientRect()
+    const lastElement = detail.value.lastElementChild?.getBoundingClientRect()
+    if (firstElement && lastElement) detail.value.style.setProperty('--detail-center', ((firstElement.top + lastElement.bottom) / 2 - detail.value.getBoundingClientRect().top) + 'px')
   })
   if (detail.value) observer.observe(detail.value)
   refresh()

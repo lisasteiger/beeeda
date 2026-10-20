@@ -2,6 +2,7 @@ export function initCarousel(carousel, selectedId) {
   const lifecycle = new AbortController();
   const on = (element, type, handler, options = {}) => element.addEventListener(type, handler, { ...options, signal: lifecycle.signal });
   const soldLabel = carousel.querySelector("#carousel-sold");
+  const reducedLabel = carousel.querySelector("#carousel-reduced");
   const items = [...carousel.querySelectorAll(".item")];
   const sizes = [...carousel.querySelectorAll(".carousel-size")];
   const itemCount = items.length;
@@ -75,6 +76,7 @@ export function initCarousel(carousel, selectedId) {
     if (!itemCount) return;
     carousel.dataset.currentProduct = ids[((Math.round(position) % itemCount) + itemCount) % itemCount];
     let soldOpacity = 0;
+    let reducedOpacity = 0;
     items.forEach((item, index) => {
       const offset = wrap(index - position, itemCount);
       const distance = Math.abs(offset);
@@ -85,6 +87,7 @@ export function initCarousel(carousel, selectedId) {
         size.hidden = distance >= 0.2;
       }
       if (item.dataset.sold === 'true') soldOpacity = Math.max(soldOpacity, Math.max(0, Math.min(1, (0.55 - distance) / 0.15)));
+      else if (item.dataset.reduced === 'true') reducedOpacity = Math.max(reducedOpacity, Math.max(0, Math.min(1, (0.55 - distance) / 0.15)));
       const limitedDistance = Math.min(distance, 4);
 
       item.style.transform = `translate(-50%, -50%)
@@ -96,6 +99,7 @@ export function initCarousel(carousel, selectedId) {
     });
     // The label stays in the screen centre; only its opacity follows the products.
     if (soldLabel) soldLabel.style.opacity = soldOpacity;
+    if (reducedLabel) reducedLabel.style.opacity = reducedOpacity;
   }
 
   function animate() {

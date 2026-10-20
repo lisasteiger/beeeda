@@ -9,6 +9,7 @@ export default defineContentConfig({
         displayOrder: z.number().multipleOf(1).default(0).describe('Reihenfolge im Carousel und beim nächsten Produkt: kleinere Zahlen zuerst (1, 2, 3 …).').editor({ label: 'Reihenfolge' }),
         size: z.string().default('').editor({ label: 'Grösse auf der Startseite (z. B. 6–9 M oder S)' }),
         status: z.enum(['draft', 'active', 'archived']).default('draft').editor({ label: 'Entwurf / im Shop / verkauft (archived)' }),
+        reduced: z.boolean().default(false).describe('Zeigt nur die Markierung „reduziert“ im Carousel. Preis und Kaufmöglichkeit bleiben unverändert.').editor({ label: 'Reduziert' }),
         priceCents: z.number().multipleOf(1).min(0).editor({ label: 'Preis in Rappen (4960 = CHF 49.60)' }),
         shippingClass: z.enum(['small', 'large']).default('large').editor({ label: 'Versand: small = CHF 2, large = CHF 9' }),
         description: z.string().editor({ label: 'Beschreibung', input: 'textarea' }),
