@@ -42,4 +42,8 @@ nuxt-studio { position: relative; z-index: 8000; }
   background: #fff;
 }
 .product-discover h2 { margin: 0 0 32px; font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 500; line-height: 1.3; }
+.product-discover .product-suggestion img { transition: transform 180ms ease-out; }
+@media (hover: hover) {
+  .product-discover .product-suggestion:hover img { transform: scale(1.1); }
+}
 @media (max-width: 700px) { .product-discover, .product-matching { width: calc(100% - 32px); } }

@@ -13,9 +13,10 @@ export function initCarousel(carousel, selectedId) {
   const query = new URLSearchParams(window.location.search);
   const preferred = selectedId || query.get('product') || (query.has('back') ? readSaved('beeeda.last-product') : null);
   let initialIndex = ids.indexOf(preferred);
-  if (initialIndex < 0) {
+  if (initialIndex < 0 || items[initialIndex].dataset.sold === 'true') {
     const previous = ids.indexOf(readSaved('beeeda.carousel-start'));
-    const candidates = ids.map((_, index) => index).filter(index => itemCount < 2 || index !== previous);
+    const available = ids.map((_, index) => index).filter(index => items[index].dataset.sold !== 'true');
+    const candidates = available.filter(index => available.length < 2 || index !== previous);
     initialIndex = candidates[Math.floor(Math.random() * candidates.length)] ?? 0;
   }
   if (ids[initialIndex]) save('beeeda.carousel-start', ids[initialIndex]);

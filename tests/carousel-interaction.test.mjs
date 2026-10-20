@@ -7,7 +7,7 @@ const source = readFileSync(new URL('../public/carousel.js', import.meta.url), '
   .replace('export function initCarousel(carousel, selectedId) {', 'const carousel = document.getElementById("carousel"); const selectedId = preferredId;')
   .replace('return () => {', 'globalThis.cleanup = () => {')
   .replace(/\n}\s*$/, '');
-function setup({ count = 6, preferredId = 'product-0', query = '', saved = {} } = {}) {
+function setup({ count = 6, preferredId = 'product-0', query = '', saved = {}, soldIndices } = {}) {
   let id = 0;
   let clock = 0;
   const frames = new Map(), timers = new Map();
@@ -31,6 +31,7 @@ function setup({ count = 6, preferredId = 'product-0', query = '', saved = {} } 
   const items = Array.from({ length: count }, (_, index) => Object.assign(element(), { dataset: { productId: 'product-' + index } }));
   const sizes = Array.from({ length: count }, element);
   if (count > 5) items[4].dataset.sold = items[5].dataset.sold = 'true';
+  if (soldIndices) items.forEach((item, index) => { item.dataset.sold = String(soldIndices.includes(index)); });
   if (count > 2) items[2].dataset.reduced = 'true';
   if (count > 4) items[4].dataset.reduced = 'true';
   carousel.querySelector = selector => selector === '#carousel-reduced' ? reducedLabel : soldLabel;
@@ -218,6 +219,17 @@ test('a fresh visit never repeats the previous starting product', () => {
   }
   assert.equal(setup({ count: 1, preferredId: null }).carousel.dataset.currentProduct, 'product-0');
   assert.doesNotThrow(() => setup({ count: 0, preferredId: null }));
+});
+
+test('sold products are never selected as the start when an unsold product exists', () => {
+  for (let attempt = 0; attempt < 30; attempt++) {
+    const page = setup({ preferredId: null });
+    assert.ok(!['product-4', 'product-5'].includes(page.carousel.dataset.currentProduct));
+  }
+  assert.notEqual(setup({ preferredId: 'product-4' }).carousel.dataset.currentProduct, 'product-4');
+  const lastAvailable = setup({ count: 3, preferredId: null, soldIndices: [0, 1], saved: { 'beeeda.carousel-start': 'product-2' } });
+  assert.equal(lastAvailable.carousel.dataset.currentProduct, 'product-2');
+  assert.doesNotThrow(() => setup({ count: 2, soldIndices: [0, 1] }));
 });
 
 test('returning selects the viewed product; content updates preserve the current product', () => {
