@@ -9,6 +9,7 @@ const source = readFileSync(new URL('../public/carousel.js', import.meta.url), '
   .replace(/\n}\s*$/, '');
 function setup({ count = 6, preferredId = 'product-0', query = '', saved = {} } = {}) {
   let id = 0;
+  let clock = 0;
   const frames = new Map(), timers = new Map();
   function element() {
     return { style: { setProperty(key, value) { this[key] = value; } }, dataset: {}, handlers: {}, querySelector: () => null,
@@ -54,7 +55,8 @@ function setup({ count = 6, preferredId = 'product-0', query = '', saved = {} } 
     wheel: () => carousel.emit('wheel', { deltaX: 250, deltaY: 0 }),
     down: (pointerId = 1) => carousel.emit('pointerdown', { target: link, pointerId, isPrimary: true, button: 0 }),
     click: detail => carousel.emit('click', { target: link, detail }),
-    step() { const batch = [...frames.values()]; frames.clear(); batch.forEach(fn => fn()); },
+    step(elapsed = 1000 / 60) { clock += elapsed; const batch = [...frames.values()]; frames.clear(); batch.forEach(fn => fn(clock)); },
+    position: () => vm.runInContext('position', context),
     transforms: () => items.map(item => item.style.transform),
   };
 }
@@ -79,6 +81,29 @@ test('pressing and clicking a moving image keeps its animation running', () => {
   assert.notDeepEqual(page.transforms(), clicked);
   navigation.fn();
   assert.equal(page.window.location.href, 'pinkchaos.html');
+});
+
+test('carousel responds promptly and at the same speed on 60 Hz and 120 Hz screens', () => {
+  const regular = setup(), fast = setup();
+  regular.carousel.emit('keydown', { key: 'ArrowRight' });
+  fast.carousel.emit('keydown', { key: 'ArrowRight' });
+  for (let frame = 0; frame < 6; frame++) regular.step();
+  assert.ok(regular.position() > 0.7);
+  for (let frame = 0; frame < 54; frame++) regular.step();
+  for (let frame = 0; frame < 120; frame++) fast.step(1000 / 120);
+  assert.equal(regular.position(), 1);
+  assert.equal(fast.position(), 1);
+});
+
+test('diagonal trackpad input follows the dominant axis and mouse line units are supported', () => {
+  const page = setup();
+  page.carousel.emit('wheel', { deltaX: 1, deltaY: 100, deltaMode: 0 });
+  for (let frame = 0; frame < 120 && page.frames.size; frame++) page.step();
+  assert.ok(Math.abs(page.position() - 0.35) < 0.001);
+  const mouse = setup();
+  mouse.carousel.emit('wheel', { deltaX: 0, deltaY: 3, deltaMode: 1 });
+  for (let frame = 0; frame < 120 && mouse.frames.size; frame++) mouse.step();
+  assert.ok(Math.abs(mouse.position() - 0.168) < 0.001);
 });
 
 test('a touch tap with small finger jitter still starts the transition', () => {

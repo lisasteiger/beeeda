@@ -39,12 +39,13 @@ export function initCarousel(carousel, selectedId) {
     : 700;
   const depth = 180;
   const scaleAmount = 0.27;
-  const smoothness = 0.1;
-  const wheelSensitivity = () => window.matchMedia("(max-width: 700px)").matches ? 0.006 : 0.0025;
+  const responseTime = 75;
+  const wheelSensitivity = () => window.matchMedia("(max-width: 700px)").matches ? 0.006 : 0.0035;
 
   let position = initialIndex;
   let target = initialIndex;
   let animationFrame = null;
+  let lastFrameTime = null;
   let touchStartX = 0;
   let touchStartY = 0;
   let touchStartPosition = 0;
@@ -74,6 +75,7 @@ export function initCarousel(carousel, selectedId) {
 
   function render() {
     if (!itemCount) return;
+    const itemSpacing = spacing();
     carousel.dataset.currentProduct = ids[((Math.round(position) % itemCount) + itemCount) % itemCount];
     let soldOpacity = 0;
     let reducedOpacity = 0;
@@ -82,7 +84,7 @@ export function initCarousel(carousel, selectedId) {
       const distance = Math.abs(offset);
       const size = sizes[index];
       if (size) {
-        size.style.transform = `translateX(calc(-50% + ${offset * spacing()}px))`;
+        size.style.transform = `translateX(calc(-50% + ${offset * itemSpacing}px))`;
         size.style.opacity = Math.max(0, 1 - distance / 0.2);
         size.hidden = distance >= 0.2;
       }
@@ -91,10 +93,9 @@ export function initCarousel(carousel, selectedId) {
       const limitedDistance = Math.min(distance, 4);
 
       item.style.transform = `translate(-50%, -50%)
-        translate3d(${offset * spacing()}px, 0, ${-limitedDistance * depth}px)
+        translate3d(${offset * itemSpacing}px, 0, ${-limitedDistance * depth}px)
         scale(${Math.max(0.15, 1 - limitedDistance * scaleAmount)})`;
       item.style.opacity = 1 - limitedDistance * 0.15;
-      item.style.filter = `blur(${Math.min(distance, 3) * 1.2}px)`;
       item.style.zIndex = 1000 - Math.round(distance * 10);
     });
     // The label stays in the screen centre; only its opacity follows the products.
@@ -102,19 +103,23 @@ export function initCarousel(carousel, selectedId) {
     if (reducedLabel) reducedLabel.style.opacity = reducedOpacity;
   }
 
-  function animate() {
+  function animate(timestamp) {
     animationFrame = null;
+    const elapsed = lastFrameTime === null ? 1000 / 60 : Math.min(timestamp - lastFrameTime, 50);
+    lastFrameTime = timestamp;
+    const smoothness = 1 - Math.exp(-elapsed / responseTime);
     const nextPosition = position + (target - position) * smoothness;
 
     // Die Bewegung endet exakt auf dem ausgewählten Produkt.
     if (Math.abs(target - position) < 0.001) { position = target; render(); return; }
     position = nextPosition;
     render();
-    startAnimation();
+    animationFrame = requestAnimationFrame(animate);
   }
 
   function startAnimation() {
     if (animationFrame === null && itemCount > 0) {
+      lastFrameTime = null;
       animationFrame = requestAnimationFrame(animate);
     }
   }
@@ -159,8 +164,9 @@ export function initCarousel(carousel, selectedId) {
     on(carousel, "wheel", (event) => {
       event.preventDefault();
       if (pressedPointer !== null) return;
-      const scroll = Math.abs(event.deltaX) < 0.01 ? event.deltaY : event.deltaX;
-      target += scroll * wheelSensitivity();
+      const scroll = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+      const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerWidth : 1;
+      target += scroll * unit * wheelSensitivity();
       startAnimation();
       clearTimeout(snapTimer);
       snapTimer = setTimeout(snap, 120);

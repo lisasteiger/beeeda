@@ -85,7 +85,7 @@ body.leaving-to-subsite .carousel {
   height: 130%;
   overflow: hidden;
   transform-style: preserve-3d;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
   cursor: grab;
   border-radius: 0;
   /* Leere Containerflächen dürfen andere Produktbilder nicht verdecken. */
