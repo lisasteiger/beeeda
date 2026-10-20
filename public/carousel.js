@@ -84,7 +84,6 @@ export function initCarousel(carousel, selectedId) {
       const distance = Math.abs(offset);
       const size = sizes[index];
       if (size) {
-        size.style.transform = `translateX(calc(-50% + ${offset * itemSpacing}px))`;
         size.style.opacity = Math.max(0, 1 - distance / 0.2);
         size.hidden = distance >= 0.2;
       }

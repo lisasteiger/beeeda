@@ -182,13 +182,13 @@ test('reduced label fades like sold while allowing navigation; sold takes preced
   assert.equal(page.soldLabel.style.opacity, 1);
 });
 
-test('sizes follow their image horizontally and only appear at the centre, including wraparound and mobile', () => {
+test('sizes stay centred and fade as their image moves away, including wraparound and mobile', () => {
   const page = setup();
   assert.equal(page.sizes[0].style.opacity, 1);
   assert.equal(page.sizes[1].hidden, true);
   page.at(0.1);
   assert.ok(Math.abs(page.sizes[0].style.opacity - 0.5) < 0.001);
-  assert.ok(Math.abs(parseFloat(page.sizes[0].style.transform.split('+ ')[1]) + 70) < 0.001);
+  assert.equal(page.sizes[0].style.transform, undefined);
   page.at(0.3);
   assert.equal(page.sizes[0].hidden, true);
   page.at(6);
@@ -197,7 +197,7 @@ test('sizes follow their image horizontally and only appear at the centre, inclu
   page.window.matchMedia = () => ({ matches: true });
   page.at(5.9);
   assert.equal(page.sizes[0].hidden, false);
-  assert.ok(Math.abs(parseFloat(page.sizes[0].style.transform.split('+ ')[1]) - 31.2) < 0.001);
+  assert.equal(page.sizes[0].style.transform, undefined);
 });
 
 test('all thirteen products can reach the centre and distant products never invert', () => {

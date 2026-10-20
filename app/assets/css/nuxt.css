@@ -2,7 +2,7 @@ html, body { height: auto; min-height: 100%; overflow-x: clip; overflow-y: visib
 html.home-page, html.home-page body { height: 100%; overflow: hidden; }
 .logo-layer.home-logo { z-index: 0; }
 .checkout-intro, .order-result p { font-size: var(--corner-link-font-size); font-weight: 500; }
-.carousel-sold { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(306px, 52.2vw); height: auto; z-index: 2000; opacity: 0; pointer-events: none; }
+.carousel-sold { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: auto; height: min(154px, 26.3vw); z-index: 2000; opacity: 0; pointer-events: none; }
 .empty-shop { position: relative; text-align: center; }
 #__nuxt a { text-decoration: none; }
 #__nuxt a:not(.cart-button) { color: #737373; }

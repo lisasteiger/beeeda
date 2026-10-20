@@ -29,6 +29,7 @@
 .carousel-size {
   position: absolute;
   left: 50%;
+  margin-inline: 0;
   font-weight: 700;
   white-space: nowrap;
   pointer-events: none;
