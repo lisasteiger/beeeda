@@ -1,0 +1,28 @@
+{
+  "archiveImage": "/assets/Beeeda-gruen-beige-zipfel-03.webp",
+  "care": "",
+  "cover": "/assets/Beeeda-gruen-beige-zipfel-03.webp",
+  "description": "Für sehr kalte Tage. Nicht nur die Ohren, sondern auch der Hals ist gut umschlossen und wird gewärmt. Mit der Lasche kann der Kopf ohne Probleme reinschlüpfen.",
+  "displayOrder": 0,
+  "gallery": [
+    "/assets/Beeeda-gruen-beige-zipfel-01.webp",
+    "/assets/Beeeda-gruen-beige-zipfel-02.webp",
+    "/assets/Beeeda-gruen-beige-zipfel-05.webp",
+    "/assets/Beeeda-gruen-beige-zipfel-06.webp",
+    "/assets/Beeeda-gruen-beige-zipfel-07.webp"
+  ],
+  "hero": "/assets/Beeeda-gruen-beige-zipfel-04.webp",
+  "materials": "Wolle, Seide, Kaschmir",
+  "measurements": "Kopfumfang: 52 | H: 20 | B: 13 | Guckloch: 14x7",
+  "name": "Grün beiger Zipfel",
+  "priceCents": 4960,
+  "productId": "Grün beiger Zipfel",
+  "reduced": false,
+  "relatedProducts": [
+    ""
+  ],
+  "shippingClass": "small",
+  "size": "",
+  "status": "active",
+  "thumbnail": "/assets/Beeeda-gruen-beige-zipfel-07.webp"
+}

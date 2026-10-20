@@ -1,0 +1,24 @@
+{
+  "archiveImage": "/assets/Beeeda-rosa-violet-mix-01.webp",
+  "care": "",
+  "cover": "/assets/Beeeda-rosa-violet-mix-01.webp",
+  "description": "Test der Produktverwaltung",
+  "displayOrder": 1,
+  "gallery": [
+    "/assets/Beeeda-rosa-violet-mix-04.webp",
+    "/assets/Beeeda-rosa-violet-mix-03.webp",
+    "/assets/Beeeda-rosa-violet-mix-05.webp",
+    "/assets/Beeeda-rosa-violet-mix-06.webp"
+  ],
+  "hero": "/assets/Beeeda-rosa-violet-mix-02.webp",
+  "materials": "",
+  "measurements": "",
+  "name": "rosa violet Mix",
+  "priceCents": 0,
+  "productId": "rosa violet Mix",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "",
+  "status": "active",
+  "thumbnail": "/assets/Beeeda-rosa-violet-mix-06.webp"
+}

@@ -1,0 +1,2 @@
+<template><SiteNavigation /><NuxtPage /></template>
+
