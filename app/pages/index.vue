@@ -37,7 +37,7 @@ onBeforeUnmount(() => { generation++; stopWatching?.(); dispose?.() })
     </div>
     <span v-for="slide in slides" :key="'size-' + slide.id" class="site-link carousel-size">{{ slide.size }}</span>
     <img id="carousel-sold" class="carousel-sold" src="/assets/verkauft.svg" alt="" aria-hidden="true" />
-    <img v-if="slides.some(slide => slide.reduced && !slide.sold)" id="carousel-reduced" class="carousel-sold" src="/assets/reduziert.svg" alt="" aria-hidden="true" />
+    <img v-if="slides.some(slide => slide.reduced && !slide.sold)" id="carousel-reduced" class="carousel-sold" :src="'/assets/reduziert.svg'" alt="" aria-hidden="true" />
     <p v-if="catalog && !slides.length" class="empty-shop">Neue Produkte folgen bald.</p>
   </main>
 </template>
