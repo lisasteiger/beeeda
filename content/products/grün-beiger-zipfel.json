@@ -17,11 +17,12 @@
   "name": "Grün beiger Zipfel",
   "priceCents": 4960,
   "productId": "Grün beiger Zipfel",
+  "reduced": true,
+  "relatedProducts": [
+    ""
+  ],
   "shippingClass": "small",
   "size": "",
   "status": "active",
-  "thumbnail": "/assets/Beeeda-gruen-beige-zipfel-07.webp",
-  "relatedProducts": [
-    ""
-  ]
+  "thumbnail": "/assets/Beeeda-gruen-beige-zipfel-07.webp"
 }
