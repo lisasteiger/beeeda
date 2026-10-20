@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { Product } from '#shared/shop'
-defineProps<{ products: Product[]; compact?: boolean }>()
+defineProps<{ products: Product[] }>()
 </script>
 
 <template>
-  <div class="product-suggestions" :class="{ 'product-suggestions--compact': compact }">
+  <div class="product-suggestions">
     <a v-for="item in products" :key="item.productId" class="product-suggestion" :href="'/produkte/' + encodeURIComponent(item.productId)">
       <figure>
         <img :src="item.cover || item.thumbnail || item.hero" alt="" loading="lazy" />
@@ -20,8 +20,6 @@ defineProps<{ products: Product[]; compact?: boolean }>()
 figure { margin: 0; }
 img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
 figcaption { margin-top: 10px; font-size: var(--corner-link-font-size); font-weight: 500; line-height: 1.4; text-align: center; overflow-wrap: anywhere; }
-.product-suggestions--compact { width: min(100%, 332px); margin: 24px auto 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.product-suggestions--compact img { width: 60px; height: 60px; margin-inline: auto; }
 @media (max-width: 700px) {
   .product-suggestions { gap: 24px 12px; }
   .product-suggestion { flex-basis: calc((100% - 24px) / 3); }

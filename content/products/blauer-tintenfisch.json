@@ -1,15 +1,19 @@
 {
+  "archiveImage": "/assets/Beeeda-blue-tintenfisch-02.webp",
+  "care": "",
+  "cover": "/assets/Beeeda-blue-tintenfisch-02.webp",
+  "displayOrder": 0,
   "gallery": [
     "/assets/Beeeda-blue-tintenfisch-04.webp",
     "/assets/Beeeda-blue-tintenfisch-05.webp",
     "/assets/Beeeda-blue-tintenfisch-06.webp",
     "/assets/Beeeda-blue-tintenfisch-07.webp"
   ],
-  "productId": "blauer Tintenfisch",
-  "name": "blauer Tintenfisch",
-  "status": "active",
-  "cover": "/assets/Beeeda-blue-tintenfisch-02.webp",
   "hero": "/assets/Beeeda-blue-tintenfisch-03.webp",
-  "thumbnail": "/assets/Beeeda-blue-tintenfisch-07.webp",
-  "archiveImage": "/assets/Beeeda-blue-tintenfisch-02.webp"
+  "name": "blauer Tintenfisch",
+  "productId": "blauer Tintenfisch",
+  "shippingClass": "large",
+  "size": "",
+  "status": "active",
+  "thumbnail": "/assets/Beeeda-blue-tintenfisch-07.webp"
 }

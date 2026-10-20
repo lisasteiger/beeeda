@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { money, nextShopProduct, productSuggestions } from '#shared/shop'
+import { money, productSuggestions } from '#shared/shop'
 const route = useRoute()
 const productId = String(route.params.id)
 const { data: product } = await useAsyncData('product-' + productId, () => queryCollection('products').where('productId', '=', productId).first())
@@ -8,7 +8,6 @@ const { catalog, ready, add, refresh } = useCart()
 const stock = computed(() => catalog.value?.products.find(item => item.productId === productId))
 await refresh()
 const sold = computed(() => product.value?.status === 'archived' || stock.value?.soldOut)
-const nextProduct = computed(() => nextShopProduct(catalog.value?.products || [], productId))
 const matchingProducts = computed(() => productSuggestions(catalog.value?.products || [], productId, 3, product.value?.relatedProducts || []))
 const moreProducts = computed(() => productSuggestions(catalog.value?.products || [], productId, 3))
 if (sold.value) await navigateTo('/', { redirectCode: 302 })
@@ -50,13 +49,12 @@ function buy() {
         <p class="product-info">{{ product.materials }}<br />{{ product.measurements }}<template v-if="product.care"><br />{{ product.care }}</template></p>
       </details>
       <button id="buy-button" class="buy-button buy-graphic" :disabled="!ready || !catalog || product.status !== 'active' || stock?.soldOut || stock?.available === 0" aria-label="Kaufen" @click="buy"><img src="/assets/kaufen.svg" alt="" aria-hidden="true" /><span class="buy-label">Kaufen</span></button>
-      <ProductSuggestions v-if="matchingProducts.length" :products="matchingProducts" compact aria-label="Passende Produkte" />
+      <ProductSuggestions v-if="matchingProducts.length" :products="matchingProducts" class="product-matching" aria-label="Passende Produkte" />
     </section>
     <section v-if="product.gallery?.length" class="gallery gallery-secondary" :aria-label="'Weitere Bilder von ' + product.name"><div v-for="(image, index) in product.gallery" :key="image" class="gallery-image"><img :src="image" :alt="product.name + ', Detail ' + (index + 1)" loading="lazy" /></div></section>
     <section v-if="moreProducts.length" class="product-discover" aria-labelledby="discover-heading">
       <h2 id="discover-heading">seh dir weitere Produkte an</h2>
       <ProductSuggestions :products="moreProducts" />
-      <a v-if="nextProduct" class="product-next" :href="'/produkte/' + encodeURIComponent(nextProduct.productId)" :aria-label="'Nächstes Produkt: ' + nextProduct.name">Nächstes Produkt →</a>
     </section>
   </main>
   <div v-if="confirmed" class="purchase-overlay" role="status"><p><span>{{ product?.name }}</span><span>ist jetzt</span><span>im Warenkorb.</span></p></div>
