@@ -16,6 +16,7 @@
   "name": "rosa violet Mix",
   "priceCents": 0,
   "productId": "rosa violet Mix",
+  "reduced": false,
   "shippingClass": "large",
   "size": "",
   "status": "active",

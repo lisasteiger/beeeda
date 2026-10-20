@@ -1,10 +1,11 @@
 {
   "care": "",
+  "cover": "/assets/Shirt-2.webp",
   "displayOrder": 0,
+  "name": "shirt 2",
+  "productId": "shirt 2",
+  "reduced": true,
   "shippingClass": "large",
   "size": "",
-  "status": "active",
-  "productId": "shirt 2",
-  "name": "shirt 2",
-  "cover": "/assets/Shirt-2.webp"
+  "status": "active"
 }
