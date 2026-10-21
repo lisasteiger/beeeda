@@ -4,6 +4,7 @@
   "displayOrder": 0,
   "name": "shirt 3",
   "productId": "shirt 3",
+  "reduced": false,
   "relatedProducts": [
     "shirt 1",
     "shirt 2",
@@ -11,5 +12,8 @@
   ],
   "shippingClass": "large",
   "size": "",
-  "status": "active"
+  "status": "active",
+  "gallery": [
+    "/assets/Beeeda-gruen-blob-03.webp"
+  ]
 }

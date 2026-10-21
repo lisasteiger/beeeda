@@ -16,8 +16,9 @@
   "name": "violete Orange",
   "priceCents": 4960,
   "productId": "violete Orange",
+  "reduced": false,
   "shippingClass": "small",
   "size": "",
-  "status": "active",
+  "status": "archived",
   "thumbnail": "/assets/Beeeda-Violete-orange-06.webp"
 }

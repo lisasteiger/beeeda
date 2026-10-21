@@ -49,7 +49,10 @@ function buy() {
         <p class="product-info">{{ product.materials }}<br />{{ product.measurements }}<template v-if="product.care"><br />{{ product.care }}</template></p>
       </details>
       <button id="buy-button" class="buy-button buy-graphic" :disabled="!ready || !catalog || product.status !== 'active' || stock?.soldOut || stock?.available === 0" aria-label="Kaufen" @click="buy"><img src="/assets/kaufen.svg" alt="" aria-hidden="true" /><span class="buy-label">Kaufen</span></button>
-      <ProductSuggestions v-if="matchingProducts.length" :products="matchingProducts" class="product-matching" aria-label="Passende Produkte" />
+      <section v-if="matchingProducts.length" class="product-matching" aria-labelledby="matching-heading">
+        <h2 id="matching-heading">Passende Produkte</h2>
+        <ProductSuggestions :products="matchingProducts" />
+      </section>
     </section>
     <section v-if="product.gallery?.length" class="gallery gallery-secondary" :aria-label="'Weitere Bilder von ' + product.name"><div v-for="(image, index) in product.gallery" :key="image" class="gallery-image"><img :src="image" :alt="product.name + ', Detail ' + (index + 1)" loading="lazy" /></div></section>
     <section v-if="moreProducts.length" class="product-discover" aria-labelledby="discover-heading">

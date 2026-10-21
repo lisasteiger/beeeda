@@ -4,6 +4,7 @@
   "displayOrder": 0,
   "name": "shirt 1",
   "productId": "shirt 1",
+  "reduced": false,
   "shippingClass": "large",
   "size": "",
   "status": "active"

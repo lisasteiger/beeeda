@@ -21,7 +21,7 @@ figure { margin: 0; }
 img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
 figcaption { margin-top: 10px; font-size: var(--corner-link-font-size); font-weight: 500; line-height: 1.4; text-align: center; overflow-wrap: anywhere; }
 @media (max-width: 700px) {
-  .product-suggestions { gap: 24px 12px; }
-  .product-suggestion { flex-basis: calc((100% - 24px) / 3); }
+  .product-suggestions { gap: 36px; }
+  .product-suggestion { flex-basis: 100%; max-width: 440px; }
 }
 </style>
