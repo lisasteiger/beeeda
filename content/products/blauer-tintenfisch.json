@@ -12,11 +12,12 @@
   "hero": "/assets/Beeeda-blue-tintenfisch-03.webp",
   "name": "blauer Tintenfisch",
   "productId": "blauer Tintenfisch",
-  "shippingClass": "large",
-  "size": "",
-  "status": "active",
-  "thumbnail": "/assets/Beeeda-blue-tintenfisch-07.webp",
+  "reduced": false,
   "relatedProducts": [
     ""
-  ]
+  ],
+  "shippingClass": "large",
+  "size": "12-24 M",
+  "status": "active",
+  "thumbnail": "/assets/Beeeda-blue-tintenfisch-07.webp"
 }

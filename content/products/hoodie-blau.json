@@ -1,5 +1,11 @@
 {
-  "productId": "hoodie blau",
+  "care": "",
+  "cover": "/assets/Shirt-1.webp",
+  "displayOrder": 0,
   "name": "hoodie blau",
-  "cover": "/assets/Shirt-1.webp"
+  "productId": "hoodie blau",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "24 M",
+  "status": "draft"
 }

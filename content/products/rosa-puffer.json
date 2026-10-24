@@ -1,8 +1,13 @@
 {
-  "productId": "Rosa Puffer",
-  "name": "Rosa Puffer",
-  "status": "archived",
+  "archiveImage": "/assets/Beeeda-rosa-puffer-01.webp",
+  "care": "",
   "cover": "/assets/Beeeda-rosa-puffer-01.webp",
+  "displayOrder": 0,
   "hero": "/assets/Beeeda-rosa-puffer-01.webp",
-  "archiveImage": "/assets/Beeeda-rosa-puffer-01.webp"
+  "name": "Rosa Puffer",
+  "productId": "Rosa Puffer",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "",
+  "status": "archived"
 }

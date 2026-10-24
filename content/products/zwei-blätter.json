@@ -15,8 +15,9 @@
   "name": "zwei Blätter",
   "priceCents": 4960,
   "productId": "zwei Blätter",
+  "reduced": false,
   "shippingClass": "small",
-  "size": "",
+  "size": "12-24 M",
   "status": "active",
   "thumbnail": "/assets/Beeeda-zwei-blaetter-05.webp"
 }
