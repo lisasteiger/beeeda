@@ -43,10 +43,25 @@ export async function productList(event: H3Event) {
   // Content's SQLite adapter can return integer columns as strings.
   return orderedProducts(rows.map(row => ({ ...row, priceCents: Number(row.priceCents), displayOrder: Number(row.displayOrder) }))) as Product[]
 }
+export async function synchronizeContentInventory(event: H3Event, products: Product[]) {
+  const { error } = await database(event).rpc('shop_sync_content_inventory', {
+    p_products: products.filter(product => product.status === 'active').map(product => ({
+      productId: product.productId,
+      quantity: product.stockQuantity == null ? null : Number(product.stockQuantity)
+    }))
+  })
+  // Keep the existing shop available while the one-time database migration is pending.
+  if (error?.code === 'PGRST202') {
+    console.warn('Studio inventory requires migration 202610240001_studio_inventory.sql.')
+    return
+  }
+  databaseError(error)
+}
 export async function priceCart(event: H3Event, input: unknown) {
   let lines
   try { lines = validateCart(input) } catch (error) { throw createError({ statusCode: 400, message: (error as Error).message }) }
   const products = await productList(event)
+  await synchronizeContentInventory(event, products)
   const items = lines.map(line => {
     const product = products.find(product => product.productId === line.productId && product.status === 'active')
     if (!product || !Number.isSafeInteger(product.priceCents) || product.priceCents <= 0) throw createError({ statusCode: 409, message: 'Dieses Produkt ist nicht mehr erhältlich.' })

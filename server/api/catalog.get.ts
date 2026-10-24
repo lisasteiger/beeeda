@@ -1,8 +1,9 @@
-import { database, productList } from '../utils/shop'
+import { database, productList, synchronizeContentInventory } from '../utils/shop'
 export default defineEventHandler(async event => {
   const products = (await productList(event)).filter(product => product.status !== 'draft')
   const config = useRuntimeConfig(event)
   if (!config.supabaseSecretKey) return { products: products.map(product => ({ ...product, available: null, soldOut: false })), checkoutReady: false }
+  await synchronizeContentInventory(event, products)
   const { data, error } = await database(event).rpc('shop_availability')
   if (error) {
     console.error('Inventory unavailable:', error.message)
@@ -16,4 +17,3 @@ export default defineEventHandler(async event => {
     checkoutReady: Boolean(config.stripeSecretKey && config.stripeWebhookSecret)
   }
 })
-
