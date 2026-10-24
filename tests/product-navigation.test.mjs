@@ -14,6 +14,12 @@ test('Studio order is numeric and ties are stable regardless of query order', ()
   assert.equal(products[0].productId, 'c')
 })
 
+test('incomplete Studio entries cannot break product ordering', () => {
+  const products = [{ productId: null }, {}, { productId: '' }, { productId: '  ' }, { productId: 'valid' }]
+  assert.deepEqual(orderedProducts(products), [{ productId: 'valid' }])
+  assert.equal(products.length, 5)
+})
+
 test('next product follows the carousel order, skips drafts and sold products, and wraps', () => {
   const products = [
     { productId: 'a', displayOrder: 3, status: 'active' },

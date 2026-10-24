@@ -5,7 +5,8 @@ cd -- "${0:A:h}" || exit 1
 export PATH="$HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
 studio_url="http://localhost:8001/"
 
-if /usr/bin/curl --silent --fail --max-time 2 "$studio_url" >/dev/null; then
+if /usr/sbin/lsof -nP -iTCP:8001 -sTCP:LISTEN >/dev/null 2>&1; then
+  print 'Studio läuft bereits. Die vorhandene Sitzung wird im Browser geöffnet.'
   /usr/bin/open "$studio_url"
   exit 0
 fi

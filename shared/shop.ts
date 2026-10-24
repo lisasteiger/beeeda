@@ -7,7 +7,7 @@ export type Product = {
 export type CartLine = { productId: string; quantity: number }
 export function orderedProducts<T extends { productId: string; displayOrder?: number | string }>(products: readonly T[]): T[] {
   const order = (product: T) => Number(product.displayOrder) || 0
-  return [...products].sort((a, b) => order(a) - order(b) || a.productId.localeCompare(b.productId, 'de'))
+  return products.filter(product => typeof product.productId === 'string' && product.productId.trim()).sort((a, b) => order(a) - order(b) || a.productId.localeCompare(b.productId, 'de'))
 }
 export function nextShopProduct(products: Product[], currentId: string) {
   const available = orderedProducts(products.filter(product => product.status === 'active' && !product.soldOut))
