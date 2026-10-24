@@ -2,6 +2,9 @@
   "care": "",
   "cover": "/assets/Shirt-3.webp",
   "displayOrder": 0,
+  "gallery": [
+    "/assets/Beeeda-gruen-blob-03.webp"
+  ],
   "name": "shirt 3",
   "productId": "shirt 3",
   "reduced": false,
@@ -11,9 +14,6 @@
     "shirt 4"
   ],
   "shippingClass": "large",
-  "size": "",
-  "status": "active",
-  "gallery": [
-    "/assets/Beeeda-gruen-blob-03.webp"
-  ]
+  "size": "12  M",
+  "status": "active"
 }
