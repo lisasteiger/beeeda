@@ -1,6 +1,6 @@
 {
   "archiveImage": "/assets/Beeeda-Lollipop-Beanie-01.webp",
-  "care": "",
+  "care": "53",
   "cover": "/assets/Beeeda-Lollipop-Beanie-02.webp",
   "description": "Für sehr kalte Tage. Nicht nur die Ohren, sondern auch der Hals ist gut umschlossen und wird gewärmt. Mit der Lasche kann der Kopf ohne Probleme reinschlüpfen.",
   "displayOrder": 0,
@@ -17,8 +17,9 @@
   "name": "Lollipop Beanie",
   "priceCents": 4960,
   "productId": "Lollipop Beanie",
+  "reduced": false,
   "shippingClass": "small",
-  "size": "",
+  "size": "52",
   "status": "active",
   "thumbnail": "/assets/Beeeda-Lollipop-Beanie-06.webp"
 }
