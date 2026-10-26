@@ -6,7 +6,7 @@ export default defineContentConfig({
       schema: z.object({
         productId: z.string().regex(/^[a-z0-9-]+$/).editor({ label: 'Produkt-ID (nach erster Bestellung nicht ändern)' }),
         name: z.string().min(1).editor({ label: 'Name' }),
-        displayOrder: z.number().multipleOf(1).default(0).describe('Reihenfolge im Carousel und beim nächsten Produkt: kleinere Zahlen zuerst (1, 2, 3 …).').editor({ label: 'Reihenfolge' }),
+        displayOrder: z.number().multipleOf(1).default(0).describe('Mit Pfeilen sortieren: http://localhost:8001/reihenfolge – diese Zahl wird dort automatisch gesetzt.').editor({ label: 'Reihenfolge' }),
         size: z.string().default('').editor({ label: 'Grösse auf der Startseite (z. B. 6–9 M oder S)' }),
         status: z.enum(['draft', 'active', 'archived']).default('draft').editor({ label: 'Entwurf / im Shop / verkauft (archived)' }),
         reduced: z.boolean().default(false).describe('Zeigt nur die Markierung „reduziert“ im Carousel. Preis und Kaufmöglichkeit bleiben unverändert.').editor({ label: 'Reduziert' }),

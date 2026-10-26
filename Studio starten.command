@@ -4,6 +4,7 @@ cd -- "${0:A:h}" || exit 1
 # Node ist auf diesem Mac auch in der Codex-Laufzeit vorhanden.
 export PATH="$HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
 studio_url="http://localhost:8001/"
+print 'Produkte und Galeriebilder sortieren: http://localhost:8001/reihenfolge'
 
 if /usr/sbin/lsof -nP -iTCP:8001 -sTCP:LISTEN >/dev/null 2>&1; then
   print 'Studio läuft bereits. Die vorhandene Sitzung wird im Browser geöffnet.'
