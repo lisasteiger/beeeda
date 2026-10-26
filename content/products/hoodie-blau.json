@@ -7,5 +7,6 @@
   "reduced": false,
   "shippingClass": "large",
   "size": "24 M",
-  "status": "draft"
+  "status": "draft",
+  "stockQuantity": 1
 }

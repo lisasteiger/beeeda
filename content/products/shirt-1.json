@@ -7,5 +7,6 @@
   "reduced": false,
   "shippingClass": "large",
   "size": "12 M",
-  "status": "active"
+  "status": "active",
+  "stockQuantity": 3
 }
