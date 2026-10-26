@@ -1,0 +1,23 @@
+{
+  "care": "",
+  "displayOrder": 0,
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "gallery": [
+    "/assets/Beeeda-rosa-welle-01.webp",
+    "/assets/Beeeda-rosa-welle-02.webp",
+    "/assets/Beeeda-rosa-welle-05.webp",
+    "/assets/Beeeda-rosa-welle-06.webp",
+    "/assets/Beeeda-rosa-welle-07.webp",
+    "/assets/Beeeda-rosa-welle-08.webp"
+  ],
+  "productId": "rosa Welle",
+  "name": "rosa Welle",
+  "cover": "/assets/Beeeda-rosa-welle-03.webp",
+  "hero": "/assets/Beeeda-rosa-welle-05.webp",
+  "thumbnail": "/assets/Beeeda-rosa-welle-04.webp",
+  "archiveImage": "/assets/Beeeda-rosa-welle-03.webp"
+}
