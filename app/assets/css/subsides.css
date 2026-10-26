@@ -527,6 +527,8 @@ html.pinkchaos-page body { overflow-x: clip; overflow-y: visible; }
   }
 
   .pinkchaos .detail-content {
+    position: relative;
+    top: auto;
     margin-top: 72px;
   }
 

@@ -55,8 +55,7 @@ function buy() {
       </section>
     </section>
     <section v-if="product.gallery?.length" class="gallery gallery-secondary" :aria-label="'Weitere Bilder von ' + product.name"><div v-for="(image, index) in product.gallery" :key="image" class="gallery-image"><img :src="image" :alt="product.name + ', Detail ' + (index + 1)" loading="lazy" /></div></section>
-    <section v-if="moreProducts.length" class="product-discover" aria-labelledby="discover-heading">
-      <h2 id="discover-heading">seh dir weitere Produkte an</h2>
+    <section v-if="moreProducts.length" class="product-discover" aria-label="Weitere Produkte">
       <ProductSuggestions :products="moreProducts" />
     </section>
   </main>
