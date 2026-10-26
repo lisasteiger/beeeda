@@ -1,0 +1,25 @@
+{
+  "archiveImage": "/assets/Beeeda-pinker-wurm-03.webp",
+  "care": "",
+  "cover": "/assets/Beeeda-pinker-wurm-03.webp",
+  "displayOrder": 0,
+  "gallery": [
+    "/assets/Beeeda-pinker-wurm-01.webp",
+    "/assets/Beeeda-pinker-wurm-02.webp",
+    "/assets/Beeeda-pinker-wurm-04.webp",
+    "/assets/Beeeda-pinker-wurm-05.webp",
+    "/assets/Beeeda-pinker-wurm-06.webp",
+    "/assets/Beeeda-pinker-wurm-07.webp",
+    "/assets/Beeeda-pinker-wurm-08.webp",
+    "/assets/Beeeda-pinker-wurm-09.webp"
+  ],
+  "hero": "/assets/Beeeda-pinker-wurm-10.webp",
+  "name": "pinker Wurm",
+  "productId": "pinker Wurm",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-pinker-wurm-04.webp"
+}
