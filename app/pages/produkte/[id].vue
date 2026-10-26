@@ -42,7 +42,7 @@ function buy() {
     <section class="gallery product-gallery" :aria-label="'Bild von ' + product.name"><div class="gallery-image"><img class="gallery-slide" :src="product.hero || product.cover" :alt="product.name + ', Gesamtansicht'" /></div></section>
     <section ref="detail" class="detail-content">
       <h1>{{ product.name }}</h1>
-      <p class="status">{{ product.status === 'archived' || stock?.soldOut ? 'Verkauft' : money(product.priceCents) }}<template v-if="stock?.available != null"><br /><span>Noch {{ stock.available }} Stück verfügbar</span></template></p>
+      <p class="status">{{ product.status === 'archived' || stock?.soldOut ? 'Verkauft' : money(product.priceCents) }}<template v-if="stock?.available != null"><br /><span>{{ product.stockDisplay === 'Einzelstück' ? 'Einzelstück' : `Noch ${stock.available} Stück verfügbar` }}</span></template></p>
       <p class="description-text">{{ product.description }}</p>
       <details class="product-info disclosure">
         <summary><span class="info-closed">+ Infos</span><span class="info-open">Infos schliessen</span></summary>

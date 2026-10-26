@@ -12,6 +12,7 @@ export default defineContentConfig({
         reduced: z.boolean().default(false).describe('Zeigt nur die Markierung „reduziert“ im Carousel. Preis und Kaufmöglichkeit bleiben unverändert.').editor({ label: 'Reduziert' }),
         priceCents: z.number().multipleOf(1).min(0).editor({ label: 'Preis in Rappen (4960 = CHF 49.60)' }),
         stockQuantity: z.number().multipleOf(1).min(0).max(9999).nullable().default(null).describe('Gesamtanzahl inklusive bereits verkaufter Stücke. Leer = Einzelstück (1). Für Nachschub die Gesamtanzahl erhöhen. Bestehende Supabase-Bestände bleiben bei leerem Feld unverändert, bis hier erstmals eine Zahl gesetzt wird.').editor({ label: 'Anzahl insgesamt' }),
+        stockDisplay: z.enum(['Anzahl', 'Einzelstück']).default('Anzahl').describe('Anzeige unter dem Preis: aktueller Bestand oder der Text „Einzelstück“. Der tatsächliche Bestand wird separat festgelegt.').editor({ label: 'Bestandsanzeige' }),
         shippingClass: z.enum(['small', 'large']).default('large').editor({ label: 'Versand: small = CHF 2, large = CHF 9' }),
         description: z.string().editor({ label: 'Beschreibung', input: 'textarea' }),
         materials: z.string().editor({ label: 'Material' }),
