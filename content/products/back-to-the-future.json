@@ -1,20 +1,20 @@
 {
+  "archiveImage": "/assets/Beeeda-back-to-the-future-01.webp",
   "care": "",
+  "cover": "/assets/Beeeda-back-to-the-future-01.webp",
   "displayOrder": 0,
-  "reduced": false,
-  "shippingClass": "large",
-  "size": "",
-  "status": "active",
-  "stockDisplay": "Einzelstück",
   "gallery": [
     "/assets/Beeeda-back-to-the-future-02.webp",
     "/assets/Beeeda-back-to-the-future-03.webp",
     "/assets/Beeeda-back-to-the-future-05.webp"
   ],
-  "productId": "Back to the future",
-  "name": "Back to the future",
-  "cover": "/assets/Beeeda-back-to-the-future-01.webp",
   "hero": "/assets/Beeeda-back-to-the-future-04.webp",
-  "thumbnail": "/assets/Beeeda-back-to-the-future-05.webp",
-  "archiveImage": "/assets/Beeeda-back-to-the-future-01.webp"
+  "name": "Back to the future",
+  "productId": "Back to the future",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "",
+  "status": "draft",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-back-to-the-future-05.webp"
 }
