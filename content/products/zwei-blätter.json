@@ -1,0 +1,24 @@
+{
+  "archiveImage": "/assets/Beeeda-zwei-blaetter-02.webp",
+  "care": "",
+  "cover": "/assets/Beeeda-zwei-blaetter-02.webp",
+  "description": "Für sehr kalte Tage. Nicht nur die Ohren, sondern auch der Hals ist gut umschlossen und wird gewärmt. Mit der Lasche kann der Kopf ohne Probleme reinschlüpfen.",
+  "displayOrder": 8,
+  "gallery": [
+    "/assets/Beeeda-zwei-blaetter-01.webp",
+    "/assets/Beeeda-zwei-blaetter-04.webp",
+    "/assets/Beeeda-zwei-blaetter-05.webp"
+  ],
+  "hero": "/assets/Beeeda-zwei-blaetter-03.webp",
+  "materials": "Wolle, Seide, Kaschmir",
+  "measurements": "Kopfumfang: 52 | H: 20 | B: 13 | Guckloch: 14x7",
+  "name": "zwei Blätter",
+  "priceCents": 4960,
+  "productId": "zwei Blätter",
+  "reduced": false,
+  "shippingClass": "small",
+  "size": "12-24 M",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-zwei-blaetter-05.webp"
+}

@@ -29,9 +29,9 @@
               <label>Nachname<input name="lastName" autocomplete="family-name" required maxlength="200" /></label>
               <label class="wide">E-Mail<input name="email" type="email" autocomplete="email" required maxlength="200" /></label>
               <label class="wide">Strasse und Hausnummer<input name="street" autocomplete="street-address" required maxlength="200" /></label>
-              <label>Postleitzahl<input name="postalCode" autocomplete="postal-code" required maxlength="200" /></label>
+              <label>Postleitzahl<input name="postalCode" autocomplete="postal-code" required pattern="[0-9]{4}" maxlength="4" /></label>
               <label>Ort<input name="city" autocomplete="address-level2" required maxlength="200" /></label>
-              <label class="wide">Land<input name="country" autocomplete="country-name" value="Schweiz" required maxlength="200" /></label>
+              <label class="wide">Land<input name="country" autocomplete="country-name" value="Schweiz" readonly required maxlength="200" /></label>
             </div>
             <p class="cart-note">Beim nächsten Schritt reservieren wir deine Stücke für 10 Minuten. Das Einlegen in den Warenkorb reserviert noch nichts.</p>
             <button class="cart-button" type="submit">Für Testzahlung reservieren</button>
@@ -51,8 +51,8 @@
         </section>
         <aside class="cart-summary">
           <h2>Deine Stücke</h2><ul id="checkout-items"></ul>
-          <dl><div class="cart-total"><dt>Artikelsumme</dt><dd id="checkout-total"></dd></div></dl>
-          <p class="cart-note">CHF · TWINT ist noch nicht verbunden. Versandkosten sind noch nicht eingerichtet. Dies ist keine echte Bestellung.</p>
+          <dl><div><dt>Artikelsumme</dt><dd id="checkout-subtotal"></dd></div><div><dt>Versand Schweiz</dt><dd id="checkout-shipping"></dd></div><div class="cart-total"><dt>Gesamtsumme</dt><dd id="checkout-total"></dd></div></dl>
+          <p class="cart-note">CHF · TWINT ist noch nicht verbunden. Dies ist keine echte Bestellung.</p>
         </aside>
       </div>
     </main>

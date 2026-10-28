@@ -1,0 +1,24 @@
+{
+  "archiveImage": "/assets/Beeeda-blue-tintenfisch-02.webp",
+  "care": "",
+  "cover": "/assets/Beeeda-blue-tintenfisch-02.webp",
+  "displayOrder": 1,
+  "gallery": [
+    "/assets/Beeeda-blue-tintenfisch-04.webp",
+    "/assets/Beeeda-blue-tintenfisch-05.webp",
+    "/assets/Beeeda-blue-tintenfisch-06.webp",
+    "/assets/Beeeda-blue-tintenfisch-07.webp"
+  ],
+  "hero": "/assets/Beeeda-blue-tintenfisch-03.webp",
+  "name": "blauer Tintenfisch",
+  "productId": "blauer Tintenfisch",
+  "reduced": false,
+  "relatedProducts": [
+    ""
+  ],
+  "shippingClass": "large",
+  "size": "12-24 M",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-blue-tintenfisch-07.webp"
+}

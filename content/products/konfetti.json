@@ -1,0 +1,20 @@
+{
+  "care": "",
+  "displayOrder": 0,
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "gallery": [
+    "/assets/Beeeda-konfetti-03.webp",
+    "/assets/Beeeda-konfetti-04.webp",
+    "/assets/Beeeda-konfetti-05.webp"
+  ],
+  "productId": "Konfetti",
+  "name": "Konfetti",
+  "cover": "/assets/Beeeda-konfetti-04.webp",
+  "hero": "/assets/Beeeda-konfetti-03.webp",
+  "thumbnail": "/assets/Beeeda-konfetti-05.webp",
+  "archiveImage": "/assets/Beeeda-konfetti-05.webp"
+}

@@ -1,0 +1,20 @@
+{
+  "archiveImage": "/assets/Beeeda-rosa-Regen-05.webp",
+  "care": "",
+  "cover": "/assets/Beeeda-rosa-Regen-05.webp",
+  "displayOrder": 0,
+  "gallery": [
+    "/assets/Beeeda-rosa-Regen-01.webp",
+    "/assets/Beeeda-rosa-Regen-02.webp",
+    "/assets/Beeeda-rosa-Regen-03.webp"
+  ],
+  "hero": "/assets/Beeeda-rosa-Regen-04.webp",
+  "name": "rosa Regen",
+  "productId": "rosa Regen",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-rosa-Regen-03.webp"
+}

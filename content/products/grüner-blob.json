@@ -1,0 +1,22 @@
+{
+  "archiveImage": "/assets/Beeeda-gruen-blob-01.webp",
+  "care": "",
+  "cover": "/assets/Beeeda-gruen-blob-01.webp",
+  "displayOrder": 5,
+  "gallery": [
+    "/assets/Beeeda-gruen-blob-03.webp",
+    "/assets/Beeeda-gruen-blob-04.webp",
+    "/assets/Beeeda-gruen-blob-05.webp",
+    "/assets/Beeeda-gruen-blob-06.webp",
+    "/assets/Beeeda-gruen-blob-07.webp"
+  ],
+  "hero": "/assets/Beeeda-gruen-blob-02.webp",
+  "name": "grüner Blob",
+  "productId": "grüner Blob",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "12-24 M",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-gruen-blob-06.webp"
+}
