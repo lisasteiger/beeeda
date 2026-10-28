@@ -1,21 +1,21 @@
 {
+  "archiveImage": "/assets/Beeeda-blauer-schlumpf-02.webp",
   "care": "",
+  "cover": "/assets/Beeeda-blauer-schlumpf-02.webp",
   "displayOrder": 0,
-  "reduced": false,
-  "shippingClass": "large",
-  "size": "",
-  "status": "active",
-  "stockDisplay": "Einzelstück",
   "gallery": [
     "/assets/Beeeda-blauer-schlumpf-01.webp",
     "/assets/Beeeda-blauer-schlumpf-03.webp",
     "/assets/Beeeda-blauer-schlumpf-04.webp",
     "/assets/Beeeda-blauer-schlumpf-06.webp"
   ],
-  "productId": "blauer Schlumpf",
-  "name": "blauer Schlumpf",
-  "cover": "/assets/Beeeda-blauer-schlumpf-02.webp",
   "hero": "/assets/Beeeda-blauer-schlumpf-05.webp",
-  "thumbnail": "/assets/Beeeda-blauer-schlumpf-06.webp",
-  "archiveImage": "/assets/Beeeda-blauer-schlumpf-02.webp"
+  "name": "blauer Schlumpf",
+  "productId": "blauer Schlumpf",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-blauer-schlumpf-06.webp"
 }
