@@ -317,19 +317,20 @@ body.subsite-leaving .subsite {
 
 .impressum-page a { color: inherit; }
 
-.info-page.about-page {
+.info-page.about-page,
+.info-page.centered-impressum {
   min-height: 100dvh;
-  padding-block: 150px;
+  animation-fill-mode: backwards;
+  padding-top: calc(var(--content-top, 100px) + 20px);
+  padding-bottom: calc(2 * var(--corner-link-font-size) + max(4px, env(safe-area-inset-bottom)) + 20px);
   display: flex;
+}
+.info-page.about-page {
   align-items: center;
 }
 .about-page p { margin: 0; }
 
 .info-page.centered-impressum {
-  min-height: 100dvh;
-  padding-top: calc(var(--content-top, 150px) + 20px);
-  padding-bottom: 20px;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 24px;

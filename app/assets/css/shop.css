@@ -112,18 +112,13 @@
   display: none;
 }
 
-.purchase-overlay p {
-  margin: 0;
-  color: #000;
-  font-size: clamp(1.8rem, 5vw, 4rem);
-  font-weight: 600;
-  line-height: 1.2;
-  text-align: center;
-}
-
-.purchase-overlay span {
+.purchase-overlay img {
   display: block;
+  width: min(80vw, 500px);
+  max-height: 80dvh;
+  object-fit: contain;
 }
+.purchase-overlay img.white-artwork { filter: invert(1); }
 
 @keyframes purchase-confirmation {
   0%, 100% { opacity: 0; }

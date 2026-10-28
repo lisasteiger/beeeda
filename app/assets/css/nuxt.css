@@ -63,5 +63,6 @@ nuxt-studio { position: relative; z-index: 8000; }
   .product-discover { width: calc(100% - 32px); }
   .product-matching { width: calc(100vw - 24px); }
   .pinkchaos .product-discover .product-suggestions { gap: 24px 12px; }
-  .product-discover .product-suggestions .product-suggestion { flex-basis: calc((100% - 24px) / 3); max-width: none; }
+  .product-discover .product-suggestions .product-suggestion { flex-basis: calc((100% - 12px) / 2); max-width: none; }
+  .product-discover .product-suggestion:nth-child(n + 3) { display: none; }
 }

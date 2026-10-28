@@ -14,6 +14,7 @@ if (sold.value) await navigateTo('/', { redirectCode: 302 })
 watch(sold, value => { if (value) navigateTo('/', { replace: true }) })
 const detail = ref<HTMLElement>()
 const confirmed = ref(false)
+const confirmationImage = useState('purchase-confirmation-image', () => 'cool')
 let timer: ReturnType<typeof setTimeout> | undefined
 let observer: ResizeObserver | undefined
 useHead({ title: product.value.name + ' – Beeeda' })
@@ -32,6 +33,9 @@ onMounted(() => {
 onBeforeUnmount(() => { observer?.disconnect(); clearTimeout(timer) })
 function buy() {
   add(productId)
+  try { confirmationImage.value = sessionStorage.getItem('beeeda.purchase-confirmation') || confirmationImage.value } catch {}
+  confirmationImage.value = confirmationImage.value === 'yuhu' ? 'cool' : 'yuhu'
+  try { sessionStorage.setItem('beeeda.purchase-confirmation', confirmationImage.value) } catch {}
   confirmed.value = true
   clearTimeout(timer)
   timer = setTimeout(() => { confirmed.value = false }, 3000)
@@ -59,5 +63,5 @@ function buy() {
       <ProductSuggestions :products="moreProducts" />
     </section>
   </main>
-  <div v-if="confirmed" class="purchase-overlay" role="status"><p><span>{{ product?.name }}</span><span>ist jetzt</span><span>im Warenkorb.</span></p></div>
+  <div v-if="confirmed" class="purchase-overlay" role="status"><img :src="'/assets/' + confirmationImage + '.svg'" :class="{ 'white-artwork': confirmationImage === 'yuhu' }" :alt="product?.name + ' ist jetzt im Warenkorb.'" /></div>
 </template>
