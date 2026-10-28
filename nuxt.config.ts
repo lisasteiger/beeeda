@@ -3,6 +3,7 @@ const studioReady = Boolean(process.env.STUDIO_GITHUB_CLIENT_ID && process.env.S
 
 export default defineNuxtConfig({
   compatibilityDate: '2026-10-07',
+  telemetry: false,
   modules: ['@nuxt/content', ...(development || studioReady ? ['nuxt-studio'] : [])],
   devtools: { enabled: false },
   content: { experimental: { sqliteConnector: 'native' } },
