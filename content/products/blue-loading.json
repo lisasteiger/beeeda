@@ -1,0 +1,21 @@
+{
+  "archiveImage": "/assets/Beeeda-blue-loading-05.webp",
+  "care": "",
+  "cover": "/assets/Beeeda-blue-loading-05.webp",
+  "displayOrder": 0,
+  "hero": "/assets/Beeeda-blue-loading-04.webp",
+  "name": "blue loading ...",
+  "productId": "blue loading ...",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-blue-loading-06.webp",
+  "gallery": [
+    "/assets/Beeeda-blue-loading-01.webp",
+    "/assets/Beeeda-blue-loading-02.webp",
+    "/assets/Beeeda-blue-loading-03.webp",
+    "/assets/Beeeda-blue-loading-06.webp"
+  ]
+}

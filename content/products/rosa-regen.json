@@ -1,20 +1,20 @@
 {
+  "archiveImage": "/assets/Beeeda-rosa-Regen-05.webp",
   "care": "",
+  "cover": "/assets/Beeeda-rosa-Regen-05.webp",
   "displayOrder": 0,
-  "reduced": false,
-  "shippingClass": "large",
-  "size": "",
-  "status": "active",
-  "stockDisplay": "Einzelstück",
   "gallery": [
     "/assets/Beeeda-rosa-Regen-01.webp",
     "/assets/Beeeda-rosa-Regen-02.webp",
     "/assets/Beeeda-rosa-Regen-03.webp"
   ],
-  "productId": "rosa Regen",
-  "name": "rosa Regen",
-  "cover": "/assets/Beeeda-rosa-Regen-05.webp",
   "hero": "/assets/Beeeda-rosa-Regen-04.webp",
-  "thumbnail": "/assets/Beeeda-rosa-Regen-03.webp",
-  "archiveImage": "/assets/Beeeda-rosa-Regen-05.webp"
+  "name": "rosa Regen",
+  "productId": "rosa Regen",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-rosa-Regen-03.webp"
 }
