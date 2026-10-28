@@ -3,6 +3,15 @@
   "care": "",
   "cover": "/assets/Beeeda-gruen-rosa-hoernli-01.webp",
   "displayOrder": 0,
+  "gallery": [
+    "/assets/Beeeda-gruen-rosa-hoernli-03.webp",
+    "/assets/Beeeda-gruen-rosa-hoernli-04.webp",
+    "/assets/Beeeda-gruen-rosa-hoernli-05.webp",
+    "/assets/Beeeda-gruen-rosa-hoernli-06.webp",
+    "/assets/Beeeda-gruen-rosa-hoernli-07.webp",
+    "/assets/Beeeda-gruen-rosa-hoernli-08.webp",
+    "/assets/Beeeda-gruen-rosa-hoernli-09.webp"
+  ],
   "hero": "/assets/Beeeda-gruen-rosa-hoernli-09.webp",
   "name": "grün rosa Hörnli",
   "productId": "grün rosa Hörnli",
@@ -11,13 +20,5 @@
   "size": "",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-gruen-rosa-hoernli-03.webp",
-  "gallery": [
-    "/assets/Beeeda-gruen-rosa-hoernli-03.webp",
-    "/assets/Beeeda-gruen-rosa-hoernli-04.webp",
-    "/assets/Beeeda-gruen-rosa-hoernli-05.webp",
-    "/assets/Beeeda-gruen-rosa-hoernli-06.webp",
-    "/assets/Beeeda-gruen-rosa-hoernli-07.webp",
-    "/assets/Beeeda-gruen-rosa-hoernli-08.webp"
-  ]
+  "thumbnail": "/assets/Beeeda-gruen-rosa-hoernli-03.webp"
 }
