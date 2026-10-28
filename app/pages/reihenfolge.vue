@@ -52,7 +52,7 @@ useHead({ title: 'Reihenfolge – Beeeda' })
   <main class="sorting">
     <h1>Reihenfolge bearbeiten</h1>
     <nav><a href="/_studio">Studio öffnen</a> · <a href="/" target="_blank">Vorschau öffnen</a></nav>
-    <p>Mit ↑ und ↓ verschieben. Der zufällige Start im Carousel bleibt erhalten; die Produkte folgen danach dieser Reihenfolge. Entwürfe erscheinen erst, wenn sie im Shop aktiv sind.</p>
+    <p>Mit ↑ und ↓ verschieben. Im Shop wird die gesamte Produktreihenfolge bei jedem Neuladen zufällig gemischt. Entwürfe erscheinen erst, wenn sie im Shop aktiv sind.</p>
     <button :disabled="!changed || saving" @click="save">{{ saving ? 'Wird gespeichert …' : 'Reihenfolge speichern' }}</button>
     <p role="status">{{ loadError ? 'Produkte konnten nicht geladen werden. Bitte die Seite neu laden.' : message }}</p>
     <div class="sorting-columns">

@@ -7,7 +7,7 @@ const source = readFileSync(new URL('../public/carousel.js', import.meta.url), '
   .replace('export function initCarousel(carousel, selectedId) {', 'const carousel = document.getElementById("carousel"); const selectedId = preferredId;')
   .replace('return () => {', 'globalThis.cleanup = () => {')
   .replace(/\n}\s*$/, '');
-function setup({ count = 6, preferredId = 'product-0', query = '', saved = {}, soldIndices } = {}) {
+function setup({ count = 6, preferredId = 'product-0', query = '', saved = {}, soldIndices, ranks } = {}) {
   let id = 0;
   let clock = 0;
   const frames = new Map(), timers = new Map();
@@ -39,7 +39,15 @@ function setup({ count = 6, preferredId = 'product-0', query = '', saved = {}, s
   const window = Object.assign(element(), { location: { search: query, pathname: '/', hash: '' }, innerWidth: 1135, matchMedia: () => ({ matches: false }), history: { replaceState() {} } });
   const classes = new Set();
   const storage = new Map(Object.entries(saved));
+  let rankIndex = 0;
+  const math = Object.create(Math);
+  math.random = () => {
+    if (rankIndex >= count) return Math.random();
+    const index = rankIndex++;
+    return (ranks?.[index] ?? index) / count;
+  };
   const context = vm.createContext({ window, URLSearchParams, AbortController, preferredId,
+    Math: math,
     sessionStorage: { getItem: key => storage.get(key), setItem: (key, value) => storage.set(key, value) },
     localStorage: { getItem: key => storage.get(key), setItem: (key, value) => storage.set(key, value) },
     document: { getElementById: id => id === 'carousel-sold' ? soldLabel : carousel, querySelectorAll: selector => selector === '.carousel-size' ? sizes : items,
@@ -51,6 +59,7 @@ function setup({ count = 6, preferredId = 'product-0', query = '', saved = {}, s
   });
   vm.runInContext(source, context);
   return { carousel, window, link, frames, timers, classes, soldLabel, reducedLabel, sizes, storage,
+    order: () => Array.from(vm.runInContext('ids', context)),
     cleanup: () => context.cleanup(),
     at: index => vm.runInContext(`position = ${index}; render()`, context),
     wheel: () => carousel.emit('wheel', { deltaX: 250, deltaY: 0 }),
@@ -61,6 +70,20 @@ function setup({ count = 6, preferredId = 'product-0', query = '', saved = {}, s
     transforms: () => items.map(item => item.style.transform),
   };
 }
+
+test('reloads shuffle the full order while keeping sizes, sold labels and the selected product aligned', () => {
+  const page = setup({ ranks: [3, 0, 5, 1, 4, 2], preferredId: 'product-3' });
+  assert.deepEqual(page.order(), ['product-1', 'product-3', 'product-5', 'product-0', 'product-4', 'product-2']);
+  assert.equal(page.carousel.dataset.currentProduct, 'product-3');
+  page.order().forEach((product, index) => {
+    page.at(index);
+    assert.equal(page.sizes[Number(product.slice(8))].style.opacity, 1);
+    assert.equal(page.soldLabel.style.opacity, ['product-4', 'product-5'].includes(product) ? 1 : 0);
+  });
+  page.window.emit('resize');
+  assert.deepEqual(page.order(), ['product-1', 'product-3', 'product-5', 'product-0', 'product-4', 'product-2']);
+  assert.notDeepEqual(setup({ ranks: [5, 2, 0, 4, 1, 3] }).order(), page.order());
+});
 
 test('pressing and clicking a moving image keeps its animation running', () => {
   const page = setup();

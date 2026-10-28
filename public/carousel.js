@@ -5,6 +5,11 @@ export function initCarousel(carousel, selectedId) {
   const reducedLabel = carousel.querySelector("#carousel-reduced");
   const items = [...carousel.querySelectorAll(".item")];
   const sizes = [...carousel.querySelectorAll(".carousel-size")];
+  // Keep the shuffled order during live stock updates; a reload creates fresh ranks.
+  const shuffled = items.map((item, index) => ({ item, size: sizes[index], rank: Number(item.dataset.shuffleRank ??= Math.random()) }))
+    .sort((a, b) => a.rank - b.rank);
+  items.splice(0, items.length, ...shuffled.map(entry => entry.item));
+  sizes.splice(0, sizes.length, ...shuffled.map(entry => entry.size));
   const itemCount = items.length;
   const ids = items.map(item => item.dataset.productId);
   const storage = key => key === 'beeeda.carousel-start' ? localStorage : sessionStorage;
