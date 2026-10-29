@@ -65,4 +65,6 @@ nuxt-studio { position: relative; z-index: 8000; }
   .pinkchaos .product-discover .product-suggestions { gap: 24px 12px; }
   .product-discover .product-suggestions .product-suggestion { flex-basis: calc((100% - 12px) / 2); max-width: none; }
   .product-discover .product-suggestion:nth-child(n + 3) { display: none; }
+  .pinkchaos .gallery-secondary::before { bottom: -44px; }
+  .product-discover::before { bottom: calc(-2vh - 104px); }
 }

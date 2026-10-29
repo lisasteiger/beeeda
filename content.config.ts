@@ -17,6 +17,7 @@ export default defineContentConfig({
         description: z.string().editor({ label: 'Beschreibung', input: 'textarea' }),
         materials: z.string().editor({ label: 'Material' }),
         measurements: z.string().editor({ label: 'Masse' }),
+        materialBehavior: z.string().default('').editor({ label: 'Materialverhalten', input: 'textarea' }),
         care: z.string().default('').editor({ label: 'Pflege' }),
         relatedProducts: z.array(z.string()).max(3).default([]).describe('Optional: bis zu drei Produkt-IDs für die kleinen Empfehlungen unter Kaufen. Leer lassen, um den Bereich auszublenden.').editor({ label: 'Passende Produkte unter Kaufen' }),
         cover: z.string().editor({ label: 'Bild Startseite', input: 'media' }),

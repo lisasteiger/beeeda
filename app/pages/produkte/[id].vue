@@ -50,7 +50,7 @@ function buy() {
       <p class="description-text">{{ product.description }}</p>
       <details class="product-info disclosure">
         <summary><span class="info-closed">mehr Infos</span><span class="info-open">weniger Infos</span></summary>
-        <p class="product-info">{{ product.materials }}<br />{{ product.measurements }}<template v-if="product.care"><br />{{ product.care }}</template></p>
+        <p class="product-info">{{ product.materials }}<br />{{ product.measurements }}<template v-if="product.materialBehavior"><br />{{ product.materialBehavior }}</template><template v-if="product.care"><br />{{ product.care }}</template></p>
         <p class="product-info product-contact">Du möchtest weitere Bilder sehen oder hast eine Frage? Schreib uns gerne.<br /><a href="mailto:hi@beeeda.ch">hi@beeeda.ch</a></p>
       </details>
       <button id="buy-button" class="buy-button buy-graphic" :disabled="!ready || !catalog || product.status !== 'active' || stock?.soldOut || stock?.available === 0" aria-label="Kaufen" @click="buy"><img src="/assets/kaufen.svg" alt="" aria-hidden="true" /><span class="buy-label">Kaufen</span></button>

@@ -1,7 +1,7 @@
 export type Product = {
   productId: string; name: string; size?: string; reduced?: boolean; stockQuantity?: number | null; stockDisplay?: 'Anzahl' | 'Einzelstück'; status: 'draft' | 'active' | 'archived'; priceCents: number;
   shippingClass: 'small' | 'large'; description: string; materials: string; measurements: string;
-  care: string; cover: string; hero: string; thumbnail: string; archiveImage: string;
+  materialBehavior?: string; care: string; cover: string; hero: string; thumbnail: string; archiveImage: string;
   gallery: string[]; displayOrder: number; available?: number | null; soldOut?: boolean; relatedProducts?: string[]
 }
 export type CartLine = { productId: string; quantity: number }
