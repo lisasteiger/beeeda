@@ -49,7 +49,7 @@ function buy() {
       <p class="status">{{ product.status === 'archived' || stock?.soldOut ? 'Verkauft' : money(product.priceCents) }}<template v-if="stock?.available != null"><br /><span>{{ product.stockDisplay === 'Einzelstück' ? 'Einzelstück' : `Noch ${stock.available} Stück verfügbar` }}</span></template></p>
       <p class="description-text">{{ product.description }}</p>
       <details class="product-info disclosure">
-        <summary><span class="info-closed">+ Infos</span><span class="info-open">Infos schliessen</span></summary>
+        <summary><span class="info-closed">mehr Infos</span><span class="info-open">weniger Infos</span></summary>
         <p class="product-info">{{ product.materials }}<br />{{ product.measurements }}<template v-if="product.care"><br />{{ product.care }}</template></p>
         <p class="product-info product-contact">Du möchtest weitere Bilder sehen oder hast eine Frage? Schreib uns gerne.<br /><a href="mailto:hi@beeeda.ch">hi@beeeda.ch</a></p>
       </details>
