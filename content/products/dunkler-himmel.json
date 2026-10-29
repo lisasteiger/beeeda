@@ -11,6 +11,7 @@
     "/assets/Beeeda-dunkelblauer-himmel-07.webp"
   ],
   "hero": "/assets/Beeeda-dunkelblauer-himmel-04.webp",
+  "materialBehavior": "stretch: 10/10",
   "name": "dunkler Himmel",
   "productId": "dunkler Himmel",
   "reduced": false,
@@ -18,5 +19,7 @@
   "size": "",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-dunkelblauer-himmel-07.webp"
+  "thumbnail": "/assets/Beeeda-dunkelblauer-himmel-07.webp",
+  "measurements": "Höhe: | Breite: | Guckloch:",
+  "materials": "grau meliert: 62% Alpaka (Baby), 27% Polyamid, 11% Schurwolle | blau: 54% Alpaka, 24% Polyamid, 22% Wolle (Merino)  | orange: 100% Mohair"
 }
