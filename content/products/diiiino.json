@@ -3,6 +3,12 @@
   "care": "",
   "cover": "/assets/Beeeda-Diiiino-01.webp",
   "displayOrder": 0,
+  "gallery": [
+    "/assets/Beeeda-Diiiino-06.webp",
+    "/assets/Beeeda-Diiiino-02.webp",
+    "/assets/Beeeda-Diiiino-03.webp",
+    "/assets/Beeeda-Diiiino-04.webp"
+  ],
   "hero": "/assets/Beeeda-Diiiino-05.webp",
   "name": "Diiiino",
   "productId": "Diiiino",
@@ -11,11 +17,5 @@
   "size": "",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-Diiiino-02.webp",
-  "gallery": [
-    "/assets/Beeeda-Diiiino-06.webp",
-    "/assets/Beeeda-Diiiino-02.webp",
-    "/assets/Beeeda-Diiiino-03.webp",
-    "/assets/Beeeda-Diiiino-04.webp"
-  ]
+  "thumbnail": "/assets/Beeeda-Diiiino-02.webp"
 }
