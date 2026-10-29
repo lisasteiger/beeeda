@@ -2,8 +2,7 @@
   "archiveImage": "/assets/Beeeda-gruen-beige-zipfel-03.webp",
   "care": "",
   "cover": "/assets/Beeeda-gruen-beige-zipfel-03.webp",
-  "description": "Für sehr kalte Tage. Nicht nur die Ohren, sondern auch der Hals ist gut umschlossen und wird gewärmt. Mit der Lasche kann der Kopf ohne Probleme reinschlüpfen.",
-  "displayOrder": 2,
+  "displayOrder": 0,
   "gallery": [
     "/assets/Beeeda-gruen-beige-zipfel-01.webp",
     "/assets/Beeeda-gruen-beige-zipfel-02.webp",
@@ -12,9 +11,10 @@
     "/assets/Beeeda-gruen-beige-zipfel-07.webp"
   ],
   "hero": "/assets/Beeeda-gruen-beige-zipfel-04.webp",
-  "materials": "Wolle, Seide, Kaschmir",
-  "measurements": "Kopfumfang: 52 | H: 20 | B: 13 | Guckloch: 14x7",
-  "name": "Grün beiger Zipfel",
+  "materialBehavior": "stretch: 10/10",
+  "materials": "beige: Mohair (Kid Mohair), 20% Schurwolle (Merino super fine), 10% Polyamid | grün: 55% Mohair (Superkid), 45% Schurwolle (Merino superfein)",
+  "measurements": "Höhe: | Breite: | Guckloch:",
+  "name": "grün beiger Zipfel",
   "priceCents": 4960,
   "productId": "Grün beiger Zipfel",
   "reduced": false,
@@ -25,5 +25,6 @@
   "size": "12-24 M",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-gruen-beige-zipfel-07.webp"
+  "thumbnail": "/assets/Beeeda-gruen-beige-zipfel-07.webp",
+  "description": "Die warme und voluminöse Wollkombination passt sich angenehm an die Kopfform an. Spiel und Spass an kalten Tagen ist warm und doch gut durchlüftet!"
 }

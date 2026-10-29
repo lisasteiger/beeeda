@@ -26,6 +26,8 @@ onMounted(() => {
     const firstElement = detail.value.firstElementChild?.getBoundingClientRect()
     const lastElement = detail.value.lastElementChild?.getBoundingClientRect()
     if (firstElement && lastElement) detail.value.style.setProperty('--detail-center', ((firstElement.top + lastElement.bottom) / 2 - detail.value.getBoundingClientRect().top) + 'px')
+    const buyButton = detail.value.querySelector('#buy-button')?.getBoundingClientRect()
+    if (buyButton) detail.value.style.setProperty('--buy-center', ((buyButton.top + buyButton.bottom) / 2 - detail.value.getBoundingClientRect().top) + 'px')
   })
   if (detail.value) observer.observe(detail.value)
   refresh()

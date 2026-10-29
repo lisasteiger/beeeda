@@ -528,6 +528,7 @@ html.pinkchaos-page body { overflow-x: clip; overflow-y: visible; }
   }
 
   .pinkchaos .detail-content {
+    top: calc(75dvh - var(--buy-center, 350px));
     margin-top: 72px;
   }
 
