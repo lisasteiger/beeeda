@@ -16,8 +16,7 @@ html.home-page, html.home-page body { height: 100%; overflow: hidden; }
 .product-info.disclosure summary::-webkit-details-marker { display: none; }
 .product-info.disclosure .info-open, .product-info.disclosure[open] .info-closed { display: none; }
 .product-info.disclosure[open] .info-open { display: inline; }
-.pinkchaos .product-info.disclosure p { margin: 12px auto 0; text-align: center; }
-.pinkchaos .product-info.disclosure p.product-contact { margin-top: 24px; }
+.pinkchaos .product-info.disclosure p { margin: 24px auto 0; text-align: center; }
 .close-corner { border: 0; background: transparent; cursor: pointer; font-size: calc(var(--corner-link-font-size) * 1.5); line-height: 1; }
 .close-corner:hover, .close-corner:active { background: transparent; color: #000; }
 /* Studio's floating tools must remain clickable above the fixed corner links. */
