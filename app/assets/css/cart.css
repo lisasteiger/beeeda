@@ -97,6 +97,18 @@
   line-height: 1.5;
 }
 
+.shopping-cart .cart-empty .buy-button {
+  margin-top: 0;
+  height: calc(1.2em + 30px);
+  padding: 0 16px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shopping-cart .cart-empty .buy-button:hover { background: #222; }
+
 .cart-button {
   box-sizing: border-box;
   display: inline-block;

@@ -20,7 +20,6 @@ onMounted(() => refresh())
       </section>
       <CartSummary><a class="cart-button" href="/kasse">Zur Kasse</a><p v-if="!catalog?.checkoutReady" class="cart-note">Der Online-Kauf wird gerade eingerichtet.</p></CartSummary>
     </div>
-    <div v-else-if="ready" class="cart-empty"><p>Dein Warenkorb ist leer.</p><a class="cart-button" href="/">Weiterstöbern</a></div>
+    <div v-else-if="ready" class="cart-empty"><p>Dein Warenkorb ist leer.</p><a class="cart-button buy-button" href="/">Weiterstöbern</a></div>
   </main>
 </template>
-

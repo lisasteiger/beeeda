@@ -46,7 +46,6 @@ onBeforeUnmount(() => { observer?.disconnect(); clearTimeout(homeTimer) })
     <img v-if="home" class="main-logo" src="/assets/LOGO-01.svg" alt="Beeeda" />
     <div v-else ref="controls" class="logo-controls">
       <a class="logo-link" :href="homeHref" aria-label="Zurück zum Carousel" @click="returnHome"><img class="logo" src="/assets/LOGO-01.svg" alt="Beeeda" /></a>
-      <button v-if="cart" id="closePage" class="close-page site-link" @click="back">weiterstöbern</button>
     </div>
   </div>
 </template>
