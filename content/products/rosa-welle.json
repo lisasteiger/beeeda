@@ -2,6 +2,7 @@
   "archiveImage": "/assets/Beeeda-rosa-welle-03.webp",
   "care": "Übergangszeit bis kalte Tage",
   "cover": "/assets/Beeeda-rosa-welle-03.webp",
+  "description": "Die Mütze kann nicht nur als Schutz für den Kopf sondern auch als Schal verwendet werden. Somit ist kein binden und umschnüren mehr nötig und die Mütze ist immer dabei. ",
   "displayOrder": 0,
   "gallery": [
     "/assets/Beeeda-rosa-welle-01.webp",
@@ -22,5 +23,5 @@
   "status": "active",
   "stockDisplay": "Einzelstück",
   "thumbnail": "/assets/Beeeda-rosa-welle-04.webp",
-  "description": "Die Mütze kann nicht nur als Schutz für den Kopf sondern auch als Schal verwendet werden. Somit ist kein binden und umschnüren mehr nötig und die Mütze ist immer dabei. "
+  "priceCents": 4990
 }

@@ -2,6 +2,7 @@
   "archiveImage": "/assets/Beeeda-gruen-rosa-hoernli-01.webp",
   "care": "Übergangszeiten  bis kalte Tage",
   "cover": "/assets/Beeeda-gruen-rosa-hoernli-01.webp",
+  "description": "Durch die Merino und Alpaka Mischung, ist die Mütze angenehm weich und wärmend. Sie umschliesst das Gesicht und hält sich mit dem stretchy Wolle satt um den Kopf.  ",
   "displayOrder": 0,
   "gallery": [
     "/assets/Beeeda-gruen-rosa-hoernli-10.webp",
@@ -24,5 +25,5 @@
   "status": "active",
   "stockDisplay": "Einzelstück",
   "thumbnail": "/assets/Beeeda-gruen-rosa-hoernli-03.webp",
-  "description": "Durch die Merino und Alpaka Mischung, ist die Mütze angenehm weich und wärmend. Sie umschliesst das Gesicht und hält sich mit dem stretchy Wolle satt um den Kopf.  "
+  "priceCents": 4990
 }

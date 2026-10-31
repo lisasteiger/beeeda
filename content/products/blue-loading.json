@@ -12,6 +12,8 @@
   ],
   "hero": "/assets/Beeeda-blue-loading-04.webp",
   "materialBehavior": "",
+  "materials": "",
+  "measurements": "Höhe: | Breite: | Guckloch:",
   "name": "blue loading ...",
   "productId": "blue loading ...",
   "reduced": false,
@@ -20,6 +22,5 @@
   "status": "active",
   "stockDisplay": "Einzelstück",
   "thumbnail": "/assets/Beeeda-blue-loading-06.webp",
-  "materials": "",
-  "measurements": "Höhe: | Breite: | Guckloch:"
+  "priceCents": 4990
 }
