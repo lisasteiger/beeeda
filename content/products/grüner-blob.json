@@ -1,7 +1,8 @@
 {
   "archiveImage": "/assets/Beeeda-gruen-blob-01.webp",
-  "care": "",
+  "care": "Übergangszeiten",
   "cover": "/assets/Beeeda-gruen-blob-01.webp",
+  "description": "Durch die engere Gesichtsöffnung schliesst die Mütze schön ab. Da sie keinen langen Hals hat, passt ein Schal super darunter. ",
   "displayOrder": 5,
   "gallery": [
     "/assets/Beeeda-gruen-blob-07.webp",
@@ -11,6 +12,8 @@
     "/assets/Beeeda-gruen-blob-06.webp"
   ],
   "hero": "/assets/Beeeda-gruen-blob-02.webp",
+  "materialBehavior": "stretch: 8/10",
+  "materials": "grün: 53 % Schurwolle (Merino) 25 % Alpaka (Baby) 22 % Polyamid | rot: 70% Mohair (Kid Mohair), 20% Schurwolle (Merino Superfine), 10% Polyamid",
   "name": "grüner Blob",
   "productId": "grüner Blob",
   "reduced": false,
