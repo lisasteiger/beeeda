@@ -92,7 +92,7 @@ body {
   width: 100%;
   padding-top: var(--gallery-gutter);
   padding-bottom: 150px;
-  animation: subsite-in 0.9s cubic-bezier(0.77, 0, 0.175, 1) both;
+  animation: subsite-in 0.9s cubic-bezier(0.77, 0, 0.175, 1) backwards;
 }
 
 /* SUBSITE VERLÄSST DIE SEITE */
