@@ -1,6 +1,6 @@
 {
   "archiveImage": "/assets/Beeeda-rosa-welle-03.webp",
-  "care": "",
+  "care": "Übergangszeit bis kalte Tage",
   "cover": "/assets/Beeeda-rosa-welle-03.webp",
   "displayOrder": 0,
   "gallery": [
@@ -12,7 +12,8 @@
     "/assets/Beeeda-rosa-welle-04.webp"
   ],
   "hero": "/assets/Beeeda-rosa-welle-05.webp",
-  "materialBehavior": "",
+  "materialBehavior": "stertch: 5/10",
+  "materials": "farbig rosa: 70% Merinowolle & 30% Polyamid / Nylon | Rest farbig: 40% Schurwolle (Merino), 36% Mohair, 13% Polyamid, 11% Baumwolle,",
   "name": "rosa Welle",
   "productId": "rosa Welle",
   "reduced": false,
@@ -20,5 +21,6 @@
   "size": "",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-rosa-welle-04.webp"
+  "thumbnail": "/assets/Beeeda-rosa-welle-04.webp",
+  "description": "Die Mütze kann nicht nur als Schutz für den Kopf sondern auch als Schal verwendet werden. Somit ist kein binden und umschnüren mehr nötig und die Mütze ist immer dabei. "
 }

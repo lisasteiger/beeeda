@@ -1,21 +1,23 @@
 {
-  "care": "",
+  "archiveImage": "/assets/Beeeda-violette-punkte-im-Schnee-01.webp",
+  "care": "Übergangszeit",
+  "cover": "/assets/Beeeda-violette-punkte-im-Schnee-01.webp",
   "displayOrder": 0,
-  "reduced": false,
-  "shippingClass": "large",
-  "size": "",
-  "status": "active",
-  "stockDisplay": "Einzelstück",
   "gallery": [
     "/assets/Beeeda-violette-punkte-im-Schnee-03.webp",
     "/assets/Beeeda-violette-punkte-im-Schnee-04.webp",
     "/assets/Beeeda-violette-punkte-im-Schnee-05.webp",
     "/assets/Beeeda-violette-punkte-im-Schnee-06.webp"
   ],
-  "productId": "Violette Punkte im Schnee",
-  "name": "violette Punkte im Schnee",
-  "cover": "/assets/Beeeda-violette-punkte-im-Schnee-01.webp",
   "hero": "/assets/Beeeda-violette-punkte-im-Schnee-02.webp",
+  "materialBehavior": "Das Gesicht und der Hals werden sauber umschlossen und geschützt. Durch die eher dünn verarbeitete Wolle, ist die Mütze für Übergangszeiten geeignet. Das Merino wärmt und lässt doch Luft hindurch. ",
+  "name": "violette Punkte im Schnee",
+  "productId": "Violette Punkte im Schnee",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
   "thumbnail": "/assets/Beeeda-violette-punkte-im-Schnee-06.webp",
-  "archiveImage": "/assets/Beeeda-violette-punkte-im-Schnee-01.webp"
+  "materials": "weiss: 62% Schurwolle (Merino), 25% Baumwolle, 12% Polyamid, 1% Elasthan | violett: 74% Baumwolle (Bio), 26% Rec. Polyamid | grün: 78% Schurwolle, 12% Kaschmir, 10% Polyamid"
 }
