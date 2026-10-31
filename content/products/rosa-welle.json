@@ -12,6 +12,7 @@
     "/assets/Beeeda-rosa-welle-04.webp"
   ],
   "hero": "/assets/Beeeda-rosa-welle-05.webp",
+  "materialBehavior": "",
   "name": "rosa Welle",
   "productId": "rosa Welle",
   "reduced": false,

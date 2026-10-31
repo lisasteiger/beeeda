@@ -9,6 +9,7 @@
     "/assets/Beeeda-konfetti-05.webp"
   ],
   "hero": "/assets/Beeeda-konfetti-03.webp",
+  "materialBehavior": "",
   "name": "Konfetti",
   "productId": "Konfetti",
   "reduced": false,

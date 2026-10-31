@@ -1,8 +1,8 @@
 {
   "archiveImage": "/assets/Beeeda-Lollipop-Beanie-01.webp",
-  "care": "",
+  "care": "kalte Tage",
   "cover": "/assets/Beeeda-Lollipop-Beanie-02.webp",
-  "description": "Für sehr kalte Tage. Nicht nur die Ohren, sondern auch der Hals ist gut umschlossen und wird gewärmt. Mit der Lasche kann der Kopf ohne Probleme reinschlüpfen.",
+  "description": "Je nach Bedürfnis können die Ohren mehr oder weniger abegedeckt werden. Durch die dicke Wolle wärmt die Mütze wunderbar und bittet einen angenehmen Schutz für den Kopf.",
   "displayOrder": 4,
   "gallery": [
     "/assets/Beeeda-Lollipop-Beanie-01.webp",
@@ -12,8 +12,9 @@
     "/assets/Beeeda-Lollipop-Beanie-06.webp"
   ],
   "hero": "/assets/Beeeda-Lollipop-Beanie-07.webp",
-  "materials": "Wolle, Seide, Kaschmir",
-  "measurements": "Kopfumfang: 52 | H: 20 | B: 13 | Guckloch: 14x7",
+  "materialBehavior": "stretch: 7/10",
+  "materials": "farbig: 40% Schurwolle (Merino), 36% Mohair (Superkid), 13% Polyamid, 11% Baumwolle | rosa: 100% Schurwolle (Merino)",
+  "measurements": "",
   "name": "Lollipop Beanie",
   "priceCents": 4960,
   "productId": "Lollipop Beanie",

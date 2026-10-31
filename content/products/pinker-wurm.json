@@ -1,6 +1,6 @@
 {
   "archiveImage": "/assets/Beeeda-pinker-wurm-03.webp",
-  "care": "",
+  "care": "kalte Tage",
   "cover": "/assets/Beeeda-pinker-wurm-03.webp",
   "displayOrder": 0,
   "gallery": [
@@ -14,6 +14,8 @@
     "/assets/Beeeda-pinker-wurm-09.webp"
   ],
   "hero": "/assets/Beeeda-pinker-wurm-10.webp",
+  "materialBehavior": "stretch: 5/10",
+  "materials": "pink: Schurwolle (Merino) | violett und hellblau: 62% Alpaka (Baby), 27% Polyamid, 11% Schurwolle (Merino fine)",
   "name": "pinker Wurm",
   "productId": "pinker Wurm",
   "reduced": false,
@@ -21,5 +23,6 @@
   "size": "",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-pinker-wurm-04.webp"
+  "thumbnail": "/assets/Beeeda-pinker-wurm-04.webp",
+  "description": "Durch die Bändel kann der Schal passend und angenehm um den Hals gewickelt und befestigt werden. Somit deckt er den ganzen Hals ab und bietet einen warmen Schutz vor Kälte. "
 }
