@@ -2,7 +2,7 @@
   "archiveImage": "/assets/Beeeda-blue-loading-05.webp",
   "care": "kältere Tage",
   "cover": "/assets/Beeeda-blue-loading-05.webp",
-  "description": "Durch die Wollkombi ist Mütze nicht nur extrem weich sondern auch super wärmend! Somit für die kalten und eisigen Tage geeignet. ",
+  "description": "Durch die Wollkombi ist die Mütze nicht nur extrem weich, sondern auch super wärmend! Somit ist sie für die kalten und eisigen Tage geeignet.",
   "displayOrder": 0,
   "gallery": [
     "/assets/Beeeda-blue-loading-01.webp",
@@ -15,12 +15,12 @@
   "materials": "",
   "measurements": "Höhe: | Breite: | Guckloch:",
   "name": "blue loading ...",
+  "priceCents": 4990,
   "productId": "blue loading ...",
   "reduced": false,
   "shippingClass": "large",
   "size": "",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-blue-loading-06.webp",
-  "priceCents": 4990
+  "thumbnail": "/assets/Beeeda-blue-loading-06.webp"
 }

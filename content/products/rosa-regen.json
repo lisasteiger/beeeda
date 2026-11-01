@@ -2,7 +2,7 @@
   "archiveImage": "/assets/Beeeda-rosa-Regen-05.webp",
   "care": "Übergangszeit",
   "cover": "/assets/Beeeda-rosa-Regen-05.webp",
-  "description": "Dank der Öffnung kann die Mütze je nach Bedürfnis enger und lockerer um den Kopf gebunden werden. ",
+  "description": "Dank der Öffnung kann die Mütze je nach Bedürfnis enger oder lockerer um den Kopf gebunden werden.",
   "displayOrder": 0,
   "gallery": [
     "/assets/Beeeda-rosa-Regen-01.webp",
@@ -13,12 +13,12 @@
   "materialBehavior": "stretch: 4/10",
   "materials": "rosa: 46% Wolle (superfein), 34% Baumwolle, 20% Kaschmir | altrosa: 60% Wolle, 30% Polyamid, 10% Mohair",
   "name": "rosa Regen",
+  "priceCents": 4990,
   "productId": "rosa Regen",
   "reduced": false,
   "shippingClass": "large",
   "size": "",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-rosa-Regen-03.webp",
-  "priceCents": 4990
+  "thumbnail": "/assets/Beeeda-rosa-Regen-03.webp"
 }

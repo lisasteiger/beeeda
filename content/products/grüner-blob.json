@@ -15,12 +15,12 @@
   "materialBehavior": "stretch: 8/10",
   "materials": "grün: 53 % Schurwolle (Merino) 25 % Alpaka (Baby) 22 % Polyamid | rot: 70% Mohair (Kid Mohair), 20% Schurwolle (Merino Superfine), 10% Polyamid",
   "name": "grüner Blob",
+  "priceCents": 3990,
   "productId": "grüner Blob",
   "reduced": false,
   "shippingClass": "large",
   "size": "12-24 M",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-gruen-blob-06.webp",
-  "priceCents": 3990
+  "thumbnail": "/assets/Beeeda-gruen-blob-06.webp"
 }

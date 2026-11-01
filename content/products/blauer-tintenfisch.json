@@ -2,7 +2,7 @@
   "archiveImage": "/assets/Beeeda-blue-tintenfisch-01.webp",
   "care": "stretch: 9/10",
   "cover": "/assets/Beeeda-blue-tintenfisch-02.webp",
-  "description": "Durch den Stretch-comfort passt sich die Mütze der Kopfform angenehm an. Somit ist die Spielzeit in den Wintertagen warm und kuschelig. ",
+  "description": "Durch den Stretch-Komfort passt sich die Mütze der Kopfform angenehm an. Somit ist die Spielzeit an Wintertagen warm und kuschelig.",
   "displayOrder": 1,
   "gallery": [
     "/assets/Beeeda-blue-tintenfisch-01.webp",
@@ -15,6 +15,7 @@
   "materials": "hellblau: 78% Schurwolle, 12% Kashmir, 10% Polyamid | dunkelblau: 80% Mohair, 20% Schurwolle (Leinen)",
   "measurements": "Höhe: | Breite: | Guckloch:",
   "name": "blauer Tintenfisch",
+  "priceCents": 4990,
   "productId": "blauer Tintenfisch",
   "reduced": false,
   "relatedProducts": [
@@ -24,6 +25,5 @@
   "size": "12-24 M",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-blue-tintenfisch-07.webp",
-  "priceCents": 4990
+  "thumbnail": "/assets/Beeeda-blue-tintenfisch-07.webp"
 }

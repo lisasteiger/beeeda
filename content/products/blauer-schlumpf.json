@@ -2,6 +2,7 @@
   "archiveImage": "/assets/Beeeda-blauer-schlumpf-02.webp",
   "care": "Übergangszeit bis kalte Tage",
   "cover": "/assets/Beeeda-blauer-schlumpf-02.webp",
+  "description": "Der Hals wird durch das lange Halsstück super geschützt und gewärmt. Das leichte und flauschig warme Material ist angenehm und passt sich flexibel der Kopfform an.",
   "displayOrder": 0,
   "gallery": [
     "/assets/Beeeda-blauer-schlumpf-01.webp",
@@ -11,15 +12,14 @@
   ],
   "hero": "/assets/Beeeda-blauer-schlumpf-05.webp",
   "materialBehavior": "stretch: 8/10",
+  "materials": "braun: 82% Alpaka (Baby Alpaka), 16% Polyamid, 2% Elasthan | blau: 54% Alpaka (superfine), 24% Polyamid, 22% Wolle",
   "name": "blauer Schlumpf",
+  "priceCents": 4990,
   "productId": "blauer Schlumpf",
   "reduced": false,
   "shippingClass": "large",
   "size": "",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-blauer-schlumpf-06.webp",
-  "materials": "braun: 82% Alpaka (Baby Alpaka), 16% Polyamid, 2% Elasthan | blau: 54% Alpaka (superfine), 24% Polyamid, 22% Wolle",
-  "description": "Der Hals wird duch das lange Halsstück super geschützt und gewärmt. Das leichte und flauschig warme Material ist angenehm und passt sich flexibel der Kopfform an.  ",
-  "priceCents": 4990
+  "thumbnail": "/assets/Beeeda-blauer-schlumpf-06.webp"
 }
