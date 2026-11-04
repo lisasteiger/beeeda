@@ -51,9 +51,9 @@ function buy() {
       <p class="status">{{ product.status === 'archived' || stock?.soldOut ? 'Verkauft' : money(product.priceCents) }}<template v-if="stock?.available != null"><br /><span>{{ product.stockDisplay === 'Einzelstück' ? 'Einzelstück' : `Noch ${stock.available} Stück verfügbar` }}</span></template></p>
       <p class="description-text">{{ product.description }}</p>
       <details class="product-info disclosure">
-        <summary><span class="info-closed">mehr Infos</span><span class="info-open">weniger Infos</span></summary>
+        <summary><span class="info-closed">+ Infos</span><span class="info-open">- Infos</span></summary>
         <p class="product-info">{{ product.materials }}<br />{{ product.measurements }}<template v-if="product.materialBehavior"><br />{{ product.materialBehavior }}</template><template v-if="product.care"><br />{{ product.care }}</template></p>
-        <p class="product-info product-contact">Du möchtest weitere Bilder sehen oder hast eine Frage? Schreib uns gerne.<br /><a href="mailto:hi@beeeda.ch">hi@beeeda.ch</a></p>
+        <p class="product-info product-contact">Die Farben können durch Fotografie und Bildschirmdarstellung leicht vom Original abweichen.<br />Hast du eine Frage zum Produkt? Schreib uns gerne an <a href="mailto:hi@beeeda.ch">hi@beeeda.ch</a>.</p>
       </details>
       <button id="buy-button" class="buy-button buy-graphic" :disabled="!ready || !catalog || product.status !== 'active' || stock?.soldOut || stock?.available === 0" aria-label="Kaufen" @click="buy"><img src="/assets/kaufen.svg" alt="" aria-hidden="true" /><span class="buy-label">Kaufen</span></button>
       <section v-if="matchingProducts.length" class="product-matching" aria-labelledby="matching-heading">
