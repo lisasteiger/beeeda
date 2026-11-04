@@ -15,15 +15,20 @@ html.home-page, html.home-page body { height: 100%; overflow: hidden; }
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0;
   margin: -6px;
 }
 .legal-navigation .site-link { position: static; margin: 0; font-weight: 700; }
-.info-page.centered-impressum { padding-bottom: calc(6 * var(--corner-link-font-size) + 100px); }
+.info-page.centered-impressum {
+  min-height: 100dvh;
+  padding-block: calc(var(--content-top, 100px) + 20px);
+  justify-content: center;
+  text-align: center;
+}
 .info-page.legal-document {
   width: min(calc(100% - 40px), 760px);
   padding-top: calc(var(--content-top, 100px) + 32px);
-  padding-bottom: calc(6 * var(--corner-link-font-size) + 100px);
+  padding-bottom: calc(8 * var(--corner-link-font-size) + 130px);
   text-align: left;
 }
 .legal-document .legal-prose { overflow-wrap: anywhere; }

@@ -17,6 +17,7 @@
   "hero": "/assets/Beeeda-pinker-wurm-10.webp",
   "materialBehavior": "stretch: 5/10",
   "materials": "pink: Schurwolle (Merino) | violett und hellblau: 62% Alpaka (Baby), 27% Polyamid, 11% Schurwolle (Merino fine)",
+  "measurements": "Höhe: 11cm | Breite: 48cm",
   "name": "pinker Wurm",
   "priceCents": 3990,
   "productId": "pinker Wurm",
@@ -25,6 +26,5 @@
   "size": "",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-pinker-wurm-04.webp",
-  "measurements": "Höhe: 11cm | Breite: 48cm"
+  "thumbnail": "/assets/Beeeda-pinker-wurm-04.webp"
 }

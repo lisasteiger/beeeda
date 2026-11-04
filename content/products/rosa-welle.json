@@ -15,14 +15,14 @@
   "hero": "/assets/Beeeda-rosa-welle-05.webp",
   "materialBehavior": "stertch: 5/10",
   "materials": "farbig rosa: 70% Merinowolle & 30% Polyamid / Nylon | Rest farbig: 40% Schurwolle (Merino), 36% Mohair, 13% Polyamid, 11% Baumwolle,",
+  "measurements": "Höhe: 20cm| Breite: 18cm",
   "name": "rosa Welle",
   "priceCents": 4990,
   "productId": "rosa Welle",
   "reduced": false,
   "shippingClass": "large",
-  "size": "",
+  "size": "12–18M",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-rosa-welle-04.webp",
-  "measurements": "Höhe: 20cm| Breite: 18cm"
+  "thumbnail": "/assets/Beeeda-rosa-welle-04.webp"
 }

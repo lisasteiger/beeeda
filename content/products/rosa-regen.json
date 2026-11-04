@@ -12,14 +12,14 @@
   "hero": "/assets/Beeeda-rosa-Regen-04.webp",
   "materialBehavior": "stretch: 4/10",
   "materials": "rosa: 46% Wolle (superfein), 34% Baumwolle, 20% Kaschmir | altrosa: 60% Wolle, 30% Polyamid, 10% Mohair",
+  "measurements": "Höhe: 18cm | Breite: 15cm",
   "name": "rosa Regen",
   "priceCents": 4990,
   "productId": "rosa Regen",
   "reduced": false,
   "shippingClass": "large",
-  "size": "",
+  "size": "6–9M",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-rosa-Regen-03.webp",
-  "measurements": "Höhe: 18cm | Breite: 15cm"
+  "thumbnail": "/assets/Beeeda-rosa-Regen-03.webp"
 }
