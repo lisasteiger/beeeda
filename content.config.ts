@@ -1,6 +1,7 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 export default defineContentConfig({
   collections: {
+    legal: defineCollection({ type: 'page', source: 'rechtliches/*.md' }),
     products: defineCollection({
       type: 'data', source: 'products/*.json',
       schema: z.object({

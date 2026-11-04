@@ -40,7 +40,12 @@ onBeforeUnmount(() => { observer?.disconnect(); clearTimeout(homeTimer) })
   <a v-if="home" class="site-link contact-link" href="mailto:hi@beeeda.ch">schreib uns</a>
   <button v-if="!home && !cart" id="closePage" class="close-corner site-link archive-link" aria-label="Schliessen" @click="back">×</button>
   <a class="cart-link" href="/warenkorb">Warenkorb<span v-if="ready && count"> ({{ count }})</span></a>
-  <a class="site-link impressum-link" href="/impressum">Impressum</a>
+  <nav v-if="route.path === '/impressum'" class="legal-navigation impressum-link" aria-label="Rechtliche Informationen">
+    <NuxtLink class="site-link" to="/impressum?inhalt=agb" :aria-current="route.query.inhalt === 'agb' ? 'page' : undefined">AGB</NuxtLink>
+    <NuxtLink class="site-link" to="/impressum?inhalt=datenschutz" :aria-current="route.query.inhalt === 'datenschutz' ? 'page' : undefined">Datenschutz</NuxtLink>
+    <NuxtLink class="site-link" to="/impressum" :aria-current="!['agb', 'datenschutz'].includes(String(route.query.inhalt)) ? 'page' : undefined">Impressum</NuxtLink>
+  </nav>
+  <a v-else class="site-link impressum-link" href="/impressum">Impressum</a>
   <a class="site-link about-link" href="/ueber-uns">Über uns</a>
   <div class="logo-layer" :class="{ 'home-logo': home }">
     <img v-if="home" class="main-logo" src="/assets/LOGO-01.svg" alt="Beeeda" />

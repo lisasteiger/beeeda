@@ -9,6 +9,32 @@ html.home-page, html.home-page body { height: 100%; overflow: hidden; }
 #__nuxt a:not(.cart-button):hover { color: #000; background: transparent; }
 #__nuxt a.site-link, #__nuxt a.cart-link { color: #000; }
 #__nuxt a.site-link:hover, #__nuxt a.cart-link:hover { color: #737373; }
+.legal-navigation {
+  position: fixed;
+  z-index: 7000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin: -6px;
+}
+.legal-navigation .site-link { position: static; margin: 0; font-weight: 700; }
+.info-page.centered-impressum { padding-bottom: calc(6 * var(--corner-link-font-size) + 100px); }
+.info-page.legal-document {
+  width: min(calc(100% - 40px), 760px);
+  padding-top: calc(var(--content-top, 100px) + 32px);
+  padding-bottom: calc(6 * var(--corner-link-font-size) + 100px);
+  text-align: left;
+}
+.legal-document .legal-prose { overflow-wrap: anywhere; }
+.legal-document .legal-prose h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+.legal-document .legal-prose h2 { margin: 36px 0 12px; font-size: 1.25rem; line-height: 1.4; }
+.legal-document .legal-prose p,
+.legal-document .legal-prose li { margin: 16px 0; font-size: 1.05rem; font-weight: 400; line-height: 1.65; }
+.legal-document .legal-prose strong { font-weight: 700; }
+@media (max-width: 700px) {
+  .legal-navigation { margin: 0; gap: 0; }
+}
 #__nuxt a.product-suggestion { color: #000; }
 #__nuxt a.product-suggestion:hover { color: #737373; }
 .product-info.disclosure { font-size: var(--corner-link-font-size); font-weight: 500; line-height: 1.45; text-align: center; margin-bottom: 28px; }
