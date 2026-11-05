@@ -5,6 +5,10 @@ export type Product = {
   gallery: string[]; displayOrder: number; available?: number | null; soldOut?: boolean; relatedProducts?: string[]
 }
 export type CartLine = { productId: string; quantity: number }
+export const productIdPattern = /^[\p{L}\p{N}][\p{L}\p{M}\p{N} .-]{0,79}$/u
+export function isProductId(value: unknown): value is string {
+  return typeof value === 'string' && productIdPattern.test(value)
+}
 export function orderedProducts<T extends { productId: string; displayOrder?: number | string }>(products: readonly T[]): T[] {
   const order = (product: T) => Number(product.displayOrder) || 0
   return products.filter(product => typeof product.productId === 'string' && product.productId.trim()).sort((a, b) => order(a) - order(b) || a.productId.localeCompare(b.productId, 'de'))
@@ -34,7 +38,7 @@ export function validateCart(input: unknown): CartLine[] {
   if (!Array.isArray(input) || input.length < 1 || input.length > 50) throw new Error('Bitte prüfe deinen Warenkorb.')
   const seen = new Set<string>()
   return input.map(line => {
-    if (!line || typeof line.productId !== 'string' || !/^[a-z0-9-]{1,80}$/.test(line.productId) ||
+    if (!line || !isProductId(line.productId) ||
       !Number.isSafeInteger(line.quantity) || line.quantity < 1 || line.quantity > 99 || seen.has(line.productId)) {
       throw new Error('Ungültige Artikel oder Mengen im Warenkorb.')
     }

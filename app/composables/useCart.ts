@@ -1,4 +1,4 @@
-import { money, shippingCents, type CartLine, type Product } from '#shared/shop'
+import { money, shippingCents, isProductId, type CartLine, type Product } from '#shared/shop'
 export function useCart() {
   const lines = useState<CartLine[]>('cart', () => [])
   const ready = useState('cart-ready', () => false)
@@ -10,7 +10,7 @@ export function useCart() {
       const seen = new Set<string>()
       if (Array.isArray(saved)) lines.value = saved.slice(0, 50).flatMap(line => {
         const productId = line?.productId || line?.id
-        if (typeof productId !== 'string' || !/^[a-z0-9-]{1,80}$/.test(productId) || seen.has(productId) || !Number.isInteger(line?.quantity) || line.quantity < 1) return []
+        if (!isProductId(productId) || seen.has(productId) || !Number.isInteger(line?.quantity) || line.quantity < 1) return []
         seen.add(productId)
         return [{ productId, quantity: Math.min(99, line.quantity) }]
       })

@@ -9,6 +9,7 @@
     "/assets/Beeeda-back-to-the-future-05.webp"
   ],
   "hero": "/assets/Beeeda-back-to-the-future-04.webp",
+  "materialBehavior": "",
   "name": "Back to the future",
   "productId": "Back to the future",
   "reduced": false,

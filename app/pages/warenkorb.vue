@@ -10,7 +10,7 @@ onMounted(() => refresh())
       <section aria-label="Artikel im Warenkorb"><ul id="cart-items" class="cart-items">
         <li v-for="item in items" :key="item.productId" class="cart-item">
           <img class="cart-item-image" :src="item.thumbnail" :alt="item.name" />
-          <div class="cart-item-details"><h2><a class="cart-item-name" :href="'/produkte/' + item.productId">{{ item.name }}</a></h2><p class="cart-unit-price">{{ money(item.priceCents) }} / Stück</p>
+          <div class="cart-item-details"><h2><a class="cart-item-name" :href="'/produkte/' + encodeURIComponent(item.productId)">{{ item.name }}</a></h2><p class="cart-unit-price">{{ money(item.priceCents) }} / Stück</p>
             <div class="cart-item-actions"><label>Menge <input class="cart-quantity" type="number" min="1" :max="item.available ?? 99" :value="item.quantity" :readonly="item.available === 1" @change="quantity(item.productId, Number(($event.target as HTMLInputElement).value))" /></label><button class="cart-remove" @click="remove(item.productId)">Entfernen</button></div>
             <p v-if="item.available === 0 || (item.available !== null && item.available !== undefined && item.quantity > item.available)" class="cart-message">Diese Menge ist nicht mehr verfügbar.</p>
           </div><p class="cart-line-total">{{ money(item.priceCents * item.quantity) }}</p>

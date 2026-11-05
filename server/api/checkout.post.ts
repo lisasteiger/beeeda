@@ -1,11 +1,15 @@
 import { randomUUID } from 'node:crypto'
+import { hasTermsAcceptance, termsVersion } from '#shared/legal'
 import { checkOrigin, owner, database, databaseError, priceCart, stripe, startSession } from '../utils/shop'
 export default defineEventHandler(async event => {
   checkOrigin(event)
+  const body = await readBody(event)
+  if (!hasTermsAcceptance(body)) {
+    throw createError({ statusCode: 400, message: 'Bitte stimme den aktuellen AGB zu.' })
+  }
   stripe(event)
   const db = database(event)
   const shopper = owner(event, true)
-  const body = await readBody(event)
   if (typeof body?.requestKey !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(body.requestKey)) {
     throw createError({ statusCode: 400, message: 'Ungültige Bestellung.' })
   }
@@ -23,7 +27,7 @@ export default defineEventHandler(async event => {
     shipping_address_collection: { allowed_countries: ['CH'] },
     billing_address_collection: 'required',
     expires_at: Math.floor(Date.now() / 1000) + 35 * 60,
-    metadata: { order_id: id },
+    metadata: { order_id: id, terms_version: termsVersion, terms_accepted_at: new Date().toISOString() },
     success_url: siteUrl + '/bestellung?order=' + id,
     cancel_url: siteUrl + '/kasse?cancelled=1'
   }
