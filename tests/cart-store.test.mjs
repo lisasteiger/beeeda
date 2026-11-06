@@ -47,7 +47,7 @@ test('malformed storage, invalid rows, duplicate IDs and unsafe paths', () => {
     { ...product, quantity: 1, image: 'https://example.com/image.png', href: 'javascript:alert(1)' },
     { ...product, quantity: 2 },
   ]));
-  assert.deepEqual(cart.read(), [{ ...product, quantity: 1, image: '', href: '' }]);
+  assert.deepEqual(cart.read(), [{ ...product, quantity: 1, stock: 1, shippingClass: 'large', image: '', href: '' }]);
 });
 
 test('blocked reads or writes retain an in-memory cart', () => {
@@ -86,4 +86,15 @@ test('old multiple quantities become one and receive the confirmed price', () =>
   assert.deepEqual(cartTotals(cart.read()), { quantity: 1, priceCents: 4960 });
   cart.add(pinksChaos);
   assert.deepEqual(cartTotals(cart.read()), { quantity: 1, priceCents: 4960 });
+});
+
+test('multiple stock allows quantities and caps repeated additions', () => {
+  const cart = createCartStore(storage());
+  const multiple = { ...product, stock: 4, shippingClass: 'small' };
+  cart.add(multiple, 2);
+  cart.add(multiple, 3);
+  assert.equal(cart.read()[0].quantity, 4);
+  cart.setQuantity(product.id, 3);
+  assert.equal(cartTotals(cart.read()).priceCents, product.priceCents * 3);
+  assert.throws(() => cart.setQuantity(product.id, 5));
 });

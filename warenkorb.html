@@ -46,12 +46,13 @@
           <dl>
             <div><dt>Artikel</dt><dd id="cart-count"></dd></div>
             <div><dt>Zahlungsart</dt><dd>ausschliesslich Twint</dd></div>
-            <div><dt>Versand</dt><dd>Noch nicht festgelegt</dd></div>
+            <div><dt>Versand</dt><dd id="cart-shipping"></dd></div>
             <div class="cart-total"><dt>Artikelsumme</dt><dd id="cart-total"></dd></div>
+            <div class="cart-total"><dt>Gesamtsumme</dt><dd id="cart-grand-total"></dd></div>
           </dl>
-          <p class="cart-note">Zuzüglich Versandkosten.</p>
+          <p class="cart-note">Versand innerhalb der Schweiz.</p>
           <a class="cart-button" href="kasse.html">Zur Kasse</a>
-          <p class="cart-note">Lokaler Testshop: keine echten Zahlungen. Versandkosten werden vor dem Livebetrieb ergänzt.</p>
+          <p class="cart-note">Lokaler Testshop: keine echten Zahlungen.</p>
         </aside>
       </div>
     </main>
@@ -63,7 +64,7 @@
           <h2><a class="cart-item-name"></a></h2>
           <p class="cart-unit-price"></p>
           <div class="cart-item-actions">
-            <label>Menge <input class="cart-quantity" type="number" min="1" max="1" value="1" readonly aria-label="Ein Einzelstück" /></label>
+            <label>Menge <input class="cart-quantity" type="number" min="1" max="1" value="1" aria-label="Menge" /></label>
             <button class="cart-remove" type="button">Entfernen</button>
           </div>
         </div>

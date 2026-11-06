@@ -1,0 +1,4 @@
+allowBuilds:
+  '@stripe/cli': true
+  esbuild: true
+  sharp: true

@@ -1,0 +1,30 @@
+{
+  "archiveImage": "/assets/Beeeda-gruen-beige-zipfel-03.webp",
+  "care": "",
+  "cover": "/assets/Beeeda-gruen-beige-zipfel-03.webp",
+  "description": "Die warme und voluminöse Wollkombination passt sich angenehm an die Kopfform an. Bei Spiel und Spass an kalten Tagen bleibt der Kopf warm und doch gut durchlüftet!",
+  "displayOrder": 1,
+  "gallery": [
+    "/assets/Beeeda-gruen-beige-zipfel-01.webp",
+    "/assets/Beeeda-gruen-beige-zipfel-02.webp",
+    "/assets/Beeeda-gruen-beige-zipfel-05.webp",
+    "/assets/Beeeda-gruen-beige-zipfel-06.webp",
+    "/assets/Beeeda-gruen-beige-zipfel-07.webp"
+  ],
+  "hero": "/assets/Beeeda-gruen-beige-zipfel-04.webp",
+  "materialBehavior": "stretch: 10/10",
+  "materials": "beige: Mohair (Kid Mohair), 20% Schurwolle (Merino super fine), 10% Polyamid | grün: 55% Mohair (Superkid), 45% Schurwolle (Merino superfein)",
+  "measurements": "Höhe: 21cm | Breite: 17cm",
+  "name": "grün beiger Zipfel",
+  "priceCents": 4990,
+  "productId": "Grün beiger Zipfel",
+  "reduced": false,
+  "relatedProducts": [
+    ""
+  ],
+  "shippingClass": "large",
+  "size": "12-24 M",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-gruen-beige-zipfel-07.webp"
+}

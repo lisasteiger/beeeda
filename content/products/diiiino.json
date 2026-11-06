@@ -1,0 +1,26 @@
+{
+  "archiveImage": "/assets/Beeeda-Diiiino-01.webp",
+  "care": "Übergangszeiten",
+  "cover": "/assets/Beeeda-Diiiino-01.webp",
+  "description": "Für die Übergangszeiten eignet sich der Diiiino super! Die dünn verarbeitete Wolle gibt warm und lässt doch angenehm Luft hindurch.",
+  "displayOrder": 1,
+  "gallery": [
+    "/assets/Beeeda-Diiiino-06.webp",
+    "/assets/Beeeda-Diiiino-02.webp",
+    "/assets/Beeeda-Diiiino-03.webp",
+    "/assets/Beeeda-Diiiino-04.webp"
+  ],
+  "hero": "/assets/Beeeda-Diiiino-05.webp",
+  "materialBehavior": "4/10 stretch",
+  "materials": "93% Alpaka, 7% Polyamid",
+  "measurements": "Höhe: 20cm | Breite: 16cm",
+  "name": "Diiiino",
+  "priceCents": 3990,
+  "productId": "Diiiino",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "12-18 M",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-Diiiino-02.webp"
+}
