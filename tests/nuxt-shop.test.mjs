@@ -6,12 +6,12 @@ import { PGlite } from '@electric-sql/pglite'
 import Stripe from 'stripe'
 import { shippingCents, validateCart } from '../shared/shop.ts'
 
-test('Shipping uses quantities, and cart boundary rejects duplicates and forged quantities', () => {
+test('Shipping is a flat CHF 7.50, and cart boundary rejects duplicates and forged quantities', () => {
   assert.equal(shippingCents([]), 0)
-  assert.equal(shippingCents([{ quantity: 1, shippingClass: 'small' }]), 200)
-  assert.equal(shippingCents([{ quantity: 1, shippingClass: 'large' }]), 900)
-  assert.equal(shippingCents([{ quantity: 2, shippingClass: 'small' }]), 900)
-  assert.equal(shippingCents([{ quantity: 1, shippingClass: 'small' }, { quantity: 1, shippingClass: 'small' }]), 900)
+  assert.equal(shippingCents([{ quantity: 1, shippingClass: 'small' }]), 750)
+  assert.equal(shippingCents([{ quantity: 1, shippingClass: 'large' }]), 750)
+  assert.equal(shippingCents([{ quantity: 2, shippingClass: 'small' }]), 750)
+  assert.equal(shippingCents([{ quantity: 1, shippingClass: 'small' }, { quantity: 1, shippingClass: 'small' }]), 750)
   for (const input of [[], [{ productId: 'a', quantity: 0 }], [{ productId: 'a', quantity: 1.5 }], [{ productId: 'a', quantity: 100 }], [{ productId: 'a', quantity: 1 }, { productId: 'a', quantity: 1 }]]) assert.throws(() => validateCart(input))
 })
 
@@ -19,13 +19,14 @@ test('Supabase SQL reserves and pays atomically; retries never sell a unique pie
   const db = new PGlite()
   await db.exec('create role anon; create role authenticated; create role service_role bypassrls;')
   await db.exec(await readFile(new URL('../supabase/migrations/202610070001_shop.sql', import.meta.url), 'utf8'))
+  await db.exec(await readFile(new URL('../supabase/migrations/202611060001_flat_shipping.sql', import.meta.url), 'utf8'))
   const cart = JSON.stringify([{ productId: 'pinks-chaos', quantity: 1, name: 'Pinks Chaos', priceCents: 4960, shippingClass: 'small' }])
   const id = randomUUID(), request = randomUUID(), session = 'cs_test_one'
-  const reserve = (order, owner, key = randomUUID(), items = cart, shipping = 200) =>
+  const reserve = (order, owner, key = randomUUID(), items = cart, shipping = 750) =>
     db.query('select * from shop_reserve($1,$2,$3,$4::jsonb,$5,$6::jsonb)', [order, owner, key, items, shipping, '{}'])
   const availability = async () => (await db.query('select * from shop_availability()')).rows[0]
   const result = await reserve(id, 'buyer-1', request)
-  assert.equal(result.rows[0].total_cents, 5160)
+  assert.equal(result.rows[0].total_cents, 5710)
   assert.equal((await availability()).available, 0)
   assert.equal((await reserve(randomUUID(), 'buyer-1', request)).rows[0].id, id)
   await assert.rejects(reserve(randomUUID(), 'buyer-2'), /out_of_stock/)
@@ -33,10 +34,10 @@ test('Supabase SQL reserves and pays atomically; retries never sell a unique pie
   await db.query('select shop_attach_session($1,$2)', [id, session])
   const finish = (amount, paid = true, sessionId = session) => db.query('select shop_finish($1,$2,$3,$4,$5,$6::jsonb)', [id, sessionId, paid, amount, 'chf', '{}'])
   await assert.rejects(finish(1), /payment_mismatch/)
-  await assert.rejects(finish(5160, true, 'wrong'), /session_conflict/)
-  await finish(5160)
-  await finish(5160)
-  await finish(5160, false) // A delayed expiry cannot undo a paid order.
+  await assert.rejects(finish(5710, true, 'wrong'), /session_conflict/)
+  await finish(5710)
+  await finish(5710)
+  await finish(5710, false) // A delayed expiry cannot undo a paid order.
   assert.equal((await availability()).sold_out, true)
   assert.equal((await db.query('select on_hand from inventory')).rows[0].on_hand, 0)
   await db.exec(await readFile(new URL('../supabase/migrations/202610070001_shop.sql', import.meta.url), 'utf8'))

@@ -17,9 +17,9 @@
   "priceCents": 4990,
   "productId": "zwei Blätter",
   "reduced": false,
-  "shippingClass": "large",
   "size": "12–18 M",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-zwei-blaetter-05.webp"
+  "thumbnail": "/assets/Beeeda-zwei-blaetter-05.webp",
+  "shippingClass": "large"
 }

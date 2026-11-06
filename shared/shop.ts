@@ -1,6 +1,6 @@
 export type Product = {
   productId: string; name: string; size?: string; reduced?: boolean; stockQuantity?: number | null; stockDisplay?: 'Anzahl' | 'Einzelstück'; status: 'draft' | 'active' | 'archived'; priceCents: number;
-  shippingClass: 'small' | 'large'; description: string; materials: string; measurements: string;
+  shippingClass?: 'small' | 'large'; description: string; materials: string; measurements: string;
   materialBehavior?: string; care: string; cover: string; hero: string; thumbnail: string; archiveImage: string;
   gallery: string[]; displayOrder: number; available?: number | null; soldOut?: boolean; relatedProducts?: string[]
 }
@@ -29,9 +29,9 @@ export function productSuggestions(products: Product[], currentId: string, limit
   return [...available.slice(index + 1), ...available.slice(0, index + 1)]
     .filter(product => product.productId !== currentId).slice(0, limit)
 }
-export function shippingCents(lines: { quantity: number; shippingClass: string }[]) {
+export function shippingCents(lines: { quantity: number; shippingClass?: string }[]) {
   if (!lines.length) return 0
-  return lines.reduce((sum, line) => sum + line.quantity, 0) >= 2 || lines.some(line => line.shippingClass !== 'small') ? 900 : 200
+  return 750
 }
 export const money = (cents: number) => 'CHF ' + (cents / 100).toFixed(2)
 export function validateCart(input: unknown): CartLine[] {
