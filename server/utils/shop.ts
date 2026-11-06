@@ -34,7 +34,7 @@ export function checkOrigin(event: H3Event) {
   throw createError({ statusCode: 403, message: 'Ungültiger Zugriff.' })
 }
 export function authorizedCron(event: H3Event) {
-  const secret = useRuntimeConfig(event).cronSecret
+  const secret = process.env.CRON_SECRET || useRuntimeConfig(event).cronSecret
   const header = getHeader(event, 'authorization') || ''
   const expected = 'Bearer ' + secret
   if (!secret || Buffer.byteLength(header) !== Buffer.byteLength(expected) || !timingSafeEqual(Buffer.from(header), Buffer.from(expected))) {
