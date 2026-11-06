@@ -19,7 +19,7 @@
   "priceCents": 3990,
   "productId": "grüner Blob",
   "reduced": false,
-  "shippingClass": "large",
+  "shippingClass": "small",
   "size": "12 M",
   "status": "active",
   "stockDisplay": "Einzelstück",
