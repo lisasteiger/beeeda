@@ -27,7 +27,10 @@ export function owner(event: H3Event, create = false) {
 export function checkOrigin(event: H3Event) {
   const origin = getHeader(event, 'origin')
   const allowed = new URL(useRuntimeConfig(event).public.siteUrl).origin
-  if (origin === allowed || (import.meta.dev && origin && /^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin))) return
+  // Both owned shop domains are valid: Vercel redirects the apex to www.
+  const shopDomains = ['https://beeeda.ch', 'https://www.beeeda.ch']
+  if (origin === allowed || (shopDomains.includes(allowed) && origin && shopDomains.includes(origin)) ||
+    (import.meta.dev && origin && /^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin))) return
   throw createError({ statusCode: 403, message: 'Ungültiger Zugriff.' })
 }
 export function authorizedCron(event: H3Event) {
