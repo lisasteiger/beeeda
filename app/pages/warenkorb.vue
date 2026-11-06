@@ -18,7 +18,7 @@ onMounted(() => refresh())
       </ul>
       <p v-if="items.length < lines.length" class="cart-message">Ein Produkt ist nicht mehr im Shop. <button class="cart-remove" @click="lines = lines.filter(line => items.some(item => item.productId === line.productId))">Warenkorb aktualisieren</button></p>
       </section>
-      <CartSummary><a class="cart-button" href="/kasse">Zur Kasse</a><p v-if="!catalog?.checkoutReady" class="cart-note">Der Online-Kauf wird gerade eingerichtet.</p></CartSummary>
+      <CartSummary><p class="cart-note">Deine Lieblingsstücke sind im Warenkorb noch nicht für dich reserviert und bleiben für andere bestellbar.</p><a class="cart-button" href="/kasse">Zur Kasse</a><p v-if="!catalog?.checkoutReady" class="cart-note">Der Online-Kauf wird gerade eingerichtet.</p></CartSummary>
     </div>
     <div v-else-if="ready" class="cart-empty"><p>Dein Warenkorb ist leer.</p><a class="cart-button buy-button" href="/">Weiterstöbern</a></div>
   </main>
