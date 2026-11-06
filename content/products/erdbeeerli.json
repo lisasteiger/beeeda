@@ -6,8 +6,8 @@
   "name": "Erdbeeerli",
   "productId": "Erdbeeerli",
   "reduced": false,
-  "shippingClass": "large",
   "size": "",
   "status": "archived",
-  "stockDisplay": "Anzahl"
+  "stockDisplay": "Anzahl",
+  "shippingClass": "large"
 }
