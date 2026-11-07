@@ -7,7 +7,7 @@
 Diese Allgemeinen Geschäftsbedingungen gelten für Bestellungen im Onlineshop von Beeeda. Anbieterin und Vertragspartnerin ist:
 
 Lisa Steiger  
-Bedastrasse 24  
+Birkenstrasse 6a  
 9200 Gossau  
 Schweiz  
 hi@beeeda.ch
@@ -54,8 +54,8 @@ Ungetragene, ungewaschene und unbeschädigte Produkte können innerhalb von 14 T
 
 Bitte melde die Rückgabe innerhalb dieser Frist per E-Mail an hi@beeeda.ch unter Angabe deiner Bestellnummer an. Sende die Ware anschliessend innerhalb weiterer 14 Tage ausreichend geschützt an:
 
-Lisa Steiger – Beeeda  
-Bedastrasse 24  
+Lisa Steiger  
+Birkenstrasse 6a  
 9200 Gossau  
 Schweiz
 
