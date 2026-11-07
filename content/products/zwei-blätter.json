@@ -1,0 +1,25 @@
+{
+  "archiveImage": "/assets/Beeeda-zwei-blaetter-02.webp",
+  "care": "Übergangszeit bis kalte Tage",
+  "cover": "/assets/Beeeda-zwei-blaetter-02.webp",
+  "description": "Der Beanie kann je nach Bedürfnis mehr oder weniger über die Ohren gezogen werden. Ebenfalls kann er um den Hals befestigt werden, so dass er beim Spielen nicht verloren geht.",
+  "displayOrder": 1,
+  "gallery": [
+    "/assets/Beeeda-zwei-blaetter-01.webp",
+    "/assets/Beeeda-zwei-blaetter-04.webp",
+    "/assets/Beeeda-zwei-blaetter-05.webp"
+  ],
+  "hero": "/assets/Beeeda-zwei-blaetter-03.webp",
+  "materialBehavior": "stretch: 7/10",
+  "materials": "45% Alpaka, 45% Schurwolle (Merino fine), 10% Polyamid",
+  "measurements": "Höhe: 22cm | Breite: 20cm",
+  "name": "zwei Blätter",
+  "priceCents": 4990,
+  "productId": "zwei Blätter",
+  "reduced": false,
+  "size": "12–18 M",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-zwei-blaetter-05.webp",
+  "shippingClass": "large"
+}

@@ -1,3 +1,4 @@
+import { shippingCents } from "./products.js";
 import { CART_KEY, CURRENCY, cart, cartTotals } from "./cart-store.js";
 
 const format = new Intl.NumberFormat("de-CH", { style: "currency", currency: CURRENCY });
@@ -29,6 +30,8 @@ function render() {
     );
     const quantity = row.querySelector(".cart-quantity");
     quantity.value = item.quantity;
+    quantity.max = item.stock;
+    quantity.readOnly = item.stock === 1;
     quantity.setAttribute("aria-label", `Menge für ${item.name}`);
     row.querySelector(".cart-remove").setAttribute("aria-label", `${item.name} entfernen`);
     list.append(row);
@@ -37,6 +40,9 @@ function render() {
   const total = cartTotals(items);
   document.getElementById("cart-count").textContent = total.quantity;
   document.getElementById("cart-total").textContent = money(total.priceCents);
+  const shipping = shippingCents(items);
+  document.getElementById("cart-shipping").textContent = money(shipping);
+  document.getElementById("cart-grand-total").textContent = money(total.priceCents === null ? null : total.priceCents + shipping);
 }
 
 list.addEventListener("change", event => {
@@ -50,7 +56,8 @@ list.addEventListener("change", event => {
     message.textContent = "Jedes Stück ist nur einmal verfügbar.";
     return;
   }
-  cart.setQuantity(id, input.valueAsNumber);
+  try { cart.setQuantity(id, input.valueAsNumber); }
+  catch (error) { message.textContent = error.message; render(); return; }
   const quantity = input.valueAsNumber;
   render();
   // Nach dem Neurendern bleibt die Tastaturbedienung an derselben Stelle.

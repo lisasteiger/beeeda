@@ -1,0 +1,28 @@
+{
+  "archiveImage": "/assets/Beeeda-Lollipop-Beanie-01.webp",
+  "care": "kalte Tage",
+  "cover": "/assets/Beeeda-Lollipop-Beanie-02.webp",
+  "description": "Je nach Bedürfnis können die Ohren mehr oder weniger abgedeckt werden. Durch die dicke Wolle wärmt die Mütze wunderbar und bietet einen angenehmen Schutz für den Kopf.",
+  "displayOrder": 1,
+  "gallery": [
+    "/assets/Beeeda-Lollipop-Beanie-01.webp",
+    "/assets/Beeeda-Lollipop-Beanie-04.webp",
+    "/assets/Beeeda-Lollipop-Beanie-03.webp",
+    "/assets/Beeeda-Lollipop-Beanie-05.webp",
+    "/assets/Beeeda-Lollipop-Beanie-06.webp"
+  ],
+  "hero": "/assets/Beeeda-Lollipop-Beanie-07.webp",
+  "materialBehavior": "stretch: 7/10",
+  "materials": "farbig: 40% Schurwolle (Merino), 36% Mohair (Superkid), 13% Polyamid, 11% Baumwolle | rosa: 100% Schurwolle (Merino)",
+  "measurements": "Höhe: 23cm | Breite: 20cm",
+  "name": "Lollipop Beanie",
+  "priceCents": 4990,
+  "productId": "Lollipop Beanie",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "12-18 M",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "stockQuantity": 1,
+  "thumbnail": "/assets/Beeeda-Lollipop-Beanie-06.webp"
+}

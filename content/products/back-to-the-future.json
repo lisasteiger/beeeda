@@ -1,0 +1,21 @@
+{
+  "archiveImage": "/assets/Beeeda-back-to-the-future-01.webp",
+  "care": "",
+  "cover": "/assets/Beeeda-back-to-the-future-01.webp",
+  "displayOrder": 0,
+  "gallery": [
+    "/assets/Beeeda-back-to-the-future-02.webp",
+    "/assets/Beeeda-back-to-the-future-03.webp",
+    "/assets/Beeeda-back-to-the-future-05.webp"
+  ],
+  "hero": "/assets/Beeeda-back-to-the-future-04.webp",
+  "materialBehavior": "",
+  "name": "Back to the future",
+  "productId": "Back to the future",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "",
+  "status": "draft",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-back-to-the-future-05.webp"
+}

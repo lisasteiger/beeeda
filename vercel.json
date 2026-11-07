@@ -1,0 +1,4 @@
+{
+  "framework": "nuxtjs",
+  "crons": [{ "path": "/api/maintenance/reconcile", "schedule": "*/5 * * * *" }]
+}

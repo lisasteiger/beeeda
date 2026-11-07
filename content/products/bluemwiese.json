@@ -1,0 +1,26 @@
+{
+  "archiveImage": "/assets/Beeeda-Blumenwiese-01.webp",
+  "care": "Übergangszeiten bis kalte Tage",
+  "cover": "/assets/Beeeda-Blumenwiese-01.webp",
+  "description": "Für den kalten Winter bringt die Blumenwiese doch noch die Wärme zurück! Das flauschige Material ist sehr angenehm und umfasst die Ohren perfekt.",
+  "displayOrder": 1,
+  "gallery": [
+    "/assets/Beeeda-Blumenwiese-02.webp",
+    "/assets/Beeeda-Blumenwiese-03.webp",
+    "/assets/Beeeda-Blumenwiese-04.webp",
+    "/assets/Beeeda-Blumenwiese-06.webp"
+  ],
+  "hero": "/assets/Beeeda-Blumenwiese-05.webp",
+  "materialBehavior": "",
+  "materials": "grün: 100% Schurwolle | farbig: 40% Schurwolle (Merino), 36% Mohair, 13% Polyamid, 11% Baumwolle,",
+  "measurements": "Höhe: 21cm | Breite: 21cm",
+  "name": "Bluemewiese",
+  "priceCents": 4990,
+  "productId": "Bluemewiese",
+  "reduced": false,
+  "shippingClass": "large",
+  "size": "12-18 M",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "thumbnail": "/assets/Beeeda-Blumenwiese-06.webp"
+}
