@@ -15,16 +15,16 @@
   "materialBehavior": "stretch: 10/10",
   "materials": "beige: Mohair (Kid Mohair), 20% Schurwolle (Merino super fine), 10% Polyamid | grün: 55% Mohair (Superkid), 45% Schurwolle (Merino superfein)",
   "measurements": "Höhe: 21cm | Breite: 17cm",
-  "name": "grün beiger Zipfel",
+  "name": "grün beiger Zwerg",
   "priceCents": 4990,
-  "productId": "Grün beiger Zipfel",
+  "productId": "Grün beiger Zwerg",
   "reduced": false,
   "relatedProducts": [
     ""
   ],
-  "shippingClass": "large",
   "size": "12-24 M",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-gruen-beige-zipfel-07.webp"
+  "thumbnail": "/assets/Beeeda-gruen-beige-zipfel-07.webp",
+  "shippingClass": "large"
 }
