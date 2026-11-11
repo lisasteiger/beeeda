@@ -1,0 +1,29 @@
+{
+  "care": "übergangszeit bis kalte Tage",
+  "description": "Der Schal liegt angenehm nah am Hals. Durch das Binden entstehen zwei Lagen, die schön warm halten. Gleichzeitig ist er dünn genug, um bequem unter die Jacke zu passen. Durch die Wolle kann er etwas kratziger sein. ",
+  "displayOrder": 1,
+  "materialBehavior": "stretch: 4/10",
+  "materials": "blau dick: 100 % Schurwolle (Merino extrafein) | blau dünn: 54% Alpaka (superfine), 24% Polyamid, 22% Wolle (Merino fine) | orange:  70% Mohair (Kid Mohair), 20% Schurwolle (Merino Superfine), 10% Polyamid",
+  "name": "Blauer Schnegg",
+  "priceCents": 3990,
+  "productId": "Blauer Schnegg",
+  "reduced": false,
+  "size": "",
+  "status": "draft",
+  "stockDisplay": "Einzelstück",
+  "stockQuantity": 1,
+  "gallery": [
+    "/assets/Beeeda-blauer-schnegg-1.webp",
+    "/assets/Beeeda-blauer-schnegg-3.webp",
+    "/assets/Beeeda-blauer-schnegg-5.webp",
+    "/assets/Beeeda-blauer-schnegg-6.webp",
+    "/assets/Beeeda-blauer-schnegg-7.webp",
+    "/assets/Beeeda-blauer-schnegg-8.webp",
+    "/assets/Beeeda-blauer-schnegg-9.webp"
+  ],
+  "measurements": "Höhe: 88cm | Breite: 12cm",
+  "cover": "/assets/Beeeda-blauer-schnegg-2.webp",
+  "hero": "/assets/Beeeda-blauer-schnegg-4.webp",
+  "thumbnail": "/assets/Beeeda-blauer-schnegg-10.webp",
+  "archiveImage": "/assets/Beeeda-blauer-schnegg-2.webp"
+}

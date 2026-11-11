@@ -1,0 +1,28 @@
+{
+  "archiveImage": "/assets/Beeeda-gans-warm-08.webp",
+  "care": "Übergangszeiten",
+  "cover": "/assets/Beeeda-gans-warm-08.webp",
+  "description": "Nicht nur Gans warm, sondern auch Gans süss! 🪿 Die Gans behält stets den Überblick und schützt die Ohren vor Kälte. Ihre Beinchen halten alles zusammen.",
+  "displayOrder": 1,
+  "gallery": [
+    "/assets/Beeeda-gans-warm-01.webp",
+    "/assets/Beeeda-gans-warm-02.webp",
+    "/assets/Beeeda-gans-warm-03.webp",
+    "/assets/Beeeda-gans-warm-04.webp",
+    "/assets/Beeeda-gans-warm-09.webp",
+    "/assets/Beeeda-gans-warm-10.webp"
+  ],
+  "hero": "/assets/Beeeda-gans-warm-07.webp",
+  "materialBehavior": "stretch: 10/10",
+  "materials": "weiss dick:  100 % Schurwolle (Merino extrafein) | weiss, schwarz, orange: 70% Mohair (Kid Mohair), 20% Schurwolle (Merino Superfine), 10% Polyamid ",
+  "measurements": "Höhe: 18cm | Breite: 20cm",
+  "name": "Gans warm",
+  "priceCents": 4990,
+  "productId": "Gans warm",
+  "reduced": false,
+  "size": "12-24 M",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "stockQuantity": 1,
+  "thumbnail": "/assets/Beeeda-gans-warm-05.webp"
+}
