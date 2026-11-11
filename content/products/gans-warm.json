@@ -5,12 +5,13 @@
   "description": "Nicht nur Gans warm, sondern auch Gans süss! 🪿 Die Gans behält stets den Überblick und schützt die Ohren vor Kälte. Ihre Beinchen halten alles zusammen.",
   "displayOrder": 1,
   "gallery": [
+    "/assets/Beeeda-gans-warm-09.webp",
+    "/assets/Beeeda-gans-warm-10.webp",
     "/assets/Beeeda-gans-warm-01.webp",
-    "/assets/Beeeda-gans-warm-02.webp",
     "/assets/Beeeda-gans-warm-03.webp",
     "/assets/Beeeda-gans-warm-04.webp",
-    "/assets/Beeeda-gans-warm-09.webp",
-    "/assets/Beeeda-gans-warm-10.webp"
+    "/assets/Beeeda-gans-warm-02.webp",
+    "/assets/Beeeda-gans-warm-11.webp"
   ],
   "hero": "/assets/Beeeda-gans-warm-07.webp",
   "materialBehavior": "stretch: 10/10",
