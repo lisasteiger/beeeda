@@ -11,17 +11,17 @@
     "/assets/Beeeda-blue-loading-06.webp"
   ],
   "hero": "/assets/Beeeda-blue-loading-04.webp",
+  "makingMethod": "von Hand gehäkelt",
   "materialBehavior": "",
-  "makingMethod": "von Hand gestrickt",
   "materials": "",
   "measurements": "Höhe: 19cm | Breite: 14cm",
   "name": "blue loading ...",
   "priceCents": 4990,
   "productId": "blue loading ...",
   "reduced": false,
-  "shippingClass": "large",
   "size": "12 M",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-blue-loading-06.webp"
+  "thumbnail": "/assets/Beeeda-blue-loading-06.webp",
+  "shippingClass": "large"
 }

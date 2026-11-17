@@ -1,12 +1,12 @@
 {
-  "makingMethod": "von Hand gestrickt",
   "care": "",
   "displayOrder": 1,
+  "makingMethod": "von Hand gestrickt",
   "materialBehavior": "",
+  "name": "Herbstschal",
+  "productId": "Herbstschal",
   "reduced": false,
   "size": "",
   "status": "draft",
-  "stockDisplay": "Anzahl",
-  "productId": "Herbstschal",
-  "name": "Herbstschal"
+  "stockDisplay": "Anzahl"
 }

@@ -14,17 +14,17 @@
     "/assets/Beeeda-gruen-rosa-hoernli-08.webp"
   ],
   "hero": "/assets/Beeeda-gruen-rosa-hoernli-09.webp",
-  "materialBehavior": "stretch: 10/10\nKopfumfang auf dem Bild: 51cm",
   "makingMethod": "von Hand gestrickt",
+  "materialBehavior": "stretch: 10/10\nKopfumfang auf dem Bild: 51cm",
   "materials": "grün: 53 % Schurwolle (Merino)  25 % Alpaka (Baby)  22 % Polyamid | violette: 62% Alpaka (Baby), 27% Polyamid, 11% Schurwolle (Merino fine)",
   "measurements": "Höhe: 22cm | Breite: 16cm",
   "name": "grün rosa Hörnli",
   "priceCents": 4990,
   "productId": "grün rosa Hörnli",
   "reduced": false,
-  "shippingClass": "large",
   "size": "12–18 M",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-gruen-rosa-hoernli-03.webp"
+  "thumbnail": "/assets/Beeeda-gruen-rosa-hoernli-03.webp",
+  "shippingClass": "large"
 }

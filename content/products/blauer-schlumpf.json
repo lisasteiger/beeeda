@@ -11,17 +11,17 @@
     "/assets/Beeeda-blauer-schlumpf-06.webp"
   ],
   "hero": "/assets/Beeeda-blauer-schlumpf-05.webp",
+  "makingMethod": "von Hand gehäkelt",
   "materialBehavior": "stretch: 8/10",
-  "makingMethod": "von Hand gestrickt",
   "materials": "braun: 82% Alpaka (Baby Alpaka), 16% Polyamid, 2% Elasthan | blau: 54% Alpaka (superfine), 24% Polyamid, 22% Wolle",
   "measurements": "Höhe: 24.5cm | Breite: 16cm ",
   "name": "blauer Schlumpf",
   "priceCents": 4990,
   "productId": "blauer-Schlumpf",
   "reduced": false,
-  "shippingClass": "large",
   "size": "12–18 M",
   "status": "active",
   "stockDisplay": "Einzelstück",
-  "thumbnail": "/assets/Beeeda-blauer-schlumpf-06.webp"
+  "thumbnail": "/assets/Beeeda-blauer-schlumpf-06.webp",
+  "shippingClass": "large"
 }
