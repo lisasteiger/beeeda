@@ -15,6 +15,7 @@ export default defineContentConfig({
         priceCents: z.number().multipleOf(1).min(0).editor({ label: 'Preis in Rappen (4960 = CHF 49.60)' }),
         stockQuantity: z.number().multipleOf(1).min(0).max(9999).nullable().default(null).describe('Gesamtanzahl inklusive bereits verkaufter Stücke. Leer = Einzelstück (1). Für Nachschub die Gesamtanzahl erhöhen. Bestehende Supabase-Bestände bleiben bei leerem Feld unverändert, bis hier erstmals eine Zahl gesetzt wird.').editor({ label: 'Anzahl insgesamt' }),
         stockDisplay: z.enum(['Anzahl', 'Einzelstück']).default('Anzahl').describe('Anzeige unter dem Preis: aktueller Bestand oder der Text „Einzelstück“. Der tatsächliche Bestand wird separat festgelegt.').editor({ label: 'Bestandsanzeige' }),
+        makingMethod: z.string().default('').describe('Freier Text über der Bestandsanzeige, z. B. von Hand gestrickt oder von Hand genäht. Leer lassen, um die Zeile auszublenden.').editor({ label: 'Art und Weise der Herstellung' }),
         description: z.string().editor({ label: 'Beschreibung', input: 'textarea' }),
         materials: z.string().editor({ label: 'Material' }),
         measurements: z.string().editor({ label: 'Masse' }),
