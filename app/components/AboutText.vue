@@ -7,8 +7,12 @@ onMounted(() => {
   observer = new ResizeObserver(() => {
     const last = copy.value?.lastElementChild
     if (last) copy.value?.style.setProperty('--last-text-height', last.getBoundingClientRect().height + 'px')
+    const productsButton = document.querySelector('.products-return')
+    if (productsButton?.getBoundingClientRect().height) copy.value?.style.setProperty('--mobile-text-top', productsButton.getBoundingClientRect().bottom + 48 + 'px')
   })
   if (copy.value) observer.observe(copy.value)
+  const productsButton = document.querySelector('.products-return')
+  if (productsButton) observer.observe(productsButton)
 })
 onBeforeUnmount(() => observer?.disconnect())
 </script>
@@ -18,4 +22,7 @@ onBeforeUnmount(() => observer?.disconnect())
 .about-copy p { white-space: pre-line; margin: 0; }
 .about-copy p + p { margin-top: 5lh; }
 .home-about .about-copy::after { content: ''; display: block; height: max(0px, calc(50dvh - var(--last-text-height, 0px) / 2)); }
+@media (max-width: 700px) {
+  .home-about .about-copy::after { height: max(0px, calc(100dvh - var(--mobile-text-top, 250px) - var(--last-text-height, 0px))); }
+}
 </style>
