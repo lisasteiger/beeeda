@@ -1,0 +1,34 @@
+Betreff: Deine Bestellung bei Beeeda – [Bestellnummer]
+
+Hei Du!
+
+Danke für deine Bestellung!
+
+Deine Zahlung ist bei uns eingegangen.
+
+Deine Bestellung
+
+[Anzahl] × [Produktname] – CHF [Betrag]
+Versand: CHF [Versandkosten]
+Gesamtbetrag: CHF [Gesamtbetrag]
+
+Lieferadresse
+
+[Vorname Nachname]
+[Strasse und Hausnummer]
+[PLZ und Ort]
+
+Wir versenden deine Bestellung innerhalb von drei Arbeitstagen nach Zahlungseingang.
+Sobald dein Paket unterwegs ist, erhältst du eine Versandbestätigung.
+
+Du kannst ungetragene und ungewaschene Produkte gemäss unseren AGB innerhalb von 14 Tagen zurückgeben.
+Melde dich dafür oder bei Fragen gerne unter hi@beeeda.ch.
+
+[AGB-Link] · [Datenschutz-Link]
+
+Wir freuen uns, dass ein neues Beeeda Stück nun durch die Strassen läuft!
+
+Liebe Grüsse
+Beeeda
+
+beeeda.ch

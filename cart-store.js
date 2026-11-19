@@ -1,4 +1,4 @@
-import { pinksChaos } from "./products.js";
+import { products } from "./products.js";
 
 // Preise werden in Rappen gespeichert, damit Summen exakt bleiben.
 export const CURRENCY = "CHF";
@@ -6,18 +6,22 @@ export const CART_KEY = "beeeda.cart.v1";
 
 function normalizeItem(item) {
   // Gespeicherte Vorschauartikel erhalten die aktuellen Produktdaten.
-  if (item?.id === pinksChaos.id) item = { ...item, ...pinksChaos };
+  const product = products.find(product => product.id === item?.id);
+  if (product) item = { ...item, ...product };
   if (!item || typeof item.id !== "string" || !item.id.trim() ||
       typeof item.name !== "string" || !item.name.trim() ||
       (item.priceCents !== null && (!Number.isSafeInteger(item.priceCents) ||
       item.priceCents < 0 || item.priceCents > 100000000)) || !Number.isInteger(item.quantity) ||
-      item.quantity < 1 || item.quantity > 99) return null;
+      item.quantity < 1 || item.quantity > 99 ||
+      !Number.isInteger(item.stock ?? 1) || (item.stock ?? 1) < 1) return null;
 
   return {
     id: item.id,
     name: item.name,
     priceCents: item.priceCents,
-    quantity: 1,
+    quantity: Math.min(item.quantity, item.stock ?? 1),
+    stock: item.stock ?? 1,
+    shippingClass: item.shippingClass ?? "large",
     image: typeof item.image === "string" && /^assets\/[\w./-]+$/.test(item.image)
       && !item.image.includes("..") ? item.image : "",
     href: typeof item.href === "string" && /^[\w-]+\.html$/.test(item.href)
@@ -67,12 +71,12 @@ export function createCartStore(storage) {
     read,
     get persistent() { return persistent; },
     add(product, quantity = 1) {
-      if (quantity !== 1) throw new Error("Jedes Stück ist nur einmal verfügbar.");
+      if (!Number.isInteger(quantity) || quantity < 1 || quantity > (product.stock ?? 1)) throw new Error("Diese Menge ist nicht verfügbar.");
       const item = normalizeItem({ ...product, quantity });
       if (!item) throw new Error("Ungültiger Artikel oder ungültige Menge.");
       const items = read();
       const existing = items.find(entry => entry.id === item.id);
-      if (existing) existing.quantity = 1;
+      if (existing) existing.quantity = Math.min(existing.quantity + quantity, item.stock);
       else {
         if (items.length >= 100) throw new Error("Der Warenkorb ist voll.");
         items.push(item);
@@ -80,8 +84,9 @@ export function createCartStore(storage) {
       return save(items);
     },
     setQuantity(id, quantity) {
-      if (quantity !== 1) {
-        throw new Error("Jedes Stück ist nur einmal verfügbar.");
+      const item = read().find(item => item.id === id);
+      if (!Number.isInteger(quantity) || quantity < 1 || quantity > (item?.stock ?? 1)) {
+        throw new Error("Diese Menge ist nicht verfügbar.");
       }
       return save(read().map(item => item.id === id ? { ...item, quantity } : item));
     },

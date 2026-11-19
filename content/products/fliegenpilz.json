@@ -1,0 +1,28 @@
+{
+  "archiveImage": "/assets/Beeeda-fliegenpilz-1.webp",
+  "care": "Übergangszeit bis kältere Tage",
+  "cover": "/assets/Beeeda-fliegenpilz-1.webp",
+  "description": "Die aus Merino und Mohair gestrickte Mütze schützt und wärmt die Ohren. Durch ihre Form wächst sie mit und der 🍄 kann auch einen zweiten Herbst noch miterleben.",
+  "displayOrder": 1,
+  "gallery": [
+    "/assets/Beeeda-fliegenpilz-7.webp",
+    "/assets/Beeeda-fliegenpilz-2.webp",
+    "/assets/Beeeda-fliegenpilz-3.webp",
+    "/assets/Beeeda-fliegenpilz-4.webp",
+    "/assets/Beeeda-fliegenpilz-5.webp"
+  ],
+  "hero": "/assets/Beeeda-fliegenpilz-6.webp",
+  "makingMethod": "von Hand gestrickt",
+  "materialBehavior": "stretch: 10/10",
+  "materials": "rot flauschig: 55% Mohair Superkid, 45%Schurwolle (Merino Superfine) | rot: 100% Schurwolle (Merino extrafine)",
+  "measurements": "Höhe: 20cm | Breite: 17cm",
+  "name": "Fliegenpilz",
+  "priceCents": 4990,
+  "productId": "Fliegenpilz",
+  "reduced": false,
+  "size": "12-24 M",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "stockQuantity": 1,
+  "thumbnail": "/assets/Beeeda-fliegenpilz-3.webp"
+}
