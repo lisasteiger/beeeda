@@ -167,6 +167,7 @@ export function initCarousel(carousel, selectedId) {
 
     // Maus und Trackpad: Bewegung und verzögertes Einrasten gemeinsam behandeln.
     on(carousel, "wheel", (event) => {
+      if (Math.abs(event.deltaY) >= Math.abs(event.deltaX)) return;
       event.preventDefault();
       if (pressedPointer !== null) return;
       const scroll = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
@@ -187,6 +188,10 @@ export function initCarousel(carousel, selectedId) {
     on(carousel, "touchmove", (event) => {
       const deltaX = touchStartX - event.touches[0].clientX;
       const deltaY = touchStartY - event.touches[0].clientY;
+      if (Math.abs(deltaY) > Math.abs(deltaX)) {
+        if (Math.abs(deltaY) > 8) touchMoved = true;
+        return;
+      }
       // Kleine Fingerbewegungen bleiben ein Tippen, kein Wischen.
       if (Math.hypot(deltaX, deltaY) > 8) touchMoved = true;
       if (!touchMoved) return;

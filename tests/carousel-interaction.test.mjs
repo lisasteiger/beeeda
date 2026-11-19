@@ -121,11 +121,11 @@ test('carousel responds promptly and at the same speed on 60 Hz and 120 Hz scree
 
 test('diagonal trackpad input follows the dominant axis and mouse line units are supported', () => {
   const page = setup();
-  page.carousel.emit('wheel', { deltaX: 1, deltaY: 100, deltaMode: 0 });
+  page.carousel.emit('wheel', { deltaX: 100, deltaY: 1, deltaMode: 0 });
   for (let frame = 0; frame < 120 && page.frames.size; frame++) page.step();
   assert.ok(Math.abs(page.position() - 0.35) < 0.001);
   const mouse = setup();
-  mouse.carousel.emit('wheel', { deltaX: 0, deltaY: 3, deltaMode: 1 });
+  mouse.carousel.emit('wheel', { deltaX: 3, deltaY: 0, deltaMode: 1 });
   for (let frame = 0; frame < 120 && mouse.frames.size; frame++) mouse.step();
   assert.ok(Math.abs(mouse.position() - 0.168) < 0.001);
 });
@@ -157,6 +157,19 @@ test('swiping suppresses accidental navigation; the following tap and keyboard w
   assert.equal(page.click(1).prevented, true);
   assert.equal(page.click(0).prevented, true);
   assert.equal([...page.timers.values()].length, 1);
+});
+
+test('vertical gestures scroll the page without rotating products or opening a product', () => {
+  const page = setup();
+  const before = page.position();
+  const wheel = page.carousel.emit('wheel', { deltaX: 0, deltaY: 200 });
+  assert.equal(wheel.prevented, undefined);
+  page.carousel.emit('touchstart', { touches: [{ clientX: 200, clientY: 300 }] });
+  const move = page.carousel.emit('touchmove', { touches: [{ clientX: 198, clientY: 100 }] });
+  assert.equal(move.prevented, undefined);
+  assert.equal(page.position(), before);
+  assert.equal(page.click(1).prevented, true);
+  assert.equal(page.classes.has('leaving-to-subsite'), false);
 });
 
 test('a cancelled pointer does not lock scrolling', () => {

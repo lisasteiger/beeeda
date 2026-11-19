@@ -47,7 +47,7 @@ onBeforeUnmount(() => { observer?.disconnect(); clearTimeout(homeTimer) })
     <NuxtLink class="site-link" to="/impressum" :aria-current="!['agb', 'datenschutz', 'urheberrecht'].includes(String(route.query.inhalt)) ? 'page' : undefined">Impressum</NuxtLink>
   </nav>
   <a v-else class="site-link impressum-link" href="/impressum">Impressum</a>
-  <a class="site-link about-link" href="/ueber-uns">Über uns</a>
+  <a class="site-link about-link" :href="home ? '#ueber-uns' : '/ueber-uns'">Über uns</a>
   <div class="logo-layer" :class="{ 'home-logo': home }">
     <img v-if="home" class="main-logo" src="/assets/LOGO-01.svg" alt="Beeeda" />
     <div v-else ref="controls" class="logo-controls">
