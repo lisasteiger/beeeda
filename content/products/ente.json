@@ -1,0 +1,31 @@
+{
+  "archiveImage": "/assets/Beeeda-Ente-06.webp",
+  "care": "Übergangszeit bis kalte Tage",
+  "cover": "/assets/Beeeda-Ente-07.webp",
+  "description": "Die Ente aus Merino- und Mohairwolle gibt nicht nur warm, sondern bringt auch Farbe in den Alltag. Mit den Beinchen lässt sich die Mütze passend binden und hält die Ohren bedeckt. Dabei bleibt noch genügend Platz für einen Schal.",
+  "displayOrder": 1,
+  "gallery": [
+    "/assets/Beeeda-Ente-01.webp",
+    "/assets/Beeeda-Ente-08.webp",
+    "/assets/Beeeda-Ente-04.webp",
+    "/assets/Beeeda-Ente-09.webp",
+    "/assets/Beeeda-Ente-02.webp",
+    "/assets/Beeeda-Ente-03.webp",
+    "/assets/Beeeda-Ente-05.webp",
+    "/assets/Beeeda-Ente-10.webp"
+  ],
+  "hero": "/assets/Beeeda-Ente-06.webp",
+  "makingMethod": "von Hand gestrickt",
+  "materialBehavior": "stretch: 8/10",
+  "materials": "gelb dick: 100% Schurwolle (Merino Extrafine) | gelb flauschig: 42 % Mohair, 38 % Schurwolle Merino, 20 % Polyamid",
+  "measurements": "Höhe: 18cm | Breite: 20cm",
+  "name": "Ente",
+  "priceCents": 4990,
+  "productId": "Ente",
+  "reduced": false,
+  "size": "12-24 M",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "stockQuantity": 1,
+  "thumbnail": "/assets/Beeeda-Ente-10.webp"
+}
