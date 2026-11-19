@@ -6,13 +6,27 @@ const carousel = ref<HTMLElement>()
 const homeScroll = ref<HTMLElement>()
 const showProductsReturn = ref(false)
 const readingText = ref(false)
+let previousScrollTop = 0
+let scrollingDown = false
 function updateProductsReturn() {
   const scroll = homeScroll.value
+  if (scroll) {
+    scrollingDown = scroll.scrollTop > previousScrollTop
+    previousScrollTop = scroll.scrollTop
+  }
   showProductsReturn.value = Boolean(scroll && scroll.scrollTop > scroll.clientHeight / 2)
   readingText.value = Boolean(scroll && scroll.scrollTop >= scroll.clientHeight - 1)
 }
 function showProducts() {
   homeScroll.value?.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })
+}
+function settleText() {
+  const scroll = homeScroll.value
+  if (!scroll || !scrollingDown || !readingText.value || !window.matchMedia('(max-width: 700px)').matches) return
+  const remaining = scroll.scrollHeight - scroll.clientHeight - scroll.scrollTop
+  if (remaining > 1 && remaining < 96) {
+    scroll.scrollTo({ top: scroll.scrollHeight, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })
+  }
 }
 const returning = ref(useRoute().query.back !== undefined)
 useHead(() => ({ htmlAttrs: { class: returning.value ? 'home-page returning-from-subsite' : 'home-page' } }))
@@ -41,7 +55,7 @@ onMounted(() => {
 onBeforeUnmount(() => { generation++; stopWatching?.(); dispose?.() })
 </script>
 <template>
-  <main ref="homeScroll" class="home-scroll" :class="{ 'reading-text': readingText }" @scroll.passive="updateProductsReturn">
+  <main ref="homeScroll" class="home-scroll" :class="{ 'reading-text': readingText }" @scroll.passive="updateProductsReturn" @scrollend.passive="settleText">
   <section id="carousel" ref="carousel" class="carousel" aria-label="Produkte" tabindex="0">
     <div class="carousel-inner">
       <div v-for="slide in slides" :key="slide.id" class="item" :data-product-id="slide.id" :data-sold="slide.sold" :data-reduced="slide.reduced">
