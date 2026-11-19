@@ -64,7 +64,7 @@ onBeforeUnmount(() => { generation++; stopWatching?.(); dispose?.() })
 .home-scroll .carousel { position: relative; touch-action: pan-y; }
 .home-about { position: relative; z-index: 3; display: flex; align-items: center; background: #fff; padding: 48px 0; }
 .home-about:first-child { padding-top: 50dvh; }
-.home-about:last-child { padding-bottom: 50dvh; }
+.home-about:last-child { padding-bottom: 0; }
 .home-about .about-page { min-height: 0; padding-block: 0; justify-content: center; }
 .products-return { position: fixed; z-index: 7000; top: 150px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0; color: #000; font: 700 var(--corner-link-font-size) "Google Sans", sans-serif; border: 0; background: none; cursor: pointer; padding: 6px; }
 .products-return span { display: block; font-size: 1.5em; line-height: 0.6; }
