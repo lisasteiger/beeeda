@@ -5,9 +5,11 @@ const { data: contentProducts } = await useAsyncData('carousel-products', () => 
 const carousel = ref<HTMLElement>()
 const homeScroll = ref<HTMLElement>()
 const showProductsReturn = ref(false)
+const readingText = ref(false)
 function updateProductsReturn() {
   const scroll = homeScroll.value
   showProductsReturn.value = Boolean(scroll && scroll.scrollTop > scroll.clientHeight / 2)
+  readingText.value = Boolean(scroll && scroll.scrollTop >= scroll.clientHeight - 1)
 }
 function showProducts() {
   homeScroll.value?.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })
@@ -39,7 +41,7 @@ onMounted(() => {
 onBeforeUnmount(() => { generation++; stopWatching?.(); dispose?.() })
 </script>
 <template>
-  <main ref="homeScroll" class="home-scroll" @scroll.passive="updateProductsReturn">
+  <main ref="homeScroll" class="home-scroll" :class="{ 'reading-text': readingText }" @scroll.passive="updateProductsReturn">
   <section id="carousel" ref="carousel" class="carousel" aria-label="Produkte" tabindex="0">
     <div class="carousel-inner">
       <div v-for="slide in slides" :key="slide.id" class="item" :data-product-id="slide.id" :data-sold="slide.sold" :data-reduced="slide.reduced">
@@ -68,5 +70,9 @@ onBeforeUnmount(() => { generation++; stopWatching?.(); dispose?.() })
 .home-about .about-page { min-height: 0; padding-block: 0; justify-content: center; }
 .products-return { position: fixed; z-index: 7000; top: 150px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0; color: #000; font: 700 var(--corner-link-font-size) "Google Sans", sans-serif; border: 0; background: none; cursor: pointer; padding: 6px; }
 .products-return span { display: block; font-size: 1.5em; line-height: 0.6; }
+@media (max-width: 700px) {
+  .home-scroll { overscroll-behavior-y: none; }
+  .home-scroll.reading-text { scroll-snap-type: none; }
+}
 @media (prefers-reduced-motion: reduce) { .home-scroll { scroll-behavior: auto; } }
 </style>
