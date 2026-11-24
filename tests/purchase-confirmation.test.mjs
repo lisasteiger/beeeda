@@ -9,7 +9,7 @@ const source = readFileSync(new URL('../app/pages/produkte/[id].vue', import.met
 test('purchase artwork alternates across clicks and page reloads, including unavailable storage', () => {
   const saved = new Map()
   function page(storage = { getItem: key => saved.get(key), setItem: (key, value) => saved.set(key, value) }) {
-    const context = vm.createContext({ confirmationImage: { value: 'cool' }, confirmed: { value: false },
+    const context = vm.createContext({ confirmationImage: { value: 'cool' }, confirmed: { value: false }, amountValid: { value: true }, product: { value: {} },
       sessionStorage: storage, add() {}, productId: 'hat', timer: undefined, clearTimeout() {}, setTimeout() {} })
     vm.runInContext(source, context)
     return () => { context.buy(); return context.confirmationImage.value }

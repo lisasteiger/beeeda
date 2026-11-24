@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { money, productSuggestions } from '#shared/shop'
+import { money, productSuggestions, validGiftAmount } from '#shared/shop'
 const route = useRoute()
 const productId = String(route.params.id)
 const { data: product } = await useAsyncData('product-' + productId, () => queryCollection('products').where('productId', '=', productId).first())
 if (!product.value || product.value.status === 'draft') throw createError({ statusCode: 404, statusMessage: 'Produkt nicht gefunden' })
+const giftAmount = ref(String(product.value.priceCents / 100))
+const giftAmountCents = computed(() => /^\d+(?:[.,]\d{1,2})?$/.test(giftAmount.value.trim()) ? Math.round(Number(giftAmount.value.replace(',', '.')) * 100) : 0)
+const amountValid = computed(() => !product.value?.customAmount || validGiftAmount(giftAmountCents.value))
 const { catalog, ready, add, refresh } = useCart()
 const stock = computed(() => catalog.value?.products.find(item => item.productId === productId))
 await refresh()
@@ -34,7 +37,8 @@ onMounted(() => {
 })
 onBeforeUnmount(() => { observer?.disconnect(); clearTimeout(timer) })
 function buy() {
-  add(productId)
+  if (!amountValid.value) return
+  add(productId, product.value?.customAmount ? giftAmountCents.value : undefined)
   try { confirmationImage.value = sessionStorage.getItem('beeeda.purchase-confirmation') || confirmationImage.value } catch {}
   confirmationImage.value = confirmationImage.value === 'yuhu' ? 'cool' : 'yuhu'
   try { sessionStorage.setItem('beeeda.purchase-confirmation', confirmationImage.value) } catch {}
@@ -47,15 +51,23 @@ function buy() {
   <main v-if="product && !sold" class="subsite pinkchaos">
     <section class="gallery product-gallery" :aria-label="'Bild von ' + product.name"><div class="gallery-image"><img class="gallery-slide" :src="product.hero || product.cover" :alt="product.name + ', Gesamtansicht'" /></div></section>
     <section ref="detail" class="detail-content">
-      <h1>{{ product.name }}</h1>
-      <p class="status">{{ product.status === 'archived' || stock?.soldOut ? 'Verkauft' : money(product.priceCents) }}<template v-if="product.makingMethod"><br /><span>{{ product.makingMethod }}</span></template><template v-if="stock?.available != null"><br /><span>{{ product.stockDisplay === 'Einzelstück' ? 'Einzelstück' : `Noch ${stock.available} Stück verfügbar` }}</span></template></p>
+      <h1 v-if="product.productId !== 'Gutschein'">{{ product.name }}</h1>
+      <p v-if="!product.customAmount" class="status">{{ product.status === 'archived' || stock?.soldOut ? 'Verkauft' : product.customAmount ? 'Betrag frei wählbar' : money(product.priceCents) }}<template v-if="product.makingMethod"><br /><span>{{ product.makingMethod }}</span></template><template v-if="stock?.available != null"><br /><span>{{ product.stockDisplay === 'Einzelstück' ? 'Einzelstück' : `Noch ${stock.available} Stück verfügbar` }}</span></template></p>
       <p class="description-text">{{ product.description }}</p>
-      <details class="product-info disclosure">
+      <details v-if="product.customAmount" class="product-info disclosure">
+        <summary><span class="info-closed">+ Preise</span><span class="info-open">- Preise</span></summary>
+        <p class="product-info pricing-info">{{ product.pricingInfo }}</p>
+      </details>
+      <details v-if="!product.customAmount" class="product-info disclosure">
         <summary><span class="info-closed">+ Infos</span><span class="info-open">- Infos</span></summary>
         <p class="product-info">{{ product.materials }}<br />{{ product.measurements }}<template v-if="product.materialBehavior"><br />{{ product.materialBehavior }}</template><template v-if="product.care"><br />{{ product.care }}</template></p>
         <p class="product-info product-contact">Die Farben können durch Fotografie und Bildschirmdarstellung leicht vom Original abweichen.<br />Hast du eine Frage zum Produkt? Schreib uns gerne an <a href="mailto:hi@beeeda.ch">hi@beeeda.ch</a>.</p>
       </details>
-      <button id="buy-button" class="buy-button buy-graphic" :disabled="!ready || !catalog || product.status !== 'active' || stock?.soldOut || stock?.available === 0" aria-label="Kaufen" @click="buy"><img src="/assets/kaufen.svg" alt="" aria-hidden="true" /><span class="buy-label">Kaufen</span></button>
+      <div v-if="product.customAmount" class="gift-amount">
+        <label for="gift-amount">Dein Gutscheinbetrag in CHF</label>
+        <input id="gift-amount" v-model="giftAmount" type="text" inputmode="decimal" autocomplete="off" :aria-invalid="!amountValid" />
+      </div>
+      <button id="buy-button" class="buy-button buy-graphic" :disabled="!amountValid || !ready || !catalog || product.status !== 'active' || stock?.soldOut || stock?.available === 0" aria-label="Kaufen" @click="buy"><img src="/assets/kaufen.svg" alt="" aria-hidden="true" /><span class="buy-label">Kaufen</span></button>
       <section v-if="matchingProducts.length" class="product-matching" aria-labelledby="matching-heading">
         <h2 id="matching-heading">Passende Produkte</h2>
         <ProductSuggestions :products="matchingProducts" />
@@ -68,3 +80,10 @@ function buy() {
   </main>
   <div v-if="confirmed" class="purchase-overlay" role="status"><img :src="'/assets/' + confirmationImage + '.svg'" :class="{ 'white-artwork': confirmationImage === 'yuhu' }" :alt="product?.name + ' ist jetzt im Warenkorb.'" /></div>
 </template>
+<style scoped>
+.pricing-info { white-space: pre-line; }
+.gift-amount { display: grid; justify-items: center; gap: 10px; margin: 24px 0; }
+.gift-amount label, .gift-amount p { font-size: var(--corner-link-font-size); }
+.gift-amount input { width: 160px; padding: 10px; border: 1px solid #737373; border-radius: 6px; font: inherit; text-align: center; }
+.gift-amount p { margin: 0; }
+</style>

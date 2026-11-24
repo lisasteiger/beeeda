@@ -1,4 +1,4 @@
-import { money, shippingCents, isProductId, type CartLine, type Product } from '#shared/shop'
+import { money, shippingCents, isProductId, cartUnitPrice, validGiftAmount, type CartLine, type Product } from '#shared/shop'
 export function useCart() {
   const lines = useState<CartLine[]>('cart', () => [])
   const ready = useState('cart-ready', () => false)
@@ -11,8 +11,9 @@ export function useCart() {
       if (Array.isArray(saved)) lines.value = saved.slice(0, 50).flatMap(line => {
         const productId = line?.productId || line?.id
         if (!isProductId(productId) || seen.has(productId) || !Number.isInteger(line?.quantity) || line.quantity < 1) return []
+        if (line.amountCents !== undefined && !validGiftAmount(line.amountCents)) return []
         seen.add(productId)
-        return [{ productId, quantity: Math.min(99, line.quantity) }]
+        return [{ productId, quantity: Math.min(99, line.quantity), ...(line.amountCents !== undefined ? { amountCents: line.amountCents } : {}) }]
       })
     } catch {}
     ready.value = true
@@ -22,7 +23,9 @@ export function useCart() {
   }, { deep: true })
   const items = computed(() => lines.value.map(line => {
     const product = catalog.value?.products.find(product => product.productId === line.productId)
-    return product ? { ...product, quantity: line.quantity } : null
+    if (!product) return null
+    try { return { ...product, priceCents: cartUnitPrice(product, line), quantity: line.quantity } }
+    catch { return null }
   }).filter(item => item !== null))
   const count = computed(() => lines.value.reduce((sum, item) => sum + item.quantity, 0))
   const subtotal = computed(() => items.value.reduce((sum, item) => sum + item.quantity * item.priceCents, 0))
@@ -34,20 +37,32 @@ export function useCart() {
     if (!product) return
     const max = product.available ?? 99
     const amount = Math.max(0, Math.min(max, Number.isFinite(value) ? Math.trunc(value) : 0))
-    lines.value = [...lines.value.filter(line => line.productId !== productId), ...(amount ? [{ productId, quantity: amount }] : [])]
+    const existing = lines.value.find(line => line.productId === productId)
+    lines.value = [...lines.value.filter(line => line.productId !== productId), ...(amount ? [{ ...existing, productId, quantity: amount }] : [])]
   }
-  function add(productId: string) {
+  function add(productId: string, amountCents?: number) {
+    const product = catalog.value?.products.find(product => product.productId === productId)
+    if (!product) return
+    cartUnitPrice(product, { amountCents })
+    if (product.customAmount) {
+      const existing = lines.value.find(line => line.productId === productId)
+      if (existing?.amountCents !== amountCents) {
+        lines.value = [...lines.value.filter(line => line.productId !== productId), { productId, quantity: 1, amountCents }]
+        return
+      }
+    }
     quantity(productId, (lines.value.find(line => line.productId === productId)?.quantity || 0) + 1)
   }
   function remove(productId: string) { lines.value = lines.value.filter(line => line.productId !== productId) }
   function clear() { lines.value = [] }
-  function completeOrder(orderId: string, purchased: CartLine[]) {
+  function completeOrder(orderId: string, purchased: (CartLine & { priceCents?: number })[]) {
     let completed: string[] = []
     try { completed = JSON.parse(localStorage.getItem('beeeda.completed-orders') || '[]') } catch {}
     if (!Array.isArray(completed)) completed = []
     if (completed.includes(orderId)) return
     lines.value = lines.value.flatMap(line => {
-      const quantity = line.quantity - (purchased.find(item => item.productId === line.productId)?.quantity || 0)
+      const quantity = line.quantity - (purchased.find(item => item.productId === line.productId &&
+        (line.amountCents === undefined || line.amountCents === (item.amountCents ?? item.priceCents)))?.quantity || 0)
       return quantity > 0 ? [{ ...line, quantity }] : []
     })
     try { localStorage.setItem('beeeda.completed-orders', JSON.stringify([...completed.slice(-49), orderId])) } catch {}

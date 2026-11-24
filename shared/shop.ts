@@ -1,10 +1,21 @@
 export type Product = {
   productId: string; name: string; size?: string; reduced?: boolean; stockQuantity?: number | null; stockDisplay?: 'Anzahl' | 'Einzelstück'; status: 'draft' | 'active' | 'archived'; priceCents: number;
-  shippingClass?: 'small' | 'large'; makingMethod?: string; description: string; materials: string; measurements: string;
-  materialBehavior?: string; care: string; cover: string; hero: string; thumbnail: string; archiveImage: string;
+  shippingClass?: 'small' | 'large'; customAmount?: boolean; makingMethod?: string; description: string; materials: string; measurements: string;
+  pricingInfo?: string; materialBehavior?: string; care: string; cover: string; hero: string; thumbnail: string; archiveImage: string;
   gallery: string[]; displayOrder: number; available?: number | null; soldOut?: boolean; relatedProducts?: string[]
 }
-export type CartLine = { productId: string; quantity: number }
+export type CartLine = { productId: string; quantity: number; amountCents?: number }
+export function validGiftAmount(value: unknown): value is number {
+  return Number.isSafeInteger(value) && Number(value) >= 100 && Number(value) <= 100000
+}
+export function cartUnitPrice(product: Pick<Product, 'priceCents' | 'customAmount'>, line: Pick<CartLine, 'amountCents'>) {
+  if (product.customAmount) {
+    if (!validGiftAmount(line.amountCents)) throw new Error('Bitte gib einen Gutscheinbetrag zwischen CHF 1 und CHF 1000 ein.')
+    return line.amountCents
+  }
+  if (line.amountCents !== undefined) throw new Error('Für dieses Produkt ist kein freier Betrag möglich.')
+  return product.priceCents
+}
 export const productIdPattern = /^[\p{L}\p{N}][\p{L}\p{M}\p{N} .-]{0,79}$/u
 export function isProductId(value: unknown): value is string {
   return typeof value === 'string' && productIdPattern.test(value)
@@ -29,8 +40,9 @@ export function productSuggestions(products: Product[], currentId: string, limit
   return [...available.slice(index + 1), ...available.slice(0, index + 1)]
     .filter(product => product.productId !== currentId).slice(0, limit)
 }
-export function shippingCents(lines: { quantity: number; shippingClass?: string }[]) {
+export function shippingCents(lines: { quantity: number; shippingClass?: string; customAmount?: boolean }[]) {
   if (!lines.length) return 0
+  if (lines.every(line => line.customAmount)) return 200
   return 750
 }
 export const money = (cents: number) => 'CHF ' + (cents / 100).toFixed(2)
@@ -43,7 +55,8 @@ export function validateCart(input: unknown): CartLine[] {
       throw new Error('Ungültige Artikel oder Mengen im Warenkorb.')
     }
     seen.add(line.productId)
-    return { productId: line.productId, quantity: line.quantity }
+    if (line.amountCents !== undefined && !validGiftAmount(line.amountCents)) throw new Error('Ungültiger Gutscheinbetrag.')
+    return { productId: line.productId, quantity: line.quantity, ...(line.amountCents !== undefined ? { amountCents: line.amountCents } : {}) }
   })
 }
 

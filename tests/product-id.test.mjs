@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { readdirSync, readFileSync } from 'node:fs'
 import { stripTypeScriptTypes } from 'node:module'
 import vm from 'node:vm'
-import { isProductId, validateCart, money, shippingCents } from '../shared/shop.ts'
+import { isProductId, validateCart, money, shippingCents, cartUnitPrice, validGiftAmount } from '../shared/shop.ts'
 
 const directory = new URL('../content/products/', import.meta.url)
 const products = readdirSync(directory).filter(file => file.endsWith('.json'))
@@ -30,9 +30,9 @@ test('stored products with spaces and umlauts survive cart restoration', () => {
   const source = stripTypeScriptTypes(readFileSync(new URL('../app/composables/useCart.ts', import.meta.url), 'utf8'))
     .replace(/^import .*\n/m, '').replace('export function', 'function').replace('import.meta.client', 'false')
   const states = new Map(), mounted = []
-  const saved = products.filter(product => product.status === 'active').map(product => ({ productId: product.productId, quantity: 1 }))
+  const saved = products.filter(product => product.status === 'active').map(product => ({ productId: product.productId, quantity: 1, ...(product.customAmount ? { amountCents: 7525 } : {}) }))
   const context = vm.createContext({
-    isProductId, money, shippingCents,
+    isProductId, money, shippingCents, cartUnitPrice, validGiftAmount,
     useState: (key, initial) => { if (!states.has(key)) states.set(key, { value: initial() }); return states.get(key) },
     useAsyncData: () => ({ data: { value: { products, checkoutReady: false } }, refresh() {} }),
     computed: fn => ({ get value() { return fn() } }),
@@ -44,4 +44,17 @@ test('stored products with spaces and umlauts survive cart restoration', () => {
   assert.deepEqual(JSON.parse(JSON.stringify(context.cart.lines.value)), saved)
   assert.equal(context.cart.items.value.length, saved.length)
   assert.equal(context.cart.valid.value, false, 'Accepting IDs must not enable checkout without verified stock')
+  const voucher = products.find(product => product.customAmount)
+  assert.equal(context.cart.items.value.find(item => item.productId === voucher.productId).priceCents, 7525)
+  context.cart.quantity(voucher.productId, 2)
+  assert.equal(context.cart.lines.value.find(line => line.productId === voucher.productId).amountCents, 7525)
+  context.cart.add(voucher.productId, 7525)
+  assert.equal(context.cart.lines.value.find(line => line.productId === voucher.productId).quantity, 3)
+  context.cart.add(voucher.productId, 10000)
+  assert.equal(context.cart.lines.value.find(line => line.productId === voucher.productId).quantity, 1)
+  assert.equal(context.cart.items.value.find(item => item.productId === voucher.productId).priceCents, 10000)
+  context.cart.completeOrder('older-voucher-order', [{ productId: voucher.productId, quantity: 1, priceCents: 7525 }])
+  assert.equal(context.cart.lines.value.find(line => line.productId === voucher.productId).amountCents, 10000)
+  context.cart.completeOrder('matching-voucher-order', [{ productId: voucher.productId, quantity: 1, priceCents: 10000 }])
+  assert.equal(context.cart.lines.value.some(line => line.productId === voucher.productId), false)
 })

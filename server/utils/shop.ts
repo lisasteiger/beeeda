@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 import Stripe from 'stripe'
 import { queryCollection } from '@nuxt/content/nitro'
 import { createError, getCookie, setCookie, getHeader, type H3Event } from 'h3'
-import { validateCart, shippingCents, orderedProducts, type Product } from '#shared/shop'
+import { validateCart, shippingCents, orderedProducts, cartUnitPrice, type Product } from '#shared/shop'
 
 export function database(event: H3Event) {
   const config = useRuntimeConfig(event)
@@ -68,7 +68,10 @@ export async function priceCart(event: H3Event, input: unknown) {
   const items = lines.map(line => {
     const product = products.find(product => product.productId === line.productId && product.status === 'active')
     if (!product || !Number.isSafeInteger(product.priceCents) || product.priceCents <= 0) throw createError({ statusCode: 409, message: 'Dieses Produkt ist nicht mehr erhältlich.' })
-    return { productId: product.productId, quantity: line.quantity, name: product.name, priceCents: product.priceCents, shippingClass: product.shippingClass }
+    let priceCents
+    try { priceCents = cartUnitPrice(product, line) }
+    catch (error) { throw createError({ statusCode: 400, message: (error as Error).message }) }
+    return { productId: product.productId, quantity: line.quantity, name: product.name, priceCents, shippingClass: product.shippingClass, ...(product.customAmount ? { customAmount: true } : {}) }
   })
   return { items, shipping: shippingCents(items) }
 }
