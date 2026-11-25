@@ -1,0 +1,28 @@
+{
+  "archiveImage": "/assets/Beeeda-Daaaaaackel-13.webp",
+  "care": "stretch: 6/10",
+  "cover": "/assets/Beeeda-Daaaaaackel-13.webp",
+  "customAmount": false,
+  "description": "Damit er den Hals schön umschmiegen kann, ist der Daaaackel extra lang. Die Kaschmir-Alpaka-Mischung fühlt sich superweich an! Er lässt sich gut zweimal um den Hals wickeln und zu einem Knoten binden.",
+  "displayOrder": 0,
+  "gallery": [
+    "/assets/Beeeda-Daaaaaackel-02.webp",
+    "/assets/Beeeda-Daaaaaackel-03.webp",
+    "/assets/Beeeda-Daaaaaackel-08.webp"
+  ],
+  "hero": "/assets/Beeeda-Daaaaaackel-14.webp",
+  "makingMethod": "von Hand gestrickt",
+  "materialBehavior": "",
+  "materials": "braun: 80 % Schurwolle, 10 % Kaschmir, 10 % Polyamid/Nylon | braun flauschig: 82% Alpaka (Baby Alpaka), 16% Polyamid, 2% Elasthan",
+  "name": "Daaaackel",
+  "priceCents": 3990,
+  "pricingInfo": "",
+  "productId": "Daaaackel",
+  "reduced": false,
+  "size": "",
+  "status": "draft",
+  "stockDisplay": "Einzelstück",
+  "stockQuantity": 1,
+  "thumbnail": "/assets/Beeeda-Daaaaaackel-03.webp",
+  "measurements": "Höhe: 6cm | Breite: 85cm"
+}
