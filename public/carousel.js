@@ -41,7 +41,7 @@ export function initCarousel(carousel, selectedId) {
 
   // Bewegungswerte des Carousels.
   const spacing = () => window.matchMedia("(max-width: 700px)").matches
-    ? Math.min(window.innerWidth * 0.55, 280)
+    ? Math.min(window.innerWidth * 0.63, 310)
     : 700;
   const depth = 180;
   const scaleAmount = 0.27;
