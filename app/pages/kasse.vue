@@ -50,7 +50,7 @@ watch(lines, () => { requestKey.value = '' }, { deep: true })
   <main class="cart-page">
     <header class="cart-heading"><h1>Kasse</h1></header>
     <div v-if="ready && lines.length" class="cart-layout">
-      <section class="checkout-intro"><p>Lieferung ausschliesslich in die Schweiz.</p><p>Deine Lieferadresse und Zahlungsart gibst du im nächsten Schritt bei Stripe ein.</p><p v-if="!catalog?.checkoutReady">Der Online-Kauf wird gerade eingerichtet.</p><p v-else-if="!valid">Bitte prüfe die verfügbare Menge im Warenkorb.</p><a class="cart-remove" href="/warenkorb">Zurück zum Warenkorb</a></section>
+      <section class="checkout-intro"><p>Lieferung ausschliesslich in die Schweiz. Für Lieferungen ausserhalb der Schweiz nimm bitte per E-Mail Kontakt mit uns auf.</p><p>Deine Lieferadresse und Zahlungsart gibst du im nächsten Schritt bei Stripe ein.</p><p v-if="!catalog?.checkoutReady">Der Online-Kauf wird gerade eingerichtet.</p><p v-else-if="!valid">Bitte prüfe die verfügbare Menge im Warenkorb.</p><a class="cart-remove" href="/warenkorb">Zurück zum Warenkorb</a></section>
       <section v-if="reservation" class="checkout-intro"><p>Du hast eine offene Reservierung.</p><p v-for="item in reservation.items" :key="item.productId">{{ item.quantity }} × {{ item.name }}</p><button class="cart-button" :disabled="busy || !termsAccepted" @click="resume">Zahlung fortsetzen</button> <button class="cart-remove" :disabled="busy" @click="cancel">Reservierung aufheben</button></section>
       <CartSummary checkout>
         <div class="checkout-legal">
