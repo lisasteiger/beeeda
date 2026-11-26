@@ -1,0 +1,23 @@
+{
+  "archiveImage": "/assets/Beeeda-Gutschein-02.webp",
+  "care": "",
+  "cover": "/assets/Beeeda-Gutschein-01.webp",
+  "customAmount": true,
+  "description": "Verschenke ein bisschen Beeeda! 🎁\n\nMit einem Gutschein kann ein Lieblingsstück ausgesucht oder eine individuelle Anfertigung bestellen werden. So wird daraus ein ganz persönliches Stück Beeeda!",
+  "displayOrder": 0,
+  "hero": "/assets/Beeeda-Gutschein-02.webp",
+  "makingMethod": "",
+  "materialBehavior": "",
+  "materials": "",
+  "measurements": "",
+  "name": "Gutschein",
+  "priceCents": 5000,
+  "pricingInfo": "KIDS Mütze – CHF 49.90\nKIDS Stirnband – CHF 34.90\nKIDS Schal – CHF 39.90\n\nERW Mütze – CHF 59.90\nERW Stirnband – CHF 44.90\nERW Schal – CHF 59.90",
+  "productId": "Gutschein",
+  "reduced": false,
+  "size": "",
+  "status": "active",
+  "stockDisplay": "Anzahl",
+  "stockQuantity": 1000,
+  "thumbnail": "/assets/Beeeda-Gutschein-02.webp"
+}

@@ -1,0 +1,33 @@
+{
+  "archiveImage": "/assets/Beeeda-Huhn-07.webp",
+  "care": "kalte Tage",
+  "cover": "/assets/Beeeda-Huhn-07.webp",
+  "customAmount": false,
+  "description": "Das flauschige Huhn aus Merino passt sich angenehm der Kopfform an. Es schützt auch vorne den Hals und lässt genügend Platz für einen Schal. Und auf allen Abenteuern immer dabei: das Huuuuuuhn!",
+  "displayOrder": 0,
+  "gallery": [
+    "/assets/Beeeda-Huhn-01.webp",
+    "/assets/Beeeda-Huhn-08.webp",
+    "/assets/Beeeda-Huhn-09.webp",
+    "/assets/Beeeda-Huhn-04.webp",
+    "/assets/Beeeda-Huhn-02.webp",
+    "/assets/Beeeda-Huhn-05.webp",
+    "/assets/Beeeda-Huhn-10.webp",
+    "/assets/Beeeda-Huhn-11.webp"
+  ],
+  "hero": "/assets/Beeeda-Huhn-06.webp",
+  "makingMethod": "von Hand gestrickt",
+  "materialBehavior": "stretch: 8/10",
+  "materials": "weiss: 100 % Schurwolle (Merino superfein) | weiss flauschig: 50 % Schurwolle (Merino) 50 % Polyamid",
+  "measurements": "Höhe: 26cm | Breite: 15cm",
+  "name": "Huuuuuhn",
+  "priceCents": 4990,
+  "pricingInfo": "",
+  "productId": "Huuuuuhn",
+  "reduced": false,
+  "size": "12-18M",
+  "status": "active",
+  "stockDisplay": "Einzelstück",
+  "stockQuantity": 1,
+  "thumbnail": "/assets/Beeeda-Huhn-11.webp"
+}

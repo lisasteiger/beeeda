@@ -1,3 +1,4 @@
+import { shippingCents } from "./products.js";
 import { api } from "./api.js";
 import { cart } from "./cart-store.js";
 
@@ -8,21 +9,25 @@ const payment = document.getElementById("payment-step");
 let current, selected = [], requestKey;
 let timer;
 
-function summary(items) {
+function summary(items, savedShipping) {
   const list = document.getElementById("checkout-items");
   list.replaceChildren();
   for (const item of items) {
     const row = document.createElement("li");
-    row.textContent = `${item.name} · 1 Stück · ${money(item.priceCents)}`;
+    row.textContent = `${item.name} · ${item.quantity} Stück · ${money(item.priceCents * item.quantity)}`;
     list.append(row);
   }
-  document.getElementById("checkout-total").textContent = money(items.reduce((sum, item) => sum + item.priceCents, 0));
+  const subtotal = items.reduce((sum, item) => sum + item.priceCents * item.quantity, 0);
+  const shipping = savedShipping ?? shippingCents(items);
+  document.getElementById("checkout-subtotal").textContent = money(subtotal);
+  document.getElementById("checkout-shipping").textContent = money(shipping);
+  document.getElementById("checkout-total").textContent = money(subtotal + shipping);
 }
 
 function showOrder(order) {
   current = order;
   clearInterval(timer);
-  summary(order.items);
+  summary(order.items, order.shippingCents);
   form.hidden = true;
   payment.hidden = order.status !== "reserved";
   const result = document.getElementById("order-result");
@@ -58,7 +63,7 @@ form.addEventListener("submit", async event => {
   button.disabled = true;
   message.textContent = "Verfügbarkeit wird geprüft …";
   try {
-    const order = await api("orders", { customer: Object.fromEntries(new FormData(form)), items: selected.map(item => ({ id: item.id, quantity: 1 })), requestKey });
+    const order = await api("orders", { customer: Object.fromEntries(new FormData(form)), items: selected.map(item => ({ id: item.id, quantity: item.quantity })), requestKey });
     history.replaceState(null, "", `kasse.html?order=${order.id}`);
     showOrder(order);
   } catch (error) { message.textContent = error.message; }
@@ -88,15 +93,18 @@ async function init() {
     const catalog = await api("products");
     const items = cart.read();
     if (!items.length) { message.textContent = "Dein Warenkorb ist leer. Wähle zuerst ein Stück im Shop aus."; return; }
-    selected = items.map(item => catalog.find(product => product.id === item.id));
-    if (selected.some(item => !item || item.availability !== "available")) {
+    selected = items.map(item => {
+      const product = catalog.find(product => product.id === item.id);
+      return product ? { ...product, quantity: item.quantity } : null;
+    });
+    if (selected.some(item => !item || item.availability !== "available" || item.quantity > item.availableQuantity)) {
       message.textContent = "Ein Stück ist inzwischen reserviert oder verkauft. Bitte entferne es aus dem Warenkorb oder versuche es später erneut.";
       summary(selected.filter(Boolean));
       return;
     }
     summary(selected);
     // Gleiche Kennung bei Netzfehlern oder Neuladen: keine doppelte Bestellung.
-    const signature = selected.map(item => item.id).sort().join(",");
+    const signature = selected.map(item => `${item.id}:${item.quantity}`).sort().join(",");
     try {
       const saved = JSON.parse(sessionStorage.getItem("beeeda.checkout") || "null");
       requestKey = saved?.signature === signature ? saved.key : crypto.randomUUID();

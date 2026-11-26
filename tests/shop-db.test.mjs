@@ -4,7 +4,7 @@ import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { openShop } from "../shop-db.mjs";
-import { pinksChaos } from "../products.js";
+import { pinksChaos, shippingCents } from "../products.js";
 
 const customer = { firstName: "Test", lastName: "Käufer", email: "test@example.com", street: "Testweg 1", postalCode: "8000", city: "Zürich", country: "Schweiz" };
 const input = (requestKey = "test-request-000001", items = [{ id: pinksChaos.id, quantity: 1 }]) => ({ requestKey, customer, items });
@@ -33,7 +33,7 @@ test("two independent database connections cannot reserve the same piece", t => 
 test("server prices, customer details, persistence and private order access", t => {
   const { shop, open } = fixture(t);
   const order = shop.reserve("owner", input(undefined, [{ id: pinksChaos.id, quantity: 1, priceCents: 1 }]));
-  assert.equal(order.totalCents, 4960);
+  assert.equal(order.totalCents, 5160);
   assert.deepEqual(order.customer, customer);
   const restarted = open();
   assert.deepEqual(restarted.order(order.id, "owner"), order);
@@ -78,7 +78,7 @@ test("invalid customer, empty cart, duplicate pieces and quantities are rejected
   for (const bad of [
     { ...input(), customer: { ...customer, street: " " } },
     { ...input(), customer: { ...customer, email: "invalid" } },
-    input(undefined, []), input(undefined, [{ id: pinksChaos.id, quantity: 2 }]),
+    input(undefined, []), input(undefined, [{ id: pinksChaos.id, quantity: 0 }]),
     input(undefined, [{ id: pinksChaos.id, quantity: 1 }, { id: pinksChaos.id, quantity: 1 }]),
   ]) assert.throws(() => shop.reserve("one", bad), { status: 400 });
   assert.equal(shop.products()[0].availability, "available");
@@ -91,4 +91,34 @@ test("multi-item reservations are all-or-nothing", t => {
   assert.throws(() => shop.reserve("two", input(undefined, [{ id: pinksChaos.id, quantity: 1 }, { id: second.id, quantity: 1 }])), { status: 409 });
   assert.equal(shop.products()[0].availability, "available");
   assert.equal(shop.pending("two"), null);
+});
+
+test("shipping classes, quantities, Swiss addresses and stored prices", t => {
+  const multiple = { ...pinksChaos, stock: 4 };
+  const large = { ...pinksChaos, id: "large", shippingClass: "large" };
+  const { shop, open } = fixture(t, [multiple, large]);
+  const other = open();
+  const first = shop.reserve("one", input("shipping-request-001", [{ id: multiple.id, quantity: 2 }]));
+  assert.equal(first.shippingCents, 900);
+  assert.equal(first.totalCents, 10820);
+  assert.equal(other.products()[0].availableQuantity, 2);
+  assert.throws(() => other.reserve("two", input("shipping-request-002", [{ id: multiple.id, quantity: 3 }])), { status: 409 });
+  const second = other.reserve("two", input("shipping-request-003", [{ id: multiple.id, quantity: 1 }]));
+  assert.equal(second.shippingCents, 200);
+  shop.finish(first.id, "one", "confirm");
+  assert.equal(other.products()[0].availableQuantity, 1);
+  other.finish(second.id, "two", "cancel");
+  assert.equal(shop.products()[0].availableQuantity, 2);
+  const parcel = shop.reserve("three", input("shipping-request-004", [{ id: large.id, quantity: 1 }]));
+  assert.equal(parcel.shippingCents, 900);
+  assert.equal(open().order(parcel.id, "three").totalCents, 5860);
+  assert.throws(() => shop.reserve("four", { ...input(), customer: { ...customer, country: "Deutschland" } }), { status: 400 });
+  assert.throws(() => shop.reserve("four", { ...input(), customer: { ...customer, postalCode: "12345" } }), { status: 400 });
+});
+
+test("shipping uses the expensive class for two different pieces", () => {
+  assert.equal(shippingCents([]), 0);
+  assert.equal(shippingCents([{ shippingClass: "small", quantity: 1 }]), 200);
+  assert.equal(shippingCents([{ shippingClass: "large", quantity: 1 }]), 900);
+  assert.equal(shippingCents([{ shippingClass: "small", quantity: 1 }, { shippingClass: "small", quantity: 1 }]), 900);
 });
