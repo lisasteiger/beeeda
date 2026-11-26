@@ -19,15 +19,15 @@
   "makingMethod": "von Hand gestrickt",
   "materialBehavior": "stretch: 8/10",
   "materials": "weiss: 100 % Schurwolle (Merino superfein) | weiss flauschig: 50 % Schurwolle (Merino) 50 % Polyamid",
+  "measurements": "Höhe: 26cm | Breite: 15cm",
   "name": "Huuuuuhn",
   "priceCents": 4990,
   "pricingInfo": "",
   "productId": "Huuuuuhn",
   "reduced": false,
   "size": "12-18M",
-  "status": "draft",
+  "status": "active",
   "stockDisplay": "Einzelstück",
   "stockQuantity": 1,
-  "thumbnail": "/assets/Beeeda-Huhn-11.webp",
-  "measurements": "Höhe: 26cm | Breite: 15cm"
+  "thumbnail": "/assets/Beeeda-Huhn-11.webp"
 }
